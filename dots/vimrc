@@ -1,0 +1,18 @@
+let mapleader = " "
+set clipboard=unnamedplus
+
+nnoremap <C-u> <C-u>zz
+nnoremap <C-d> <C-d>zz
+
+nnoremap J <C-d>
+nnoremap K <C-u>
+
+nnoremap <C-r> U
+nnoremap U <C-r>
+
+nnoremap <leader>{ va{Vo
+nnoremap <leader>[ va[Vo
+nnoremap <leader>( va(Vo
+nnoremap <leader>< vatVo
+
+vnoremap <leader>p "_dP

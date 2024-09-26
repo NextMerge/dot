@@ -1,0 +1,56 @@
+[user]
+	name = Mark Jarjour
+	email = mj_git_signing@sent.com
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICZjYSHyyoMDuB2UGKK2ZfoqNM+GSayV2dRwUz20Ul0P
+[core]
+	excludesfile = /Users/markjarjour/.gitignore_global
+	editor = cursor --wait
+	autocrlf = input
+    pager = delta
+[interactive]
+    diffFilter = delta --color-only
+[delta]
+    navigate = true    # use n and N to move between diff sections
+
+    # delta detects terminal colors automatically; set one of these to disable auto-detection
+    # dark = true
+    # light = true
+[merge]
+    conflictstyle = diff3
+[diff]
+    colorMoved = default
+[commit]
+	template = /Users/markjarjour/.stCommitMsg
+	gpgsign = true
+[alias]
+	bruh = add -p
+	cum = commit -m
+	huh = add -i
+
+    lg = lg1
+    lg1 = lg1-specific --all
+    lg2 = lg2-specific --all
+    lg3 = lg3-specific --all
+
+    lg1-specific = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)'
+    lg2-specific = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(auto)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'
+    lg3-specific = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset) %C(bold cyan)(committed: %cD)%C(reset) %C(auto)%d%C(reset)%n''          %C(white)%s%C(reset)%n''          %C(dim white)- %an <%ae> %C(reset) %C(dim white)(committer: %cn <%ce>)%C(reset)'
+[push]
+	autoSetupRemote = true
+[pull]
+	rebase = true
+[rebase]
+    autoStash = true
+[fetch]
+    prune = true
+[init]
+	defaultBranch = main
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+[gpg]
+	format = ssh
+[gpg "ssh"]
+	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
