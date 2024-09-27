@@ -2,7 +2,7 @@
     link:
       relink: true
 
-- clean: ['~']
+- clean: ["~"]
 
 - link:
     ~/.gitconfig: dots/gitconfig
@@ -10,6 +10,7 @@
     ~/.config/topgrade.toml: dots/topgrade.toml
     ~/.vimrc: dots/vimrc
     ~/Library/Application Support/lazygit/config.yml: dots/lazygit-config.yml
+    ~/.tmux.conf: dots/tmux.conf
 
 - shell:
-  - [git submodule update --init --recursive, Installing submodules]
+    - [git submodule update --init --recursive, Installing submodules]
