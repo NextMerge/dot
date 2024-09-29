@@ -1,6 +1,7 @@
 - defaults:
     link:
       relink: true
+      create: true
 
 - clean: ["~"]
 
@@ -8,9 +9,11 @@
     ~/.gitconfig: dots/gitconfig
     ~/.zshrc: dots/zshrc
     ~/.config/topgrade.toml: dots/topgrade.toml
-    ~/.vimrc: dots/vimrc
+    ~/.vimrc: dots/vimrc.vim
+    ~/.config/nvim/init.vim: dots/init.vim
     ~/Library/Application Support/lazygit/config.yml: dots/lazygit-config.yml
     ~/.tmux.conf: dots/tmux.conf
+    ~/.warp/launch_configurations: warp/launch_configurations
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
