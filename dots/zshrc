@@ -8,6 +8,12 @@ if [ -f '/Users/markjarjour/Downloads/google-cloud-sdk/completion.zsh.inc' ]; th
 # fnm env
 eval "$(fnm env --use-on-cd --shell zsh)"
 
+if [ -f "$HOME/dotfiles/secrets.zsh" ]; then
+    source "$HOME/dotfiles/secrets.zsh"
+else
+    echo "Warning: $HOME/dotfiles/secrets.zsh not found. Skipping."
+fi
+
 alias pn=pnpm
 
 autoload -U up-line-or-beginning-search

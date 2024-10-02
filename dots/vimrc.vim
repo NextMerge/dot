@@ -17,8 +17,3 @@ nnoremap <leader>< vatVo
 
 " paste over highlighted text without yanking it
 vnoremap <leader>p "_dP
-
-nnoremap <leader><leader>w zt<leader><leader>w
-nnoremap <leader><leader>e zt<leader><leader>e
-nnoremap <leader><leader>b zb<leader><leader>b
-
