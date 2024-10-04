@@ -16,6 +16,7 @@ fi
 
 alias pn=pnpm
 alias lg=lazygit
+alias nv=nvim
 
 autoload -U up-line-or-beginning-search
 autoload -U down-line-or-beginning-search
