@@ -8,10 +8,19 @@ WORKING_DIR='/Users/markjarjour/Documents/gitter/borpa-business/civalgo'
 SOMBRA_DIR="${WORKING_DIR}/sombra"
 PORTAL_DIR="${WORKING_DIR}/portal"
 
+# Check if the script was called with a "silent" argument
+SILENT_MODE=false
+if [[ "$1" == "silent" ]]; then
+    SILENT_MODE=true
+fi
+
+
 # Check if a session named "civalgo" already exists
 if tmux has-session -t civalgo 2>/dev/null; then
-    # If it exists, attach to it
-    tmux attach-session -t civalgo
+    if [ "$SILENT_MODE" = false ]; then
+        # If it exists, attach to it
+        tmux attach-session -t civalgo
+    fi
 else
     # If it doesn't exist, create a new session
     # Start a new tmux session named "civalgo"
@@ -161,6 +170,8 @@ else
     tmux select-window -t civalgo:0
     tmux select-pane -t 0
 
-    # Attach to the session
-    tmux attach-session -t civalgo
+    if [ "$SILENT_MODE" = false ]; then
+        # Attach to the session
+        tmux attach-session -t civalgo
+    fi
 fi

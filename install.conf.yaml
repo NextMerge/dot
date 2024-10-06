@@ -13,6 +13,7 @@
     ~/Library/Application Support/lazygit/config.yml: dots/lazygit-config.yml
     ~/.tmux.conf: dots/tmux.conf
     ~/.warp/launch_configurations: warp/launch_configurations
+    ~/Documents/gitter/wake-up.zsh: wake-up/gitter.zsh
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]

@@ -1,0 +1,68 @@
+{
+	"name": "Vimium C",
+	"@time": "10/5/2024, 8:01:15 PM",
+	"time": 1728172875530,
+	"environment": {
+		"extension": "2.11.3",
+		"platform": "mac",
+		"chromium": 129
+	},
+	"exclusionRules": [
+		{
+			"passKeys": "",
+			"pattern": ":https://www.keybr.com/"
+		},
+		{
+			"passKeys": "",
+			"pattern": ":https://monkeytype.com/"
+		},
+		{
+			"passKeys": "/ ",
+			"pattern": ":https://kagi.com/"
+		}
+	],
+	"keyLayout": 26,
+	"keyMappings": [
+		"#!no-check",
+		"unmapAll",
+		"",
+		"map j scrollDown",
+		"map k scrollUp",
+		"map h scrollLeft",
+		"map l scrollRight",
+		"map J scrollPageDown",
+		"map K scrollPageUp",
+		"map gg scrollToTop",
+		"map G scrollToBottom",
+		"",
+		"map f LinkHints.activate",
+		"map F LinkHints.activateOpenInNewTab",
+		"map o Vomnibar.activate",
+		"map O Vomnibar.activateInNewTab",
+		"map yf LinkHints.activateCopyLinkUrl",
+		"map c LinkHints.activateHover",
+		"map yv LinkHints.activateSelect",
+		"map r LinkHints.unhoverLast",
+		"",
+		"map gu goUp",
+		"map gU goToRoot",
+		"map yy copyCurrentUrl",
+		"map m toggleMuteTab",
+		"",
+		"map gi focusInput",
+		"map i enterInsertMode",
+		"map / enterFindMode",
+		"map Z showHelp",
+		"map n performFind",
+		"map N performBackwardsFind",
+		"",
+		"map v enterVisualMode",
+		"map V enterVisualLineMode",
+		""
+	],
+	"linkHintCharacters": "aoeuhtnsqjkmwv",
+	"searchUrl": "https://www.kagi.com/search?q=$s Kagi",
+	"vimSync": true,
+	"ignoreKeyboardLayout": 1,
+	"ignoreCapsLock": 2
+}
