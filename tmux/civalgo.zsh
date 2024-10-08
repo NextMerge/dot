@@ -8,9 +8,8 @@ WORKING_DIR='/Users/markjarjour/Documents/gitter/borpa-business/civalgo'
 SOMBRA_DIR="${WORKING_DIR}/sombra"
 PORTAL_DIR="${WORKING_DIR}/portal"
 
-# Check if the script was called with a "silent" argument
 SILENT_MODE=false
-if [[ "$1" == "silent" ]]; then
+if [[ "$1" == "no-attach" ]]; then
     SILENT_MODE=true
 fi
 
