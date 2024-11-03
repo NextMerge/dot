@@ -14,10 +14,10 @@
 # @raycast.authorURL https://raycast.com/MergeNext
 
 # Check if Podcasts is open
-if pgrep -x "Podcasts"; then
+if pgrep -fl /System/Applications/Podcasts.app/Contents/MacOS/Podcasts; then
     open -a "Podcasts"
 else
-    open -a "Music"
+    osascript -e 'tell application "Music" to activate'
 fi
 
 # Exit with success status
