@@ -34,6 +34,9 @@ export PROMPT='${COLOR_DIR}%d ${COLOR_GIT}$(parse_git_branch)${COLOR_DEF}%% '
 export PATH="$PATH:/Users/markjarjour/.local/bin"
 
 export PATH=$PATH:$(go env GOPATH)/bin
+
+export FZF_DEFAULT_OPTS="--info=inline --border --layout=reverse"
+
 ###-begin-npm-completion-###
 #
 # npm command completion script

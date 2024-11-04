@@ -8,3 +8,5 @@ cd $(
     printf "%s\n" "${bonus[@]}"
   ) | fzf
 )
+
+nvim
