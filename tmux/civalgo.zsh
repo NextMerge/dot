@@ -19,6 +19,8 @@ if tmux has-session -t civalgo 2>/dev/null; then
     if [ "$SILENT_MODE" = false ]; then
         # If it exists, attach to it
         tmux attach-session -t civalgo
+    else
+        echo "Session already exists. Exiting..."
     fi
 else
     # If it doesn't exist, create a new session
