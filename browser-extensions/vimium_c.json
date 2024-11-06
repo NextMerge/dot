@@ -1,11 +1,11 @@
 {
 	"name": "Vimium C",
-	"@time": "10/5/2024, 8:01:15 PM",
-	"time": 1728172875530,
+	"@time": "11/6/2024, 12:17:38 PM",
+	"time": 1730913458362,
 	"environment": {
 		"extension": "2.11.3",
 		"platform": "mac",
-		"chromium": 129
+		"chromium": 130
 	},
 	"exclusionRules": [
 		{
@@ -30,8 +30,8 @@
 		"map k scrollUp",
 		"map h scrollLeft",
 		"map l scrollRight",
-		"map J scrollPageDown",
-		"map K scrollPageUp",
+		"map <c-d> scrollPageDown",
+		"map <c-u> scrollPageUp",
 		"map gg scrollToTop",
 		"map G scrollToBottom",
 		"",
@@ -44,6 +44,8 @@
 		"map yv LinkHints.activateSelect",
 		"map r LinkHints.unhoverLast",
 		"",
+		"map <c-o> goBack",
+		"map <c-i> goForward",
 		"map gu goUp",
 		"map gU goToRoot",
 		"map yy copyCurrentUrl",
@@ -66,3 +68,4 @@
 	"ignoreKeyboardLayout": 1,
 	"ignoreCapsLock": 2
 }
+
