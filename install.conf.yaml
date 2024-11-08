@@ -15,6 +15,8 @@
     ~/.warp/launch_configurations: warp/launch_configurations
     ~/.warp/themes: warp/themes
     ~/Documents/gitter/wake-up.zsh: wake-up/gitter.zsh
-
+    ~/Library/Application Support/Cursor/User/settings.json: cursor/settings.jsonc
+    ~/Library/Application Support/Cursor/User/keybindings.json: cursor/keybindings.jsonc
+    ~/.config/cursor-nvim/init.lua: cursor/init.lua
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
