@@ -1,13 +1,13 @@
 // Place your key bindings in this file to override the defaultsauto[]
 [
     {
-        "key": "shift shift",
+        "key": "alt alt",
         "command": "whichkey.show"
     },
     {
         "key": "shift+space",
         "command": "workbench.action.focusActiveEditorGroup",
-        "when": "!editorFocus"
+        "when": "!editorFocus || panelFocus || sidebarFocus"
     },
     {
         "key": "ctrl+\\",

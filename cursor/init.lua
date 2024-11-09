@@ -12,6 +12,8 @@ vim.keymap.set({ "n", "v" }, "<Space>", function()
     vscode.call("whichkey.show")
 end, { desc = "Show WhichKey menu" })
 
+vim.keymap.set("n", "x", '"_x', { desc = "Delete character without yanking" })
+
 vim.keymap.set("n", "U", "<C-r>", { desc = "Redo" })
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move selection down a line" })
@@ -25,50 +27,58 @@ vim.keymap.set("n", "gr", vim.lsp.buf.references, { desc = "Go to References" })
 
 vim.keymap.set("n", "'", function()
     local current_tab_is_pinned = vscode.eval("return vscode.window.tabGroups.activeTabGroup.activeTab.isPinned")
+    local function getTabInfo(index)
+        local tabExists = vscode.eval("return vscode.window.tabGroups.activeTabGroup.tabs[" .. index .. "] !== undefined")
 
-    vscode.call("whichkey.show", {
-        args = {
-            {
-                {
-                    key = "g",
-                    name = "Toggle pin tab",
-                    type = "command",
-                    command = current_tab_is_pinned and "workbench.action.unpinEditor" or "workbench.action.pinEditor",
-                },
-                {
-                    key = "h",
-                    name = "Focus first editor",
-                    type = "command",
-                    command = "workbench.action.openEditorAtIndex1",
-                },
-                {
-                    key = "t",
-                    name = "Focus second editor",
-                    type = "command",
-                    command = "workbench.action.openEditorAtIndex2",
-                },
-                {
-                    key = "n",
-                    name = "Focus third editor",
-                    type = "command",
-                    command = "workbench.action.openEditorAtIndex3",
-                },
-                {
-                    key = "s",
-                    name = "Focus fourth editor",
-                    type = "command",
-                    command = "workbench.action.openEditorAtIndex4",
-                },
-                {
-                    key = "C",
-                    name = "Clear all tabs",
-                    type = "command",
-                    command = "workbench.action.closeEditorsAndGroup",
-                },
-            },
-        },
+        if tabExists then
+            local isPinned = vscode.eval("return vscode.window.tabGroups.activeTabGroup.tabs[" .. index .. "].isPinned")
+            if isPinned then
+                return {
+                    name = vscode.eval("return vscode.window.tabGroups.activeTabGroup.tabs[" .. index .. "].label"),
+                    isPinned = isPinned,
+                }
+            end
+        end
+
+        return nil
+    end
+
+    local listOfPinnedTabs = {}
+    local keys = "htnsmwvz"
+
+    for i = 0, 7 do
+        local tabInfo = getTabInfo(i)
+        if tabInfo then
+            table.insert(listOfPinnedTabs, {
+                key = string.sub(keys, i + 1, i + 1),
+                name = tabInfo.name,
+                type = "command",
+                command = "workbench.action.openEditorAtIndex" .. (i + 1),
+            })
+        end
+    end
+
+    local allCommands = {}
+
+    for _, cmd in ipairs(listOfPinnedTabs) do
+        table.insert(allCommands, cmd)
+    end
+
+    table.insert(allCommands, {
+        key = "g",
+        name = current_tab_is_pinned and "Unpin tab" or "Pin tab",
+        type = "command",
+        command = current_tab_is_pinned and "workbench.action.unpinEditor" or "workbench.action.pinEditor",
     })
-end, { desc = "Format Document" })
+    table.insert(allCommands, {
+        key = "C",
+        name = "Clear all tabs",
+        type = "command",
+        command = "workbench.action.closeEditorsAndGroup",
+    })
+
+    vscode.call("whichkey.show", { args = { allCommands } })
+end, { desc = "Show marked files" })
 
 vim.keymap.set("n", "s", function()
     vscode.call("leap.findForward")

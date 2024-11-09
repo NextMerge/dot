@@ -9,15 +9,19 @@
   "editor.occurrencesHighlight": "off",
   "editor.gotoLocation.alternativeDeclarationCommand": "editor.action.explainSymbol",
   "editor.gotoLocation.alternativeDefinitionCommand": "editor.action.explainSymbol",
+  "editor.renderLineHighlight": "none",
+  "editor.matchBrackets": "never",
+  "window.density.editorTabHeight": "compact",
   "files.autoSave": "afterDelay",
   "workbench.colorTheme": "poimandres",
   "workbench.layoutControl.enabled": false,
   "workbench.activityBar.orientation": "vertical",
   "workbench.activityBar.location": "hidden",
-  "zenMode.fullScreen": false,
-  "zenMode.hideLineNumbers": false,
-  "zenMode.hideStatusBar": false,
-  "terminal.external.osxExec": "iTerm.app",
+  "workbench.editor.limit.perEditorGroup": true,
+  "workbench.editor.limit.enabled": true,
+  "workbench.editor.limit.value": 1,
+  "workbench.editor.labelFormat": "medium",
+  "terminal.external.osxExec": "Warp.app",
   "terminal.integrated.fontSize": 14,
   "[jsonc]": {
     "editor.defaultFormatter": "vscode.json-language-features"
@@ -113,20 +117,14 @@
             "workbench.view.explorer",
             "workbench.action.toggleMaximizedPanel"
           ]
-        },
+        }
       ]
     },
     {
       "key": "s",
-      "name": "+Search",
+      "name": "Search",
       "type": "bindings",
       "bindings": [
-        {
-          "key": "n",
-          "name": "Settings",
-          "type": "command",
-          "command": "workbench.action.openSettingsJson"
-        },
         {
           "key": "c",
           "name": "Find file",
@@ -159,10 +157,10 @@
           "command": "editor.action.codeAction"
         },
         {
-          "key": "h",
-          "name": "Show hover",
+          "key": "r",
+          "name": "Rename",
           "type": "command",
-          "command": "editor.action.showHover"
+          "command": "editor.action.rename"
         },
         {
           "key": "e",
@@ -445,18 +443,6 @@
               "end"
             ]
           ]
-        },
-        {
-          "key": "z",
-          "name": "Toggle zen mode",
-          "type": "command",
-          "command": "workbench.action.toggleZenMode"
-        },
-        {
-          "key": "f",
-          "name": "Toggle full screen",
-          "type": "command",
-          "command": "workbench.action.toggleFullScreen"
         }
       ]
     },
@@ -659,10 +645,5 @@
       ]
     }
   ],
-  "gitblame.inlineMessageEnabled": false,
-  "window.density.editorTabHeight": "compact",
-  "workbench.editor.limit.perEditorGroup": true,
-  "workbench.editor.limit.enabled": true,
-  "workbench.editor.limit.value": 1,
-  "workbench.editor.pinnedTabsOnSeparateRow": true
+  "gitblame.inlineMessageEnabled": false
 }
