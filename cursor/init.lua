@@ -16,6 +16,7 @@ end, { desc = "Show WhichKey menu" })
 
 vim.keymap.set({ "v" }, "<Space>p", '"_dP', { desc = "Delete character without yanking" })
 vim.keymap.set({ "v" }, "<Space>d", '"_d', { desc = "Delete selection without yanking" })
+vim.keymap.set({ "v" }, "<Space>c", '"_c', { desc = "Change selection without yanking" })
 vim.keymap.set({ "n" }, "x", '"_x', { desc = "Delete character without yanking" })
 
 vim.keymap.set("n", "U", "<C-r>", { desc = "Redo" })
