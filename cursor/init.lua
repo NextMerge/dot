@@ -6,13 +6,17 @@ end
 local vscode = require("vscode")
 vim.notify = vscode.notify
 
+vim.opt.timeoutlen = 1500
+
 print("Hello from Neovim!")
 
-vim.keymap.set({ "n", "v" }, "<Space>", function()
+vim.keymap.set({ "n" }, "<Space>", function()
     vscode.call("whichkey.show")
 end, { desc = "Show WhichKey menu" })
 
-vim.keymap.set("n", "x", '"_x', { desc = "Delete character without yanking" })
+vim.keymap.set({ "v" }, "<Space>p", '"_dP', { desc = "Delete character without yanking" })
+vim.keymap.set({ "v" }, "<Space>d", '"_d', { desc = "Delete selection without yanking" })
+vim.keymap.set({ "n" }, "x", '"_x', { desc = "Delete character without yanking" })
 
 vim.keymap.set("n", "U", "<C-r>", { desc = "Redo" })
 

@@ -85,27 +85,13 @@
       "command": "editor.action.format"
     },
     {
-      "key": "p",
-      "name": "Paste without yanking",
-      "type": "command",
-      "command": "vscode-neovim.send",
-      "args": "\\\"_dP"
-    },
-    {
-      "key": "d",
-      "name": "Delete without yanking",
-      "type": "command",
-      "command": "vscode-neovim.send",
-      "args": "\\\"_d"
-    },
-    {
       "key": "R",
       "name": "Restart Neovim",
       "type": "command",
       "command": "vscode-neovim.restart"
     },
     {
-      "key": "P",
+      "key": "p",
       "name": "Project",
       "type": "bindings",
       "bindings": [
