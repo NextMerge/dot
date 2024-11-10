@@ -87,5 +87,20 @@
                 }
             ]
         }
+    },
+    {
+        "key": "ctrl+c",
+        "command": "list.clear",
+        "when": "listFocus && listHasSelectionOrFocus && !inputFocus && !treestickyScrollFocused"
+    },
+    {
+        "key": "ctrl+c",
+        "command": "list.closeFind",
+        "when": "listFocus && treeFindOpen"
+    },
+    {
+        "key": "ctrl+c",
+        "command": "workbench.action.closeQuickOpen",
+        "when": "inQuickOpen"
     }
 ]

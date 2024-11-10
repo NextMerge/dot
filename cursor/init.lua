@@ -16,7 +16,6 @@ end, { desc = "Show WhichKey menu" })
 
 vim.keymap.set({ "v" }, "<Space>p", '"_dP', { desc = "Delete character without yanking" })
 vim.keymap.set({ "v" }, "<Space>d", '"_d', { desc = "Delete selection without yanking" })
-vim.keymap.set({ "v" }, "<Space>c", '"_c', { desc = "Change selection without yanking" })
 vim.keymap.set({ "n" }, "x", '"_x', { desc = "Delete character without yanking" })
 
 vim.keymap.set("n", "U", "<C-r>", { desc = "Redo" })
@@ -30,67 +29,18 @@ vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "Go to Declaration" 
 vim.keymap.set("n", "gI", vim.lsp.buf.implementation, { desc = "Go to Implementation" })
 vim.keymap.set("n", "gr", vim.lsp.buf.references, { desc = "Go to References" })
 
-vim.keymap.set("n", "'", function()
-    local current_tab_is_pinned = vscode.eval("return vscode.window.tabGroups.activeTabGroup.activeTab.isPinned")
-    local function getTabInfo(index)
-        local tabExists = vscode.eval("return vscode.window.tabGroups.activeTabGroup.tabs[" .. index .. "] !== undefined")
-
-        if tabExists then
-            local isPinned = vscode.eval("return vscode.window.tabGroups.activeTabGroup.tabs[" .. index .. "].isPinned")
-            if isPinned then
-                return {
-                    name = vscode.eval("return vscode.window.tabGroups.activeTabGroup.tabs[" .. index .. "].label"),
-                    isPinned = isPinned,
-                }
-            end
-        end
-
-        return nil
-    end
-
-    local listOfPinnedTabs = {}
-    local keys = "htnsmwvz"
-
-    for i = 0, 7 do
-        local tabInfo = getTabInfo(i)
-        if tabInfo then
-            table.insert(listOfPinnedTabs, {
-                key = string.sub(keys, i + 1, i + 1),
-                name = tabInfo.name,
-                type = "command",
-                command = "workbench.action.openEditorAtIndex" .. (i + 1),
-            })
-        end
-    end
-
-    local allCommands = {}
-
-    for _, cmd in ipairs(listOfPinnedTabs) do
-        table.insert(allCommands, cmd)
-    end
-
-    table.insert(allCommands, {
-        key = "g",
-        name = current_tab_is_pinned and "Unpin tab" or "Pin tab",
-        type = "command",
-        command = current_tab_is_pinned and "workbench.action.unpinEditor" or "workbench.action.pinEditor",
-    })
-    table.insert(allCommands, {
-        key = "C",
-        name = "Clear all tabs",
-        type = "command",
-        command = "workbench.action.closeEditorsAndGroup",
-    })
-
-    vscode.call("whichkey.show", { args = { allCommands } })
-end, { desc = "Show marked files" })
-
+vim.keymap.set("v", "s", "<Nop>")
+vim.keymap.set("v", "S", "<Nop>")
 vim.keymap.set("n", "s", function()
     vscode.call("leap.findForward")
 end, { desc = "Leap forward" })
 vim.keymap.set("n", "S", function()
     vscode.call("leap.findBackward")
 end, { desc = "Leap backward" })
+
+vim.keymap.set("v", "<Space>sg", function()
+    vscode.call("find-it-faster.findWithinFiles")
+end, { desc = "Find within files" })
 
 -- Sync clipboard between OS and Neovim.
 --  Schedule the setting after `UiEnter` because it can increase startup-time.
@@ -155,3 +105,87 @@ require("lazy").setup({
         end,
     },
 })
+
+-- Inverse tab management
+vim.keymap.set("n", "'", function()
+    local current_tab_is_pinned = vscode.eval("return vscode.window.tabGroups.activeTabGroup.activeTab.isPinned")
+    local function getTabInfo(index)
+        local tabExists = vscode.eval("return vscode.window.tabGroups.activeTabGroup.tabs[" .. index .. "] !== undefined")
+
+        if tabExists then
+            local isPinned = vscode.eval("return vscode.window.tabGroups.activeTabGroup.tabs[" .. index .. "].isPinned")
+            if isPinned then
+                return {
+                    name = vscode.eval("return vscode.window.tabGroups.activeTabGroup.tabs[" .. index .. "].label"),
+                    isPinned = isPinned,
+                }
+            end
+        end
+
+        return nil
+    end
+
+    local listOfPinnedTabs = {}
+    local keys = "htnsmwvz"
+
+    for i = 0, 7 do
+        local tabInfo = getTabInfo(i)
+        if tabInfo then
+            table.insert(listOfPinnedTabs, {
+                key = string.sub(keys, i + 1, i + 1),
+                name = tabInfo.name,
+                type = "command",
+                command = "workbench.action.openEditorAtIndex" .. (i + 1),
+            })
+        end
+    end
+
+    local allCommands = {}
+
+    for _, cmd in ipairs(listOfPinnedTabs) do
+        table.insert(allCommands, cmd)
+    end
+
+    table.insert(allCommands, {
+        key = "g",
+        name = current_tab_is_pinned and "Unpin tab" or "Pin tab",
+        type = "command",
+        command = current_tab_is_pinned and "workbench.action.unpinEditor" or "workbench.action.pinEditor",
+    })
+    table.insert(allCommands, {
+        key = "C",
+        name = "Clear all tabs",
+        type = "command",
+        command = "workbench.action.closeEditorsAndGroup",
+    })
+
+    vscode.call("whichkey.show", { args = { allCommands } })
+end, { desc = "Show marked files" })
+
+-- File bookmarks
+vim.keymap.set({ "n", "v" }, "m", function()
+    vscode.call("whichkey.show", {
+        args = {
+            {
+                {
+                    key = "o",
+                    name = "Toggle bookmark",
+                    type = "command",
+                    command = "bookmarks.toggle",
+                },
+                {
+                    key = "u",
+                    name = "List bookmarks",
+                    type = "command",
+                    command = "bookmarks.list",
+                },
+                {
+                    key = "C",
+                    name = "Clear all bookmarks",
+                    type = "command",
+                    command = "bookmarks.clear",
+                },
+            },
+        },
+    })
+end, { desc = "Show all bookmarks" })
