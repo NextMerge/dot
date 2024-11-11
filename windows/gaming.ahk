@@ -1,4 +1,5 @@
 #Requires AutoHotkey v2.0
+SendMode("Event")
 
 ; List of executable names (without .exe extension) where the key swaps should be active
 global targetExes := ["notepad"
@@ -15,6 +16,8 @@ global exeAppendices := ["-Win64-Shipping", "-WinGDK-Shipping"]
 
 ; Global variable to store the manual toggle state
 global manualToggle := true
+
+global forceQWERTY := false
 
 ; Function to check if the active window belongs to one of the target executables
 IsTargetExeActive(exesToCheck) {
@@ -34,6 +37,11 @@ IsTargetExeActive(exesToCheck) {
         }
         return false
     } catch {
+        ; Force hotkey reevaluation
+        Suspend(true)
+        Suspend(false)
+        ToolTip("Error getting active window - reevaluating hotkeys")
+        SetTimer(() => ToolTip(), -1000)
         return false
     }
 }
@@ -44,7 +52,7 @@ ShouldSwapKeys() {
 }
 
 ShouldSwapKeysForQWERTY() {
-    return manualToggle && IsTargetExeActive(targetQWERTYExes)
+    return forceQWERTY || (manualToggle && IsTargetExeActive(targetQWERTYExes))
 }
 
 ; Hotkey definitions
@@ -54,27 +62,25 @@ ShouldSwapKeysForQWERTY() {
 #HotIf
 
 #HotIf ShouldSwapKeysForQWERTY()
-    ; Basic function keys
     Backspace::Space
     Delete::Enter
     
-    ; Letter and punctuation remapping
-    SC027::t  ; semicolon to t
-    ,::z      ; comma to z
-    .::x      ; dot to x
-    p::c      ; p to c
-    y::v      ; y to v
-    a::LShift ; a to left shift
-    o::a      ; o to a
-    e::w      ; e to w
-    u::d      ; u to d
-    i::f      ; i to f
-    LShift::m ; left shift to m
-    j::s      ; j to s
-    k::e      ; k to e
-    x::r      ; x to r
-    Left::g   ; left arrow to g
-    Right::b  ; right arrow to b
+    SC027::t
+    *o::a
+    *e::w
+    *u::d
+    *j::s
+    *i::f
+    *,::z
+    *.::x
+    *p::c
+    *y::v
+    *a::LShift
+    *LShift::m
+    *k::e
+    *x::r
+    *Left::g
+    *Right::b
 #HotIf
 
 ; Toggle hotkey (Ctrl+Alt+T)
@@ -89,5 +95,13 @@ ShouldSwapKeysForQWERTY() {
     SetTimer(() => ToolTip(), -1000)
 }
 
-; Optional: Add a hotkey to reload the script (Ctrl+Alt+R)
+; Toggle forcing QWERTY (Ctrl+Alt+Q)
+^!q:: {
+    global forceQWERTY
+    forceQWERTY := !forceQWERTY
+    ToolTip("QWERTY mode: " . (forceQWERTY ? "ON" : "OFF"))
+    SetTimer(() => ToolTip(), -1000)
+}
+
+; Add a hotkey to reload the script (Ctrl+Alt+R)
 ^!r::Reload()
