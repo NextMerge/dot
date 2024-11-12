@@ -3,6 +3,7 @@
   "window.zoomLevel": 2,
   "window.commandCenter": false,
   "window.newWindowDimensions": "inherit",
+  "window.confirmBeforeClose": "keyboardOnly",
   "editor.fontSize": 14,
   "editor.fontFamily": "JetBrains Mono",
   "editor.lineNumbers": "relative",
@@ -32,6 +33,9 @@
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   "[lua]": {
     "editor.defaultFormatter": "JohnnyMorganz.stylua"
   },
@@ -54,7 +58,6 @@
     "k",
     "l",
     "m",
-    "r",
     "t",
     "u",
     "v",
@@ -79,6 +82,13 @@
       "name": "Commands",
       "type": "command",
       "command": "workbench.action.showCommands"
+    },
+    {
+      "key": "C",
+      "name": "Shift-C without yanking",
+      "type": "command",
+      "command": "vscode-neovim.send",
+      "args": "\"_C"
     },
     {
       "key": "f",
@@ -129,6 +139,31 @@
           "name": "Resume search",
           "type": "command",
           "command": "find-it-faster.resumeSearch"
+        },
+        {
+          "key": ".",
+          "name": "VSCode file picker",
+          "type": "command",
+          "command": "workbench.action.quickOpen"
+        },
+        {
+          "key": "n",
+          "name": "Settings",
+          "type": "bindings",
+          "bindings": [
+            {
+              "key": "s",
+              "name": "Settings",
+              "type": "command",
+              "command": "workbench.action.openSettingsJson"
+            },
+            {
+              "key": "k",
+              "name": "Keybindings",
+              "type": "command",
+              "command": "workbench.action.openGlobalKeybindingsFile"
+            }
+          ]
         }
       ]
     },

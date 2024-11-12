@@ -6,7 +6,5 @@ cd $(
   (
     rg --hidden --files --glob '**/.git/HEAD' --glob '!**/Arhive git/**' . | sed 's|.git/HEAD||'
     printf "%s\n" "${bonus[@]}"
-  ) | fzf --margin=0,60
+  ) | fzf
 )
-
-nvim
