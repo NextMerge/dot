@@ -8,8 +8,6 @@ vim.notify = vscode.notify
 
 vim.opt.timeoutlen = 1500
 
-print("Hello from Neovim!")
-
 vim.keymap.set({ "n" }, "<Space>", function()
     vscode.call("whichkey.show")
 end, { desc = "Show WhichKey menu" })
@@ -18,12 +16,7 @@ vim.keymap.set({ "v" }, "<Space>p", '"_dP', { desc = "Delete character without y
 vim.keymap.set({ "v" }, "<Space>d", '"_d', { desc = "Delete selection without yanking" })
 vim.keymap.set({ "n" }, "x", '"_x', { desc = "Delete character without yanking" })
 
-vim.keymap.set("n", "u", function()
-    vscode.call("undo")
-end, { desc = "Undo" })
-vim.keymap.set("n", "U", function()
-    vscode.call("redo")
-end, { desc = "Redo" })
+vim.keymap.set("n", "U", "<C-r>", { desc = "Redo" })
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move selection down a line" })
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move selection up a line" })
@@ -107,6 +100,47 @@ require("lazy").setup({
 
             -- ... and there is more!
             --  Check out: https://github.com/echasnovski/mini.nvim
+        end,
+    },
+    { -- Highlight, edit, and navigate code
+        "nvim-treesitter/nvim-treesitter",
+        build = ":TSUpdate",
+        main = "nvim-treesitter.configs", -- Sets main module to use for opts
+        -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
+        opts = {
+            ensure_installed = { "bash", "c", "diff", "html", "lua", "luadoc", "markdown", "markdown_inline", "query", "vim", "vimdoc" },
+            -- Autoinstall languages that are not installed
+            auto_install = true,
+            highlight = {
+                enable = true,
+                -- Some languages depend on vim's regex highlighting system (such as Ruby) for indent rules.
+                --  If you are experiencing weird indenting issues, add the language to
+                --  the list of additional_vim_regex_highlighting and disabled languages for indent.
+                additional_vim_regex_highlighting = { "ruby" },
+            },
+            indent = { enable = true, disable = { "ruby" } },
+        },
+        -- There are additional nvim-treesitter modules that you can use to interact
+        -- with nvim-treesitter. You should go explore a few and see what interests you:
+        --
+        --    - Incremental selection: Included, see `:help nvim-treesitter-incremental-selection-mod`
+        --    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
+        --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
+    },
+    {
+        "RRethy/nvim-treesitter-textsubjects",
+        config = function()
+            require("nvim-treesitter.configs").setup({
+                textsubjects = {
+                    enable = true,
+                    prev_selection = ",", -- (Optional) keymap to select the previous selection
+                    keymaps = {
+                        ["."] = "textsubjects-smart",
+                        [";"] = "textsubjects-container-outer",
+                        ["i;"] = { "textsubjects-container-inner", desc = "Select inside containers (classes, functions, etc.)" },
+                    },
+                },
+            })
         end,
     },
 })
@@ -194,3 +228,5 @@ vim.keymap.set({ "n", "v" }, "m", function()
         },
     })
 end, { desc = "Show all bookmarks" })
+
+print("Hello from Neovim!")
