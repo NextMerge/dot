@@ -18,7 +18,12 @@ vim.keymap.set({ "v" }, "<Space>p", '"_dP', { desc = "Delete character without y
 vim.keymap.set({ "v" }, "<Space>d", '"_d', { desc = "Delete selection without yanking" })
 vim.keymap.set({ "n" }, "x", '"_x', { desc = "Delete character without yanking" })
 
-vim.keymap.set("n", "U", "<C-r>", { desc = "Redo" })
+vim.keymap.set("n", "u", function()
+    vscode.call("undo")
+end, { desc = "Undo" })
+vim.keymap.set("n", "U", function()
+    vscode.call("redo")
+end, { desc = "Redo" })
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move selection down a line" })
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move selection up a line" })

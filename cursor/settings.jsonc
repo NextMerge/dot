@@ -14,6 +14,9 @@
   "editor.matchBrackets": "never",
   "window.density.editorTabHeight": "compact",
   "files.autoSave": "afterDelay",
+  "files.readonlyInclude": {
+    "**/node_modules/**": true
+  },
   "workbench.colorTheme": "poimandres",
   "workbench.layoutControl.enabled": false,
   "workbench.activityBar.orientation": "vertical",
@@ -123,10 +126,10 @@
       "type": "bindings",
       "bindings": [
         {
-          "key": "c",
+          "key": "f",
           "name": "Find file",
           "type": "command",
-          "command": "find-it-faster.findFiles"
+          "command": "workbench.action.quickOpen"
         },
         {
           "key": "g",

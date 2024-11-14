@@ -63,7 +63,8 @@
                     }
                 }
             ]
-        }
+        },
+        "when": "!editorFocus"
     },
     {
         "key": "ctrl+d",
@@ -85,7 +86,8 @@
                     }
                 }
             ]
-        }
+        },
+        "when": "!editorFocus"
     },
     {
         "key": "ctrl+c",
