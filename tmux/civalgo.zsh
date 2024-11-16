@@ -150,7 +150,7 @@ else
         if ! pgrep -q "Docker"; then
             echo "Docker.app is not running. Killing civalgo tmux session..."
             osascript -e '\''display notification "Docker.app is not running. Killing civalgo tmux session." with title "Docker Alert"'\''
-            sleep 10
+            sleep 5
             if ! pgrep -q "Docker"; then
                 tmux kill-session -t civalgo
                 exit 1
@@ -159,7 +159,7 @@ else
     }
 
     while true; do
-        sleep 30
+        sleep 20
         check_docker
     done
     ' Enter
