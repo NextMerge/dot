@@ -1,11 +1,8 @@
 # dotfiles
+
 Original idea.
 
 ## Commands
-
-Install all available macOS updates and restart:
-
-    softwareupdate -iaR
 
 Install Xcode Command Line Tools:
 
@@ -13,7 +10,7 @@ Install Xcode Command Line Tools:
 
 Clone the repository in your home directory:
 
-    git clone https://github.com/MergeCommits/dotfiles.git
+    git clone https://github.com/NextMerge/dotfiles.git
 
 Install/update the dotfiles:
 
@@ -22,7 +19,7 @@ Install/update the dotfiles:
 Install [homebrew](https://brew.sh/)
 
 Install topgrade:
-    
+
     brew install topgrade
 
 Update everything

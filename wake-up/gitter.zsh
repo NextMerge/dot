@@ -1,10 +1,30 @@
-# Define the bonus array
-bonus=(~/dotfiles ~/.config/nvim)
+pre_selected_repos=(~/dotfiles ~/.config/nvim)
 
-# Combine the git repository search with the bonus directories
-cd $(
+selected_dir=$(
   (
-    rg --hidden --files --glob '**/.git/HEAD' --glob '!**/Arhive git/**' . | sed 's|.git/HEAD||'
-    printf "%s\n" "${bonus[@]}"
-  ) | fzf
+    # Find regular git repos
+    rg --hidden --files --glob '**/.git/HEAD' --glob '!**/Arhive git/**' --max-depth 6 . | sed 's|.git/HEAD||'
+    # Find bare git repos
+    rg --hidden --files --glob '**/config' --glob '!**/.git/**' --max-depth 6 . | while read -r file; do
+      if rg -q "bare = true" "$file" 2>/dev/null; then
+        dirname "$file"
+      fi
+    done
+    # Add bonus directories
+    printf "%s\n" "${pre_selected_repos[@]}"
+  ) | fzf --prompt="Select a directory: " --header="Press CTRL-D to go to gitter folder"
 )
+
+cd "$selected_dir"
+
+# Check if worktrees folder exists
+if [[ -d "worktrees" ]]; then
+  # List all level 1 folders in worktrees directory
+  selected_worktree=$(
+    git worktree list | grep -v "(bare)" | fzf --prompt="Select a worktree: " --header="Press CTRL-D to cancel"
+  )
+
+  if [[ -n "$selected_worktree" ]]; then
+    cd "$(echo "$selected_worktree" | awk '{print $1}')"
+  fi
+fi

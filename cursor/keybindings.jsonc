@@ -64,7 +64,7 @@
                 }
             ]
         },
-        "when": "!editorFocus"
+        "when": "!editorHoverFocused"
     },
     {
         "key": "ctrl+d",
@@ -87,7 +87,7 @@
                 }
             ]
         },
-        "when": "!editorFocus"
+        "when": "!editorHoverFocused"
     },
     {
         "key": "ctrl+c",

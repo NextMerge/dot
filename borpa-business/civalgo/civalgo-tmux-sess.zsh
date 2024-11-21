@@ -4,25 +4,20 @@ PORTAL_COLOR='\033[0;34m'
 NC='\033[0m' # No Color
 SOMBRA_COLOR='\033[0;35m'
 
-WORKING_DIR='/Users/markjarjour/Documents/gitter/borpa-business/civalgo'
+WORKING_DIR="${GITTER_DIR}/borpa-business/civalgo"
+
 SOMBRA_DIR="${WORKING_DIR}/sombra"
 PORTAL_DIR="${WORKING_DIR}/portal"
 
-SILENT_MODE=false
-if [[ "$1" == "no-attach" ]]; then
-    SILENT_MODE=true
-fi
-
-
 # Check if a session named "civalgo" already exists
 if tmux has-session -t civalgo 2>/dev/null; then
-    if [ "$SILENT_MODE" = false ]; then
-        # If it exists, attach to it
-        tmux attach-session -t civalgo
-    else
-        echo "Session already exists. Exiting..."
-    fi
+    # If it exists, attach to it
+    tmux attach-session -t civalgo
 else
+    # Ask for which worktree to use for portal
+    PORTAL_WORKTREE=$(find "${PORTAL_DIR}/worktrees" -mindepth 1 -maxdepth 1 -type d | sed 's|.*/||' | fzf --prompt="Select a portal worktree: " --header="Press CTRL-D to cancel")
+    PORTAL_DIR="${PORTAL_DIR}/${PORTAL_WORKTREE}"
+
     # If it doesn't exist, create a new session
     # Start a new tmux session named "civalgo"
     tmux new-session -d -s civalgo
@@ -78,7 +73,7 @@ else
     # Define the target message
     SUCCESS_MESSAGE="Connection to 127.0.0.1 port 5432 [tcp/postgresql] succeeded!"
 
-    echo -e "${SOMBRA_COLOR}Waiting for PostgreSQL to be available...${NC}"
+    echo -e "${SOMBRA_COLOR}Waiting for Postgres Database to be available...${NC}"
 
     # Loop until the target message is found in the output of the command
     while true; do
@@ -127,8 +122,10 @@ else
         
         if echo "$SOMBRA_PANE_OUTPUT" | grep -qE ".*$ERROR_MESSAGE.*"; then
             echo -e "${SOMBRA_COLOR}Knex migration had an error! Moving on...${NC}"
+            osascript -e 'display notification "Knex migration had an error! Moving on..." with title "Sombra Alert"'
         elif echo "$SOMBRA_PANE_OUTPUT" | grep -qE ".*$SUCCESS_MESSAGE.*"; then
             echo -e "${SOMBRA_COLOR}Knex migration detected. Killing Dockerprocess in pane 0.2...${NC}"
+            osascript -e 'display notification "Knex migration detected. Killing Docker process in pane 0.2..." with title "Sombra Alert"'
 
             # Send Ctrl+C to interrupt the process running in pane 0.2, then start it again
             tmux send-keys -t civalgo:dev-docker.2 C-c
@@ -171,8 +168,6 @@ else
     tmux select-window -t civalgo:0
     tmux select-pane -t 0
 
-    if [ "$SILENT_MODE" = false ]; then
-        # Attach to the session
-        tmux attach-session -t civalgo
-    fi
+    # Attach to the session
+    tmux attach-session -t civalgo
 fi
