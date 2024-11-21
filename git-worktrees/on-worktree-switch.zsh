@@ -10,7 +10,7 @@ if [[ -n "$selected_worktree" ]]; then
     just_selected_worktree=$(echo "$selected_worktree" | awk '{print $1}')
     cd "../$just_selected_worktree"
     echo "Switched to worktree: $just_selected_worktree"
-    echo "Running on-worktree-switch.zsh..."
+    echo "Running ../on-worktree-switch.zsh..."
     source ../on-worktree-switch.zsh $just_selected_worktree
 fi
 
