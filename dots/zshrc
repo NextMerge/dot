@@ -1,5 +1,4 @@
 export DOTS_DIR="$HOME/dotfiles"
-export DOTS_CIVALGO_DIR="$DOTS_DIR/borpa-business/civalgo"
 export GITTER_DIR="$HOME/Documents/gitter"
 
 alias pn=pnpm

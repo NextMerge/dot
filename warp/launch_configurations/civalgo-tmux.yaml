@@ -28,4 +28,4 @@ windows:
       - layout:
           cwd: ~/Documents/gitter/borpa-business/civalgo
           commands:
-            - exec: zsh $DOTS_CIVALGO_DIR/civalgo-tmux-sess.zsh
+            - exec: zsh $DOTS_DIR/borpa-business/civalgo-tmux-sess.zsh

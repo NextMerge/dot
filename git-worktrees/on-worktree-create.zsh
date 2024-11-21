@@ -10,6 +10,6 @@ fi
 
 PORTAL_WORKTREE_DIR="${DOTS_CIVALGO_DIR}/portal/${PORTAL_WORKTREE}"
 
-ln -s "${DOTS_CIVALGO_DIR}/portal.env" "${PORTAL_WORKTREE_DIR}/.env"
+ln "${DOTS_CIVALGO_DIR}/portal/known.env" "${PORTAL_WORKTREE_DIR}/.env"
 
 echo "Linked portal.env for ${PORTAL_WORKTREE}"

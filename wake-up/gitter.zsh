@@ -19,9 +19,10 @@ cd "$selected_dir"
 
 # Check if worktrees folder exists
 if [[ -d "worktrees" ]]; then
+  all_worktrees=$(git worktree list | grep -v "(bare)" | awk '{print $1, substr($0, index($0,$3))}')
   # List all level 1 folders in worktrees directory
   selected_worktree=$(
-    git worktree list | grep -v "(bare)" | fzf --prompt="Select a worktree: " --header="Press CTRL-D to cancel"
+    echo "$all_worktrees" | sed 's|.*/\([^/]*\) |\1 |' | fzf --prompt="Select a worktree: " --header="Press CTRL-D to cancel" --margin=0,30%
   )
 
   if [[ -n "$selected_worktree" ]]; then
