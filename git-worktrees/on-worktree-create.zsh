@@ -1,15 +1,12 @@
 #! /bin/zsh
 
-# Alias the portal.env file in the portal worktree
-PORTAL_WORKTREE=$1
+# Get worktree dir with pwd
+WORKTREE_DIR=$(pwd)
+GIT_DIR=$(dirname "$WORKTREE_DIR")
 
-if [ -z "$PORTAL_WORKTREE" ]; then
-    echo "Error: No portal worktree provided"
-    exit 1
+if [ -f "${GIT_DIR}/known.env" ]; then
+    ln "${GIT_DIR}/known.env" "${WORKTREE_DIR}/.env"
+    echo "Linked known.env for ${WORKTREE}"
+else
+    echo "No known.env found in ${GIT_DIR}, skipping..."
 fi
-
-PORTAL_WORKTREE_DIR="${DOTS_CIVALGO_DIR}/portal/${PORTAL_WORKTREE}"
-
-ln "${DOTS_CIVALGO_DIR}/portal/known.env" "${PORTAL_WORKTREE_DIR}/.env"
-
-echo "Linked portal.env for ${PORTAL_WORKTREE}"

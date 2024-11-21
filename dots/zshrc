@@ -5,6 +5,11 @@ alias pn=pnpm
 alias lg=lazygit
 alias nv=nvim
 
+# Git worktree switch command
+gws() {
+    source "$DOTS_DIR/git-worktrees/on-worktree-switch.zsh"
+}
+
 # fnm env
 eval "$(fnm env --use-on-cd --shell zsh)"
 

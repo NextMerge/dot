@@ -18,5 +18,6 @@
     ~/Library/Application Support/Cursor/User/settings.json: cursor/settings.jsonc
     ~/Library/Application Support/Cursor/User/keybindings.json: cursor/keybindings.jsonc
     ~/.config/cursor-nvim/init.lua: cursor/init.lua
+    ~/Documents/gitter/borpa-business/civalgo/portal/on-worktree-switch.zsh: borpa-business/civalgo-portal-tmux-worktree.zsh
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
