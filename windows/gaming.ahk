@@ -7,6 +7,8 @@ global targetExes := ["notepad"
     ,"Yakisoba" ;Starship Troopers Extermination
     ,"Lethal Company"
     ,"DeadByDaylight"
+    ,"ProjectBorealis"
+    ,"Mind Over Magnet"
     ,"notepad"]
 
 global targetQWERTYExes := ["RobloxPlayer"
@@ -14,9 +16,8 @@ global targetQWERTYExes := ["RobloxPlayer"
 
 global exeAppendices := ["-Win64-Shipping", "-WinGDK-Shipping"]
 
-; Global variable to store the manual toggle state
-global manualToggle := true
-
+global disableGlobal := true
+global forceGaming := false
 global forceQWERTY := false
 
 ; Function to check if the active window belongs to one of the target executables
@@ -37,10 +38,7 @@ IsTargetExeActive(exesToCheck) {
         }
         return false
     } catch {
-        ; Force hotkey reevaluation
-        Suspend(true)
-        Suspend(false)
-        ToolTip("Error getting active window - reevaluating hotkeys")
+        ToolTip("Error getting active window")
         SetTimer(() => ToolTip(), -1000)
         return false
     }
@@ -48,11 +46,11 @@ IsTargetExeActive(exesToCheck) {
 
 ; Function to check if swaps should be active (considering both target exe and manual toggle)
 ShouldSwapKeys() {
-    return manualToggle && IsTargetExeActive(targetExes)
+    return forceGaming || (disableGlobal && IsTargetExeActive(targetExes))
 }
 
 ShouldSwapKeysForQWERTY() {
-    return forceQWERTY || (manualToggle && IsTargetExeActive(targetQWERTYExes))
+    return forceQWERTY || (disableGlobal && IsTargetExeActive(targetQWERTYExes))
 }
 
 ; Hotkey definitions
@@ -84,10 +82,11 @@ ShouldSwapKeysForQWERTY() {
 #HotIf
 
 ; Toggle hotkey (Ctrl+Alt+T)
-^!t:: {
-    global manualToggle
-    manualToggle := !manualToggle
-    if (manualToggle) {
+^!t::ToggleKeySwaps()
+ToggleKeySwaps() {
+    global disableGlobal
+    disableGlobal := !disableGlobal
+    if (disableGlobal) {
         ToolTip("Key swaps enabled")
     } else {
         ToolTip("Key swaps disabled")
@@ -95,8 +94,18 @@ ShouldSwapKeysForQWERTY() {
     SetTimer(() => ToolTip(), -1000)
 }
 
+; Toggle forcing gaming (Ctrl+Alt+F)
+^!f::ToggleGaming()
+ToggleGaming() {
+    global forceGaming
+    forceGaming := !forceGaming
+    ToolTip("Gaming mode: " . (forceGaming ? "ON" : "OFF"))
+    SetTimer(() => ToolTip(), -1000)
+}
+
 ; Toggle forcing QWERTY (Ctrl+Alt+Q)
-^!q:: {
+^!q::ToggleQWERTY()
+ToggleQWERTY() {
     global forceQWERTY
     forceQWERTY := !forceQWERTY
     ToolTip("QWERTY mode: " . (forceQWERTY ? "ON" : "OFF"))
