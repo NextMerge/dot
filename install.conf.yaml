@@ -7,7 +7,7 @@
 
 - link:
     ~/.gitconfig: dots/gitconfig
-    ~/.zshrc: dots/zshrc
+    ~/.zshrc: dots/zshrc.zsh
     ~/.config/topgrade.toml: dots/topgrade.toml
     ~/.vimrc: dots/vimrc.vim
     ~/Library/Application Support/lazygit/config.yml: dots/lazygit-config.yml
