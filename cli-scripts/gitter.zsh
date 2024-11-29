@@ -3,9 +3,9 @@ pre_selected_repos=(~/dotfiles ~/.config/nvim)
 selected_dir=$(
   (
     # Find regular git repos
-    rg --hidden --files --glob '**/.git/HEAD' --glob '!**/Arhive git/**' --max-depth 6 . | sed 's|.git/HEAD||'
+    rg --hidden --files --glob '**/.git/HEAD' --glob '!**/Arhive git/**' --max-depth 6 "$GITTER_DIR" | sed 's|.git/HEAD||'
     # Find bare git repos
-    rg --hidden --files --glob '**/config' --glob '!**/.git/**' --max-depth 6 . | while read -r file; do
+    rg --hidden --files --glob '**/config' --glob '!**/.git/**' --max-depth 6 "$GITTER_DIR" | while read -r file; do
       if rg -q "bare = true" "$file" 2>/dev/null; then
         dirname "$file"
       fi
