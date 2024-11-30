@@ -18,7 +18,11 @@ export PATH=$PATH:$(go env GOPATH)/bin
 
 # Git worktree switch command
 gws() {
-    source "$DOTS_DIR/git-worktrees/on-worktree-switch.zsh"
+    source "$DOTS_DIR/git-worktrees/git-worktree-switch.zsh"
+}
+
+gwc() {
+    source "$DOTS_DIR/git-worktrees/git-worktree-clone.zsh" "$1"
 }
 
 gs() {
