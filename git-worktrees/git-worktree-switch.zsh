@@ -11,6 +11,6 @@ if [[ -n "$selected_worktree" ]]; then
     cd "../$just_selected_worktree"
     echo "Switched to worktree: $just_selected_worktree"
     echo "Running ../on-worktree-switch.zsh..."
-    source ../on-worktree-switch.zsh $just_selected_worktree
+    zsh ../on-worktree-switch.zsh $just_selected_worktree
 fi
 

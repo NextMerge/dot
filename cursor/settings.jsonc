@@ -23,10 +23,8 @@
     "workbench.layoutControl.enabled": false,
     "workbench.activityBar.orientation": "vertical",
     "workbench.activityBar.location": "hidden",
-    "workbench.editor.limit.perEditorGroup": true,
-    "workbench.editor.limit.enabled": true,
-    "workbench.editor.limit.value": 1,
     "workbench.editor.labelFormat": "medium",
+    "workbench.editor.showTabs": "single",
     "terminal.external.osxExec": "Warp.app",
     "terminal.integrated.fontSize": 14,
     "[jsonc]": {
