@@ -202,52 +202,6 @@
             ]
         },
         {
-            "key": "h",
-            "name": "Git hunk",
-            "type": "bindings",
-            "bindings": [
-                {
-                    "key": "b",
-                    "name": "Toggle git blame lines",
-                    "command": "vscode-neovim.lua",
-                    "args": [
-                        [
-                            "local code = require('vscode')",
-                            "if code.get_config('gitblame.inlineMessageEnabled') then",
-                            "code.update_config('gitblame.inlineMessageEnabled', false, 'global')",
-                            "else",
-                            "code.update_config('gitblame.inlineMessageEnabled', true, 'global')",
-                            "end"
-                        ]
-                    ]
-                },
-                {
-                    "key": "p",
-                    "name": "Preview hunk",
-                    "type": "command",
-                    "command": "editor.action.dirtydiff.next"
-                },
-                {
-                    "key": "d",
-                    "name": "Diff against index",
-                    "type": "command",
-                    "command": "git.openChange"
-                },
-                {
-                    "key": "r",
-                    "name": "Reset hunk",
-                    "type": "command",
-                    "command": "git.revertSelectedRanges"
-                },
-                {
-                    "key": "R",
-                    "name": "Reset file",
-                    "type": "command",
-                    "command": "git.clean"
-                }
-            ]
-        },
-        {
             "key": "\t",
             "name": "Last editor",
             "type": "commands",
@@ -702,6 +656,5 @@
                 "workbench.action.findInFiles"
             ]
         }
-    ],
-    "gitblame.inlineMessageEnabled": false
+    ]
 }
