@@ -10,3 +10,5 @@ customCommands:
     stream: true
     loadingText: "Hitting the Griddy..."
 
+gui:
+  nerdFontsVersion: "3"
