@@ -8,7 +8,9 @@ global targetExes := ["notepad"
     ,"Lethal Company"
     ,"DeadByDaylight"
     ,"ProjectBorealis"
-    ,"Mind Over Magnet"
+    ,"Subterranauts"
+    ,"NuclearNightmare"
+    ,"left4dead"
     ,"notepad"]
 
 global targetQWERTYExes := ["RobloxPlayer"
@@ -38,8 +40,6 @@ IsTargetExeActive(exesToCheck) {
         }
         return false
     } catch {
-        ToolTip("Error getting active window")
-        SetTimer(() => ToolTip(), -1000)
         return false
     }
 }
@@ -114,3 +114,19 @@ ToggleQWERTY() {
 
 ; Add a hotkey to reload the script (Ctrl+Alt+R)
 ^!r::Reload()
+
+; Copy current exe name to clipboard
+^!c::CopyExeNameToClipboard()
+CopyExeNameToClipboard() {
+    try {
+        activeExe := WinGetProcessName("A")
+        activeExe := RegExReplace(activeExe, "\.exe$", "")
+        A_Clipboard := "`n    ,`"" . activeExe . "`""
+        ToolTip("Copied exe name to clipboard: " . activeExe)
+        SetTimer(() => ToolTip(), -1000)
+        Run("cmd.exe /c cursor `"C:\Users\markj\Desktop\fold\literally my entire gaming script.ahk`"", , "Hide")
+    } catch {
+        ToolTip("Error copying exe name to clipboard")
+        SetTimer(() => ToolTip(), -1000)
+    }
+}
