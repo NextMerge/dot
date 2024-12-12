@@ -1,7 +1,7 @@
 {
 	"name": "Vimium C",
-	"@time": "11/30/2024, 1:55:31 PM",
-	"time": 1732992931388,
+	"@time": "12/12/2024, 2:41:33 PM",
+	"time": 1734032493596,
 	"environment": {
 		"extension": "2.11.3",
 		"platform": "mac",
@@ -36,6 +36,7 @@
 		"map G scrollToBottom",
 		"",
 		"map f LinkHints.activate",
+		"map <c-f:i> LinkHints.activate",
 		"map F LinkHints.activateOpenInNewTab",
 		"map o Vomnibar.activate",
 		"map O Vomnibar.activateInNewTab",
