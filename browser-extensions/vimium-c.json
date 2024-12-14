@@ -1,7 +1,7 @@
 {
 	"name": "Vimium C",
-	"@time": "12/12/2024, 2:41:33 PM",
-	"time": 1734032493596,
+	"@time": "12/13/2024, 10:19:04 PM",
+	"time": 1734146344468,
 	"environment": {
 		"extension": "2.11.3",
 		"platform": "mac",
@@ -9,16 +9,12 @@
 	},
 	"exclusionRules": [
 		{
-			"passKeys": "",
-			"pattern": ":https://www.keybr.com/"
-		},
-		{
-			"passKeys": "",
-			"pattern": ":https://monkeytype.com/"
-		},
-		{
 			"passKeys": "/ ",
 			"pattern": ":https://kagi.com/"
+		},
+		{
+			"passKeys": "",
+			"pattern": ":https://typ.ing/"
 		}
 	],
 	"keyLayout": 26,
