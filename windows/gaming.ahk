@@ -1,4 +1,4 @@
-#Requires AutoHotkey v3.0
+#Requires AutoHotkey v2.0
 SendMode("Event") ; Without this keys sometimes get stuck in Roblox
 
 ; List of executable names (without .exe extension) where the key swaps should be active
