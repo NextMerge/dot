@@ -1,9 +1,5 @@
 [
     {
-        "key": "alt alt",
-        "command": "whichkey.show"
-    },
-    {
         "key": "shift+space",
         "command": "workbench.action.focusActiveEditorGroup",
         "when": "!editorFocus || panelFocus || sidebarFocus"
@@ -19,89 +15,8 @@
         "when": "terminalFocus && panelFocus"
     },
     {
-        "key": "shift+h",
-        "command": "editor.action.showHover",
-        "when": "editorTextFocus && neovim.mode == 'normal'"
-    },
-    {
-        "key": "ctrl+o",
-        "command": "-lineBreakInsert",
-        "when": "textInputFocus && !editorReadonly"
-    },
-    {
-        "key": "ctrl+o",
-        "command": "workbench.action.navigateBack",
-        "when": "canNavigateBack"
-    },
-    {
-        "key": "ctrl+i",
-        "command": "workbench.action.navigateForward",
-        "when": "canNavigateForward"
-    },
-    {
         "key": "cmd+r f",
         "command": "-workbench.action.closeFolder",
         "when": "emptyWorkspaceSupport && workbenchState != 'empty'"
-    },
-    {
-        "key": "ctrl+u",
-        "command": "runCommands",
-        "args": {
-            "commands": [
-                {
-                    "command": "editorScroll",
-                    "args": {
-                        "to": "up",
-                        "by": "wrappedLine",
-                        "value": 35
-                    }
-                },
-                {
-                    "command": "cursorMove",
-                    "args": {
-                        "to": "viewPortCenter"
-                    }
-                }
-            ]
-        },
-        "when": "!editorHoverFocused"
-    },
-    {
-        "key": "ctrl+d",
-        "command": "runCommands",
-        "args": {
-            "commands": [
-                {
-                    "command": "editorScroll",
-                    "args": {
-                        "to": "down",
-                        "by": "wrappedLine",
-                        "value": 35
-                    }
-                },
-                {
-                    "command": "cursorMove",
-                    "args": {
-                        "to": "viewPortCenter"
-                    }
-                }
-            ]
-        },
-        "when": "!editorHoverFocused"
-    },
-    {
-        "key": "ctrl+c",
-        "command": "list.clear",
-        "when": "listFocus && listHasSelectionOrFocus && !inputFocus && !treestickyScrollFocused"
-    },
-    {
-        "key": "ctrl+c",
-        "command": "list.closeFind",
-        "when": "listFocus && treeFindOpen"
-    },
-    {
-        "key": "ctrl+c",
-        "command": "workbench.action.closeQuickOpen",
-        "when": "inQuickOpen"
     }
 ]

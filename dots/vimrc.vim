@@ -15,9 +15,7 @@ nnoremap U <C-r>
 vnoremap <leader>p "_dP
 
 " delete without yanking
-nnoremap <leader>d "_d
 vnoremap <leader>d "_d
 
-" move block of text up and down
-vnoremap J :m '>+1<CR>gv=gv
-vnoremap K :m '<-2<CR>gv=gv
+" delete character without yanking
+nnoremap x "_x
