@@ -29,6 +29,10 @@ gs() {
     source "$DOTS_DIR/cli-scripts/gitter.zsh"
 }
 
+cmux() {
+    zsh $DOTS_DIR/borpa-business/civalgo-tmux-sess.zsh
+}
+
 # Specify which node version to use
 eval "$(fnm env --use-on-cd --shell zsh)"
 
