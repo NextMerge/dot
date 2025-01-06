@@ -16,7 +16,4 @@ git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
 
 git fetch
 
-git worktree add stable -b main --track origin/$DEFAULT_BRANCH
-
-git worktree add feature origin/$DEFAULT_BRANCH
-git worktree add unstable origin/$DEFAULT_BRANCH
+git worktree add main -b main --track origin/$DEFAULT_BRANCH

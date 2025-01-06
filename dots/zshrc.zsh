@@ -9,10 +9,12 @@ alias .....='cd ../../../..'
 alias pn=pnpm
 alias lg=lazygit
 alias nv=nvim
+alias ll='eza -a'
 
 export FZF_DEFAULT_OPTS="--info=inline --border --layout=reverse"
 export HOMEBREW_NO_ENV_HINTS=1
 export HOMEBREW_NO_UPDATE_REPORT_NEW=1
+export LS_COLORS="$(vivid generate catppuccin-mocha)"
 
 export PATH=$PATH:$(go env GOPATH)/bin
 
