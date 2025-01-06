@@ -9,7 +9,7 @@ alias .....='cd ../../../..'
 alias pn=pnpm
 alias lg=lazygit
 alias nv=nvim
-alias ll='eza -a'
+alias ll='eza -aF'
 
 export FZF_DEFAULT_OPTS="--info=inline --border --layout=reverse"
 export HOMEBREW_NO_ENV_HINTS=1
