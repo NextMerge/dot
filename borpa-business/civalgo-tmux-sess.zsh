@@ -1,5 +1,3 @@
-#!/bin/zsh
-
 PORTAL_COLOR='\033[0;34m'
 NC='\033[0m' # No Color
 SOMBRA_COLOR='\033[0;35m'
@@ -15,7 +13,13 @@ if tmux has-session -t civalgo 2>/dev/null; then
     tmux attach-session -t civalgo
 else
     # Ask for which worktree to use for portal
-    PORTAL_WORKTREE=$(find "${PORTAL_DIR}/worktrees" -mindepth 1 -maxdepth 1 -type d | sed 's|.*/||' | fzf --prompt="Select a portal worktree: " --header="Press CTRL-D to cancel")
+    PORTAL_WORKTREE=$(git --git-dir="$PORTAL_DIR" worktree list | grep -v "(bare)" | awk '{print $1, substr($0, index($0,$3))}' | sed 's|.*/\([^/]*\) |\1 |' | fzf --prompt="Select a portal worktree: " --header="Press CTRL-D to cancel")
+
+    # Exit if no worktree was selected (user pressed CTRL-D)
+    if [[ -z "$PORTAL_WORKTREE" ]]; then
+        exit 0
+    fi
+    PORTAL_WORKTREE=$(echo "$PORTAL_WORKTREE" | awk '{print $1}')
     PORTAL_DIR="${PORTAL_DIR}/${PORTAL_WORKTREE}"
 
     # If it doesn't exist, create a new session
@@ -29,7 +33,6 @@ else
     tmux select-pane -t civalgo:dev-docker.0
     tmux split-window -h -t civalgo:dev-docker.0
 
-
     # Set working directories for each pane
     tmux send-keys -t civalgo:dev-docker.0 "cd $PORTAL_DIR" Enter
     tmux send-keys -t civalgo:dev-docker.2 "cd $SOMBRA_DIR" Enter
@@ -39,7 +42,6 @@ else
     tmux send-keys -t civalgo:dev-docker.2 'open -jga Docker && sleep 10 && npm run docker-start' Enter
     tmux send-keys -t civalgo:dev-docker.3 'npm run dev' Enter
 
-    
     print_success() {
         echo -e "\033[0;32m$1\033[0m"
     }
@@ -69,7 +71,6 @@ else
 
     print_success "Sombra pane cd'd..."
 
-
     # Define the target message
     SUCCESS_MESSAGE="Connection to 127.0.0.1 port 5432 [tcp/postgresql] succeeded!"
 
@@ -87,7 +88,7 @@ else
             echo -e "${SOMBRA_COLOR}PostgreSQL is available.${NC}"
             break
         else
-            sleep 10  # Add a 10-second delay before retrying
+            sleep 10 # Add a 10-second delay before retrying
         fi
     done
 
@@ -116,10 +117,10 @@ else
 
         # Capture the tmux pane output
         TMUX_CAPTURE=$(tmux capture-pane -J -S -100 -p -t civalgo:dev-docker.1)
-        
+
         # Extract the Knex migration output
         SOMBRA_PANE_OUTPUT=$(echo "$TMUX_CAPTURE" | sed -n '/knex migrate:latest/,$p' | tail -n +2)
-        
+
         if echo "$SOMBRA_PANE_OUTPUT" | grep -qE ".*$ERROR_MESSAGE.*"; then
             echo -e "${SOMBRA_COLOR}Knex migration had an error! Moving on...${NC}"
             osascript -e 'display notification "Knex migration had an error! Moving on..." with title "Sombra Alert"'
@@ -129,10 +130,10 @@ else
 
             # Send Ctrl+C to interrupt the process running in pane 0.2, then start it again
             tmux send-keys -t civalgo:dev-docker.2 C-c
-            sleep 2  # Give some time for the process to stop
+            sleep 2 # Give some time for the process to stop
             tmux send-keys -t civalgo:dev-docker.2 'npm run docker-start' Enter
             echo -e "${SOMBRA_COLOR}Docker process interrupted. Restarting...${NC}"
-        else 
+        else
             echo -e "${SOMBRA_COLOR}No Knex migration detected. Continuing...${NC}"
         fi
     else

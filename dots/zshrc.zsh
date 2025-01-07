@@ -18,16 +18,15 @@ export LS_COLORS="$(vivid generate catppuccin-mocha)"
 
 export PATH=$PATH:$(go env GOPATH)/bin
 
-# Git worktree switch command
 gws() {
-    source "$DOTS_DIR/git-worktrees/git-worktree-switch.zsh"
+    source "$DOTS_DIR/cli-scripts/git-worktree-switch.zsh"
 }
 
 gwc() {
-    source "$DOTS_DIR/git-worktrees/git-worktree-clone.zsh" "$1"
+    source "$DOTS_DIR/cli-scripts/git-worktree-clone.zsh" "$1"
 }
 
-gs() {
+gl() {
     source "$DOTS_DIR/cli-scripts/gitter.zsh"
 }
 
