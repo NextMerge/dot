@@ -38,7 +38,7 @@ alias ll='eza -aF'
 export HOMEBREW_NO_ENV_HINTS=1
 export HOMEBREW_NO_UPDATE_REPORT_NEW=1
 
-# Generic color var for some programs
+# Generic color var for some programs (such as eza)
 export LS_COLORS="$(vivid generate catppuccin-mocha)"
 
 ### bat
