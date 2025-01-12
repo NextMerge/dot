@@ -2,11 +2,11 @@ export DOTS_DIR="$HOME/dotfiles"
 export GITTER_DIR="$HOME/Documents/gitter"
 
 iwd() { # I want directory
-    cd "$(fd --type d . $HOME -H | fzf -i --reverse --preview 'eza -aF {}')"
+    cd "$(fd --type d . $HOME -H | fzf -i --preview 'eza -aF --color=always --icons --tree --level=1 {}')"
 }
 
 iwf() { # I want file
-    bat "$(fd --type f --type l . $HOME -H | fzf -i --reverse --preview 'bat --style=numbers --color=always {}')"
+    bat "$(fd --type f --type l . $HOME -H | fzf -i --preview 'bat --style=numbers --color=always {}')"
 }
 
 gws() { # git worktree switch
@@ -33,7 +33,7 @@ alias .....='cd ../../../..'
 alias pn=pnpm
 alias lg=lazygit
 alias nv=nvim
-alias ll='eza -aF'
+alias ll='eza -aF --icons'
 
 export HOMEBREW_NO_ENV_HINTS=1
 export HOMEBREW_NO_UPDATE_REPORT_NEW=1
