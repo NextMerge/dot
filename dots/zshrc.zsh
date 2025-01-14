@@ -1,12 +1,41 @@
 export DOTS_DIR="$HOME/dotfiles"
 export GITTER_DIR="$HOME/Documents/gitter"
 
+_fd_common() {
+    local fd_args=("$@")
+    {
+        fd ${fd_args[@]} . "$HOME" -H \
+            --exclude "Library" \
+            --exclude "node_modules" \
+            --exclude "Pictures" \
+            --exclude "Music" \
+            --exclude "Movies" \
+            --exclude "iCloud Drive"
+        fd ${fd_args[@]} . "$HOME/Library/Application Support" -H \
+            --exclude "node_modules"
+    }
+}
+
 iwd() { # I want directory
-    cd "$(fd --type d . $HOME -H | fzf -i --preview 'eza -aF --color=always --icons --tree --level=1 {}')"
+    local selected="$(
+        _fd_common --type d |
+            fzf -i --preview 'eza -aF --color=always --icons --tree --level=1 {}'
+    )"
+
+    if [ -n "$selected" ]; then
+        cd "$selected"
+    fi
 }
 
 iwf() { # I want file
-    bat "$(fd --type f --type l . $HOME -H | fzf -i --preview 'bat --style=numbers --color=always {}')"
+    local selected="$(
+        _fd_common --type f --type l |
+            fzf -i --preview 'bat --style=numbers --color=always {}'
+    )"
+
+    if [ -n "$selected" ]; then
+        bat "$selected"
+    fi
 }
 
 gws() { # git worktree switch
