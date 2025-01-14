@@ -126,7 +126,7 @@ else
             osascript -e 'display notification "Knex migration had an error! Moving on..." with title "Sombra Alert"'
         elif echo "$SOMBRA_PANE_OUTPUT" | grep -qE ".*$SUCCESS_MESSAGE.*"; then
             echo -e "${SOMBRA_COLOR}Knex migration detected. Killing Dockerprocess in pane 0.2...${NC}"
-            osascript -e 'display notification "Knex migration detected. Killing Docker process in pane 0.2..." with title "Sombra Alert"'
+            osascript -e 'display notification "Knex migration detected. Remember to generate Sombra GQL!" with title "Generate Sombra GQL"'
 
             # Send Ctrl+C to interrupt the process running in pane 0.2, then start it again
             tmux send-keys -t civalgo:dev-docker.2 C-c
