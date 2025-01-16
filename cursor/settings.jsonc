@@ -51,5 +51,6 @@
     "vim.highlightedyank.enable": true,
     "vim.sneak": true,
     "vim.useSystemClipboard": true,
-    "vim.vimrc.enable": true
+    "vim.vimrc.enable": true,
+    "files.autoSaveDelay": 200
 }

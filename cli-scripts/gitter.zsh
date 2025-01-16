@@ -15,6 +15,10 @@ selected_dir=$(
     ) | fzf --prompt="Select a directory: " --header="Press CTRL-D to go to gitter folder"
 )
 
+if [[ -z "$selected_dir" ]]; then
+    return
+fi
+
 cd "$selected_dir"
 
 # Check if worktrees folder exists
