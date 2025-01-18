@@ -75,6 +75,11 @@ export BAT_THEME="Catppuccin Mocha"
 # Use bat coloring for man pages
 export MANPAGER="sh -c 'sed -u -e \"s/\\x1B\[[0-9;]*m//g; s/.\\x08//g\" | bat -p -lman'"
 
+### fzf
+# Set up fzf key bindings and fuzzy completion
+# NOTE: fzf must be sourced through zsh-vi-mode to make sure fzf's key bindings work
+zvm_after_init_commands+=('source <(fzf --zsh)')
+
 export FZF_DEFAULT_OPTS=" \
     --info=inline
     --border
@@ -183,5 +188,5 @@ elif type compctl &>/dev/null; then
 fi
 ###-end-npm-completion-###
 
-# Says zoxide completions need to be at the end of the file
+# NOTE: Says zoxide completions need to be at the end of the file
 eval "$(zoxide init zsh)"
