@@ -1,7 +1,7 @@
 git:
-    paging:
-        colorArg: always
-        pager: delta --dark --paging=never
+  paging:
+    colorArg: always
+    pager: delta --dark --paging=never
 customCommands:
   - key: "G"
     command: "glab mr view -w {{.SelectedLocalBranch.UpstreamBranch}}"
@@ -12,3 +12,4 @@ customCommands:
 
 gui:
   nerdFontsVersion: "3"
+  scrollHeight: 5
