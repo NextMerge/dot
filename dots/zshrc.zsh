@@ -61,7 +61,7 @@ alias .....='cd ../../../..'
 
 alias pn=pnpm
 alias lg=lazygit
-alias nv=nvim
+alias n=nvim
 alias ll='eza -aF --icons'
 
 export HOMEBREW_NO_ENV_HINTS=1
