@@ -46,7 +46,7 @@ gwc() { # git worktree clone
     source "$DOTS_DIR/cli-scripts/git-worktree-clone.zsh" "$1"
 }
 
-gl() { # git list
+g() { # list git repos
     source "$DOTS_DIR/cli-scripts/gitter.zsh"
 }
 
@@ -60,9 +60,9 @@ alias ....='cd ../../..'
 alias .....='cd ../../../..'
 
 alias pn=pnpm
-alias lg=lazygit
+alias gt=lazygit
 alias n=nvim
-alias ll='eza -aF --icons'
+alias l='eza -aF --icons'
 
 export HOMEBREW_NO_ENV_HINTS=1
 export HOMEBREW_NO_UPDATE_REPORT_NEW=1
