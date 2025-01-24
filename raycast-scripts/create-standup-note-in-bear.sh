@@ -35,6 +35,7 @@ NEXT_MONDAY=$(get_next_monday)
 ENCODED_TITLE=$(echo "Weekly Standup: $NEXT_MONDAY" | jq -sRr @uri)
 ENCODED_TEXT=$(echo "#2-areas/work/standup
 ---
+*$OPTION*
 ## Last week
 - 
 ## This week
