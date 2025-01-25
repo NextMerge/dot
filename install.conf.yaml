@@ -19,5 +19,6 @@
     ~/Documents/gitter/borpa-business/civalgo/portal/on-worktree-switch.zsh: borpa-business/civalgo-portal-tmux-worktree.zsh
     ~/.config/ghostty/config: dots/ghostty.toml
     ~/.config/bat: bat
+    ~/.config/fish: fish
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
