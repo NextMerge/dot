@@ -90,8 +90,6 @@ export FZF_DEFAULT_OPTS=" \
     --color=selected-bg:#45475a \
     --multi"
 
-export PATH=$PATH:$(go env GOPATH)/bin
-
 # Specify which node version to use in fnm
 eval "$(fnm env --use-on-cd --shell zsh)"
 
