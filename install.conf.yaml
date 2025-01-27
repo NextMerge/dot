@@ -16,7 +16,7 @@
     ~/.warp/themes: warp/themes
     ~/Library/Application Support/Cursor/User/settings.json: cursor/settings.jsonc
     ~/Library/Application Support/Cursor/User/keybindings.json: cursor/keybindings.jsonc
-    ~/Documents/gitter/borpa-business/civalgo/portal/on-worktree-switch.zsh: borpa-business/civalgo-portal-tmux-worktree.zsh
+    $GITTER_DIR/borpa-business/civalgo/portal/on-worktree-switch.zsh: borpa-business/civalgo-portal-tmux-worktree.zsh
     ~/.config/ghostty/config: dots/ghostty.toml
     ~/.config/bat: bat
     ~/.config/fish: fish

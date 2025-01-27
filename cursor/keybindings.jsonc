@@ -1,22 +1,15 @@
 [
     {
-        "key": "shift+space",
-        "command": "workbench.action.focusActiveEditorGroup",
-        "when": "!editorFocus || panelFocus || sidebarFocus"
-    },
-    {
-        "key": "ctrl+\\",
-        "command": "workbench.action.terminal.focus",
-        "when": "!terminalFocus"
-    },
-    {
-        "key": "ctrl+\\",
-        "command": "workbench.action.togglePanel",
-        "when": "terminalFocus && panelFocus"
-    },
-    {
         "key": "cmd+r f",
         "command": "-workbench.action.closeFolder",
         "when": "emptyWorkspaceSupport && workbenchState != 'empty'"
+    },
+    {
+        "key": "cmd+e",
+        "command": "-actions.findWithSelection"
+    },
+    {
+        "key": "cmd+e",
+        "command": "workbench.action.showCommands"
     }
 ]
