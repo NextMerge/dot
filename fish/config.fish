@@ -2,8 +2,6 @@ if not status is-interactive
     return
 end
 
-/opt/homebrew/bin/brew shellenv | source
-
 set -g fish_greeting ""
 
 set -gx DOTS_DIR "$HOME/dotfiles"
