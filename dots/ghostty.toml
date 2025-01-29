@@ -5,6 +5,7 @@ font-feature = -calt
 window-width = 120
 window-height = 1000
 confirm-close-surface = false
+macos-option-as-alt = true
 # map specific navigation keys manually because they have other mappings in ghostty
 keybind = super+plus=goto_tab:1
 keybind = super+left_bracket=goto_tab:2

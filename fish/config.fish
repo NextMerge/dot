@@ -4,6 +4,7 @@ end
 
 set -g fish_greeting ""
 
+set -gx EDITOR "nvim"
 set -gx DOTS_DIR "$HOME/dotfiles"
 set -gx GITTER_DIR "$HOME/Documents/gitter"
 
