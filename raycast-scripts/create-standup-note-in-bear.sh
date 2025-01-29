@@ -32,8 +32,8 @@ get_next_monday() {
 NEXT_MONDAY=$(get_next_monday)
 
 # Encode the title and text for the URL
-ENCODED_TITLE=$(echo "Weekly Standup: $NEXT_MONDAY" | jq -sRr @uri)
-ENCODED_TEXT=$(echo "#2-areas/work/standup
+ENCODED_TITLE=$(printf "Weekly Standup: %s" "$NEXT_MONDAY" | jq -sRr @uri)
+ENCODED_TEXT=$(printf "#2-areas/work/standup
 ---
 *$OPTION*
 ## Last week
