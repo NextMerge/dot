@@ -6,8 +6,9 @@ window-width = 120
 window-height = 1000
 confirm-close-surface = false
 macos-option-as-alt = true
+keybind = ctrl+shift+alt+f=next_tab
+keybind = ctrl+shift+alt+b=previous_tab
+keybind = ctrl+shift+alt+w=close_surface
 # map specific navigation keys manually because they have other mappings in ghostty
 keybind = super+plus=goto_tab:1
 keybind = super+left_bracket=goto_tab:2
-keybind = super+equal=goto_tab:6
-keybind = super+right_bracket=last_tab
