@@ -1,11 +1,11 @@
 {
 	"name": "Vimium C",
-	"@time": "12/13/2024, 10:19:04 PM",
-	"time": 1734146344468,
+	"@time": "2/1/2025, 8:37:34 PM",
+	"time": 1738460254816,
 	"environment": {
 		"extension": "2.11.3",
 		"platform": "mac",
-		"chromium": 131
+		"chromium": 132
 	},
 	"exclusionRules": [
 		{
@@ -30,6 +30,11 @@
 		"map <c-u> scrollFullPageUp",
 		"map gg scrollToTop",
 		"map G scrollToBottom",
+		"map gt nextTab",
+		"map gT previousTab",
+		"map r reloadTab",
+		"map x removeTab",
+		"map X restoreTab",
 		"",
 		"map f LinkHints.activate",
 		"map <c-f:i> LinkHints.activate",
