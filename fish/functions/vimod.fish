@@ -14,12 +14,16 @@ function vimod
     cp $DOTS_DIR/vivaldi/custom.js "$path_to_vivaldi_entry_point"
 
     set html_entry_point "$path_to_vivaldi_entry_point/window.html"
-    
+
     if not rg -q "custom.js" "$html_entry_point"
-        string replace -r '</body>' '<script src="custom.js"></script></body>' -- (cat "$html_entry_point") > "$html_entry_point"
-        set_color green; echo "Patched $html_entry_point"; set_color normal
+        string replace -r '</body>' '<script src="custom.js"></script></body>' -- (cat "$html_entry_point") >"$html_entry_point"
+        set_color green
+        echo "Patched $html_entry_point"
+        set_color normal
     else
-        set_color blue; echo "Already patched $html_entry_point"; set_color normal
+        set_color blue
+        echo "Already patched $html_entry_point"
+        set_color normal
     end
 
     read -P "Press [Enter] to restart Vivaldi or Ctrl-C to exit..."
@@ -30,3 +34,4 @@ function vimod
 
     open /Applications/Vivaldi.app
 end
+

@@ -9,4 +9,5 @@ function gws --description "Git Worktree Switch - Interactive worktree switching
         echo "Running ../on-worktree-switch.zsh..."
         zsh ../on-worktree-switch.zsh $just_selected_worktree
     end
-end 
+end
+

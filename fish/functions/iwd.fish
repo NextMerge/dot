@@ -3,4 +3,5 @@ function iwd --description "I want directory - Interactive directory navigation 
     if test -n "$selected"
         cd "$selected"
     end
-end 
+end
+

@@ -17,4 +17,5 @@ function gwc --description "Git Worktree Clone - Clone a repository and set up w
     git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
     git fetch
     git worktree add main -b main --track origin/$DEFAULT_BRANCH
-end 
+end
+

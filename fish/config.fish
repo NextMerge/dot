@@ -4,7 +4,7 @@ end
 
 set -g fish_greeting ""
 
-set -gx EDITOR "nvim"
+set -gx EDITOR nvim
 set -gx DOTS_DIR "$HOME/dotfiles"
 set -gx GITTER_DIR "$HOME/Documents/gitter"
 
@@ -13,8 +13,8 @@ function multicd
 end
 abbr -a dotdot --regex '^\.\.+$' --function multicd
 
-abbr -a n 'nvim'
-abbr -a pn 'pnpm'
+abbr -a n nvim
+abbr -a pn pnpm
 abbr -a l 'eza -aF --icons --width=80'
 
 set -gx HOMEBREW_NO_ENV_HINTS 1

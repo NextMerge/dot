@@ -3,4 +3,5 @@ function iwf --description "I want file - Interactive file selection and preview
     if test -n "$selected"
         bat "$selected"
     end
-end 
+end
+
