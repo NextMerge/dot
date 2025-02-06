@@ -125,14 +125,16 @@ else
             echo -e "${SOMBRA_COLOR}Knex migration had an error! Moving on...${NC}"
             osascript -e 'display notification "Knex migration had an error! Moving on..." with title "Sombra Alert"'
         elif echo "$SOMBRA_PANE_OUTPUT" | grep -qE ".*$SUCCESS_MESSAGE.*"; then
-            echo -e "${SOMBRA_COLOR}Knex migration detected. Killing Dockerprocess in pane 0.2...${NC}"
-            osascript -e 'display notification "Knex migration detected. Remember to generate Sombra GQL!" with title "Generate Sombra GQL"'
+            echo -e "${SOMBRA_COLOR}Knex migration detected!${NC}"
+            osascript -e 'display notification "Knex migration detected." with title "Generate Sombra GQL"'
+
+            # cd hasura && npx hasura metadata apply --endpoint http://localhost:3011 --admin-secret secret && cd ..
 
             # Send Ctrl+C to interrupt the process running in pane 0.2, then start it again
-            tmux send-keys -t civalgo:dev-docker.2 C-c
-            sleep 2 # Give some time for the process to stop
-            tmux send-keys -t civalgo:dev-docker.2 'npm run docker-start' Enter
-            echo -e "${SOMBRA_COLOR}Docker process interrupted. Restarting...${NC}"
+            # tmux send-keys -t civalgo:dev-docker.2 C-c
+            # sleep 2 # Give some time for the process to stop
+            # tmux send-keys -t civalgo:dev-docker.2 'npm run docker-start' Enter
+            # echo -e "${SOMBRA_COLOR}Docker process interrupted. Restarting...${NC}"
         else
             echo -e "${SOMBRA_COLOR}No Knex migration detected. Continuing...${NC}"
         fi

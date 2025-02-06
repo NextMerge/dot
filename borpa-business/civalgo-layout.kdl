@@ -1,0 +1,37 @@
+session_name "civalgo"
+layout {
+    pane size=1 borderless=true {
+        plugin location="tab-bar"
+    }
+    pane split_direction="vertical" {
+        pane {
+            name "Portal dev"
+            cwd "$GITTER_DIR/borpa-business/civalgo/portal/"
+            command "fish"
+            args "--login" "--interactive" "-C" "__cmux-portal"
+        }
+        pane {
+            name "Kill watcher"
+            cwd "$GITTER_DIR/borpa-business/civalgo/"
+            command "fish"
+            args "-c '__cmux-killer'"
+        }
+    }
+    pane split_direction="vertical" {
+        pane {
+            name "Docker"
+            cwd "$GITTER_DIR/borpa-business/civalgo/sombra/"
+            command "fish"
+            args "--login" "--interactive" "-C" "__cmux-docker"
+        }
+        pane {
+            name "Sombra dev"
+            cwd "$GITTER_DIR/borpa-business/civalgo/sombra/"
+            command "fish"
+            args "--login" "--interactive" "-C" "__cmux-sombra"
+        }
+    }
+    pane size=1 borderless=true {
+        plugin location="status-bar"
+    }
+}
