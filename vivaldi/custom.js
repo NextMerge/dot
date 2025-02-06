@@ -3,7 +3,7 @@
 
     // Tab URL changes -> capture the tab after a delay and update Vivaldi's thumbnail
     chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
-        if (changeInfo.url && timer === null) {
+        if (changeInfo.url && timer === null && tab.active) {
             timer = setTimeout(async () => {
                 try {
                     const tabCapture = await chrome.tabs.captureVisibleTab(tab.windowId);
