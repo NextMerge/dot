@@ -36,6 +36,7 @@ function __cmux-sombra
         # Check for successful migration
         if string match -rq "$MIGRATION_ERROR_MESSAGE" "$MIGRATION_OUTPUT"
             osascript -e 'display notification "Knex migration had an error!" with title "Sombra Alert"'
+            return
         else if string match -rq "$MIGRATION_DETECTED_MESSAGE" "$MIGRATION_OUTPUT"
             # Migration ran successfully with changes
             osascript -e 'display notification "Database migrations were detected and completed successfully!" with title "Sombra Alert"'
