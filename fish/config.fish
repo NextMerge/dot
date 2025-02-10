@@ -45,6 +45,9 @@ fzf --fish | source
 ### hydro
 set -gx hydro_multiline true
 set -gx hydro_symbol_start "\n"
+set -gx hydro_color_duration "yellow"
+set -gx hydro_color_pwd "cyan"
+set -gx hydro_color_git "purple"
 
 # NOTE: Says zoxide completions need to be at the end of the file
 eval "$(zoxide init fish)"
