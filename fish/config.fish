@@ -42,7 +42,9 @@ set -gx FZF_DEFAULT_OPTS " \
 # Keybindings
 fzf --fish | source
 
-eval (starship init fish)
+### hydro
+set -gx hydro_multiline true
+set -gx hydro_symbol_start "\n"
 
 # NOTE: Says zoxide completions need to be at the end of the file
 eval "$(zoxide init fish)"
