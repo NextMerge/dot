@@ -9,14 +9,13 @@
     ~/.gitconfig: dots/gitconfig
     ~/.zshrc: dots/zshrc.zsh
     ~/.config/topgrade.toml: dots/topgrade.toml
-    ~/.config/starship.toml: dots/starship.toml
     ~/.vimrc: dots/vimrc.vim
     ~/Library/Application Support/lazygit/config.yml: dots/lazygit-config.yml
     ~/.tmux.conf: dots/tmux.conf
     ~/.warp/themes: warp/themes
     ~/Library/Application Support/Cursor/User/settings.json: cursor/settings.jsonc
     ~/Library/Application Support/Cursor/User/keybindings.json: cursor/keybindings.jsonc
-    $GITTER_DIR/borpa-business/civalgo/portal/on-worktree-switch.zsh: borpa-business/civalgo-portal-tmux-worktree.zsh
+    # $GITTER_DIR/borpa-business/civalgo/portal/on-worktree-switch.zsh: borpa-business/civalgo-portal-tmux-worktree.zsh
     ~/.config/ghostty/config: dots/ghostty.toml
     ~/.config/bat: bat
     ~/.config/fish: fish

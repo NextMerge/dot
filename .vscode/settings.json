@@ -1,7 +1,0 @@
-{
-    "[jsonc]": {
-        "editor.defaultFormatter": "vscode.json-language-features",
-        "editor.tabSize": 4,
-        "editor.insertSpaces": true
-    }
-}
