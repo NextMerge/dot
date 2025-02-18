@@ -26,11 +26,7 @@ function vimod
         set_color normal
     end
 
-    read -P "Press [Enter] to restart Vivaldi or Ctrl-C to exit..."
-
-    if test "$status" -eq 1
-        return 0
-    end
+    sleep 0.5
 
     open /Applications/Vivaldi.app
 end

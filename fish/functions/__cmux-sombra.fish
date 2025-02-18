@@ -8,6 +8,8 @@ function __cmux-sombra
         sleep 4
     end
 
+    npm run generate:translations
+
     set -l SUCCESS_MESSAGE "Connection to 127.0.0.1 port 5432 [tcp/postgresql] succeeded!"
 
     set_color cyan
@@ -42,7 +44,7 @@ function __cmux-sombra
             osascript -e 'display notification "Database migrations were detected and completed successfully!" with title "Sombra Alert"'
 
             cd hasura
-            hasura metadata apply --endpoint http://localhost:3011 --admin-secret secret
+            npx hasura metadata apply --endpoint http://localhost:3011 --admin-secret secret
             cd ..
             npm run generate:gql
         end
