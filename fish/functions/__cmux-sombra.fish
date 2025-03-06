@@ -9,6 +9,7 @@ function __cmux-sombra
     end
 
     npm run generate:translations
+    npm run generate:gql
 
     set -l SUCCESS_MESSAGE "Connection to 127.0.0.1 port 5432 [tcp/postgresql] succeeded!"
 
@@ -33,7 +34,6 @@ function __cmux-sombra
 
         # Capture the migration output while still displaying it
         set MIGRATION_OUTPUT (npm run db:migrate &| tee /dev/tty)
-        set MIGRATION_STATUS $status
 
         # Check for successful migration
         if string match -rq "$MIGRATION_ERROR_MESSAGE" "$MIGRATION_OUTPUT"

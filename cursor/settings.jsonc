@@ -23,7 +23,6 @@
     "workbench.activityBar.orientation": "vertical",
     "workbench.activityBar.location": "hidden",
     "workbench.editor.labelFormat": "medium",
-    "workbench.editor.showTabs": "single",
     "terminal.external.osxExec": "Warp.app",
     "terminal.integrated.fontSize": 14,
     "[jsonc]": {
@@ -38,12 +37,8 @@
     "[typescriptreact]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
-    "[lua]": {
-        "editor.defaultFormatter": "JohnnyMorganz.stylua"
-    },
     "extensions.experimental.affinity": {
-        "vscodevim.vim": 
-            1
+        "vscodevim.vim": 1
     },
     // Vim
     "vim.cursorStylePerMode.normal": "block-outline",
@@ -51,5 +46,5 @@
     "vim.sneak": true,
     "vim.useSystemClipboard": true,
     "vim.vimrc.enable": true,
-    "files.autoSaveDelay": 200
+    "files.autoSaveDelay": 200,
 }

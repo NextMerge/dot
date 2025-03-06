@@ -19,5 +19,6 @@
     ~/.config/ghostty/config: dots/ghostty.toml
     ~/.config/bat: bat
     ~/.config/fish: fish
+    # ~/Library/Containers/net.sonuscape.mouseless/Data/.mouseless/configs/config.yaml: mouseless/config.yaml
 - shell:
     - [git submodule update --init --recursive, Installing submodules]

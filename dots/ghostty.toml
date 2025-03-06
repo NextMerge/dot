@@ -6,6 +6,8 @@ window-width = 120
 window-height = 1000
 confirm-close-surface = false
 macos-option-as-alt = true
+copy-on-select = clipboard
+
 keybind = ctrl+shift+alt+f=next_tab
 keybind = ctrl+shift+alt+b=previous_tab
 keybind = ctrl+shift+alt+w=close_surface
