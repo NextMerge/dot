@@ -11,5 +11,10 @@
     {
         "key": "cmd+e",
         "command": "workbench.action.showCommands"
+    },
+    {
+        "key": "ctrl+n",
+        "command": "editor.action.acceptCursorTabSuggestion",
+        "when": "cpp.shouldAcceptTab"
     }
 ]
