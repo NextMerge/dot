@@ -108,8 +108,8 @@ SC027::t
 *Right::b
 #HotIf
 
-; Toggle hotkey (Ctrl+Alt+T)
-^!t:: ToggleKeySwaps()
+; Toggle hotkey (Shift+Alt+T)
++!t:: ToggleKeySwaps()
 ToggleKeySwaps() {
     global disableGlobal
     disableGlobal := !disableGlobal
@@ -121,8 +121,8 @@ ToggleKeySwaps() {
     SetTimer(() => ToolTip(), -1000)
 }
 
-; Toggle forcing gaming (Ctrl+Alt+F)
-^!f:: ToggleGaming()
+; Toggle forcing gaming (Shift+Alt+F)
++!f:: ToggleGaming()
 ToggleGaming() {
     global forceGaming
     forceGaming := !forceGaming
@@ -130,8 +130,8 @@ ToggleGaming() {
     SetTimer(() => ToolTip(), -1000)
 }
 
-; Toggle forcing QWERTY (Ctrl+Alt+Q)
-^!q:: ToggleQWERTY()
+; Toggle forcing QWERTY (Shift+Alt+Q)
++!q:: ToggleQWERTY()
 ToggleQWERTY() {
     global forceQWERTY
     forceQWERTY := !forceQWERTY
@@ -139,27 +139,28 @@ ToggleQWERTY() {
     SetTimer(() => ToolTip(), -1000)
 }
 
-; Add a hotkey to reload the script (Ctrl+Alt+R)
-^!r:: Reload()
+; Add a hotkey to reload the script (Shift+Alt+R)
++!r:: Reload()
 
 ; Copy current exe name to clipboard
-^!c:: CopyExeNameToClipboard()
++!c:: CopyExeNameToClipboard()
 CopyExeNameToClipboard() {
     try {
         activeExe := WinGetProcessName("A")
         activeExe := RegExReplace(activeExe, "\.exe$", "")
-        A_Clipboard := "`n    ,`"" . activeExe . "`""
+        A_Clipboard := "`n    , `"" . activeExe . "`""
         ToolTip("Copied exe name to clipboard: " . activeExe)
         SetTimer(() => ToolTip(), -1000)
-        Run("cmd.exe /c cursor `"C:\Users\markj\Desktop\fold\literally my entire gaming script.ahk`"", , "Hide")
+        Run("cmd.exe /c cursor `"C:\Users\markj\Desktop\primitive_utils\literally my entire gaming script.ahk`"", ,
+            "Hide")
     } catch {
         ToolTip("Error copying exe name to clipboard")
         SetTimer(() => ToolTip(), -1000)
     }
 }
 
-; Add a hotkey to check VPN status (Ctrl+Alt+V)
-^!v:: CheckVpnStatus()
+; Add a hotkey to check VPN status (Shift+Alt+V)
++!v:: CheckVpnStatus()
 CheckVpnStatus() {
     if (IsMegaVpnRunning()) {
         ToolTip("MEGA VPN Tunnel is running")
@@ -167,4 +168,24 @@ CheckVpnStatus() {
         ToolTip("MEGA VPN Tunnel is NOT running")
     }
     SetTimer(() => ToolTip(), -1000)
+}
+
+; Add a hotkey for text macro (Shift+Alt+M)
++!m:: ShowTextMacroInput()
+ShowTextMacroInput() {
+    textToType := InputBox("Enter text to type", "Text Macro", "w200 h100")
+    if (textToType.Result = 'Cancel') {
+        return
+    }
+
+    if (textToType.Value = "") {
+        return
+    }
+
+    SetTimer(TypeText.Bind(textToType.Value), -2000)
+}
+
+TypeText(text) {
+    ToolTip()
+    Send(text)
 }
