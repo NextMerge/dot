@@ -18,7 +18,7 @@
     "files.readonlyInclude": {
         "**/node_modules/**": true
     },
-    "workbench.colorTheme": "poimandres",
+    "workbench.colorTheme": "Catppuccin Macchiato",
     "workbench.layoutControl.enabled": false,
     "workbench.activityBar.orientation": "vertical",
     "workbench.activityBar.location": "hidden",
@@ -47,4 +47,5 @@
     "vim.useSystemClipboard": true,
     "vim.vimrc.enable": true,
     "files.autoSaveDelay": 200,
+    "extensions.ignoreRecommendations": true,
 }
