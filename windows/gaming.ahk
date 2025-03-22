@@ -101,7 +101,7 @@ SC027::t
 *p::c
 *y::v
 *a::LShift
-*LShift::m
+*SC028::m
 *k::e
 *x::r
 *Left::g
