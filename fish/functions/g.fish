@@ -24,6 +24,7 @@ function g --description "Interactive git repository navigation with worktree su
     )
 
     if test -z "$selected_dir"
+        cd $GITTER_DIR
         return
     end
 
