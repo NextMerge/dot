@@ -22,7 +22,7 @@ global forceQWERTY := false
 
 ; Function to check if swaps should be active (considering both target exe and manual toggle)
 ShouldSwapKeys() {
-    return forceGaming || (disableGlobal && IsTargetExeActive(targetExes))
+    return (forceGaming && !forceQWERTY) || (disableGlobal && IsTargetExeActive(targetExes))
 }
 
 ShouldSwapKeysForQWERTY() {
@@ -90,7 +90,7 @@ Delete::Enter
 Backspace::Space
 Delete::Enter
 
-SC027::t
+*SC027::t ; semicolon key
 *o::a
 *e::w
 *u::d
@@ -101,7 +101,7 @@ SC027::t
 *p::c
 *y::v
 *a::LShift
-*SC028::m
+*SC028::m ; apostrophe key
 *k::e
 *x::r
 *Left::g
@@ -142,7 +142,7 @@ ToggleQWERTY() {
 ; Add a hotkey to reload the script (Shift+Alt+R)
 +!r:: Reload()
 
-; Copy current exe name to clipboard
+; Copy current exe name to clipboard and open the script to edit (Shift+Alt+C)
 +!c:: CopyExeNameToClipboard()
 CopyExeNameToClipboard() {
     try {
