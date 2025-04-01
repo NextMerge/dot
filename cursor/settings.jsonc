@@ -48,4 +48,5 @@
     "vim.vimrc.enable": true,
     "files.autoSaveDelay": 200,
     "extensions.ignoreRecommendations": true,
+    "workbench.sideBar.location": "right",
 }
