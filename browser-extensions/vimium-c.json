@@ -1,7 +1,7 @@
 {
 	"name": "Vimium C",
-	"@time": "4/5/2025, 1:58:52 PM",
-	"time": 1743875932403,
+	"@time": "4/6/2025, 1:32:45 PM",
+	"time": 1743960765381,
 	"environment": {
 		"extension": "2.11.3",
 		"platform": "mac",
@@ -33,7 +33,6 @@
 		"map gT previousTab",
 		"map ]t nextTab",
 		"map [t previousTab",
-		"",
 		"map r reloadTab",
 		"map x removeTab",
 		"map X restoreTab",
@@ -98,6 +97,8 @@
 		"  blank=https://www.google.com/maps Google Maps",
 		"y|yt: https://www.youtube.com/results?search_query=%s \\",
 		"  blank=https://www.youtube.com/ YouTube",
+		"ym: https://music.youtube.com/search?q=%s \\",
+		"  blank=https://music.youtube.com/ YouTube",
 		"w|wiki: https://www.wikipedia.org/w/index.php?search=%s Wikipedia",
 		"",
 		"az|amazon: https://www.amazon.ca/s?k=%s \\",
