@@ -10,8 +10,8 @@
 # @raycast.argument1 { "type": "dropdown", "placeholder": "Week?", "data": [{"title": "First", "value": "First week"}, {"title": "Second", "value": "Second week"}, {"title": "Third", "value": "Third week"}, {"title": "Fourth", "value": "Fourth week"}, {"title": "Fifth", "value": "Fifth week"}, {"title": "Sixth", "value": "Sixth week"}, {"title": "Cooldown", "value": "Cooldown week"}]  }
 
 # Documentation:
-# @raycast.author MergeNext
-# @raycast.authorURL https://raycast.com/MergeNext
+# @raycast.author NextMerge
+# @raycast.authorURL https://raycast.com/NextMerge
 
 OPTION=$1
 
@@ -44,4 +44,4 @@ ENCODED_TEXT=$(printf "#2-areas/work/standup
 # Create a new note in Bear with the selected option and next Monday as the title
 open "bear://x-callback-url/create?title=$ENCODED_TITLE&text=$ENCODED_TEXT"
 
-echo "New note created in Bear with option: $OPTION and title: Note for $NEXT_MONDAY"
+echo "New note created in Bear with option: $OPTION and title: 'Weekly Standup: $NEXT_MONDAY'"
