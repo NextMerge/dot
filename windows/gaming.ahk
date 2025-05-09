@@ -1,16 +1,8 @@
 #Requires AutoHotkey v2.0
 SendMode("Event") ; Without this keys sometimes get stuck in Roblox
 
-; List of executable names (without .exe extension) where the key swaps should be active
-global targetExes := ["notepad"
-    , "TOTClient" ;The Outlast Trials
-    , "Yakisoba" ;Starship Troopers Extermination
-    , "Lethal Company"
-    , "DeadByDaylight"
-    , "Subterranauts"
-    , "NuclearNightmare"
-    , "left4dead"
-    , "notepad"]
+global listOfExeNamesFileName := "game exes.txt"
+global targetExes := ReadExeNamesFromTxt(listOfExeNamesFileName)
 
 global targetQWERTYExes := ["RobloxPlayer", "RobloxPlayerBeta"]
 
@@ -20,7 +12,31 @@ global disableGlobal := true
 global forceGaming := false
 global forceQWERTY := false
 
-; Function to check if swaps should be active (considering both target exe and manual toggle)
+ReadExeNamesFromTxt(fileName) {
+    exeNames := []
+    scriptDir := A_ScriptDir
+    filePath := scriptDir . "\" . fileName
+    if !FileExist(filePath) {
+        MsgBox("File not found: " . filePath)
+        return exeNames
+    }
+
+    for line in StrSplit(FileRead(filePath), "`n") {
+        line := Trim(line)
+        if (line = "") {
+            continue
+        }
+        if InStr(line, ";") {
+            line := Trim(StrSplit(line, ";")[1])
+        }
+        if (line != "") {
+            exeNames.Push(line)
+        }
+    }
+
+    return exeNames
+}
+
 ShouldSwapKeys() {
     return (forceGaming && !forceQWERTY) || (disableGlobal && IsTargetExeActive(targetExes))
 }
@@ -28,13 +44,15 @@ ShouldSwapKeys() {
 ShouldSwapKeysForQWERTY() {
     return forceQWERTY || (disableGlobal && IsTargetExeActive(targetQWERTYExes))
 }
-; Function to check if the active window belongs to one of the target executables
+
 IsTargetExeActive(exesToCheck) {
     try {
         activeExe := WinGetProcessName("A")
         SplitPath(activeExe, , , , &activeExeNameNoExt)
+        wtf := StrLower(activeExeNameNoExt)
         for exe in exesToCheck {
-            if (activeExeNameNoExt = exe) {
+            ffs := StrCompare(wtf, exe)
+            if (wtf = StrLower(exe)) {
                 return true
             }
 
@@ -50,10 +68,9 @@ IsTargetExeActive(exesToCheck) {
     }
 }
 
-global megaVPNProcessName := "MEGA VPN.exe"
-
 IsMegaVPNRunning() {
     try {
+        megaVPNProcessName := "MEGA VPN.exe"
         megaVPNProcessCount := 0
         for proc in ComObjGet("winmgmts:").ExecQuery("Select * from Win32_Process") {
             if (proc.Name = megaVPNProcessName) {
@@ -73,10 +90,9 @@ WarningOnVPNActive() {
     isTargetExe := IsTargetExeActive(targetExes)
     isTargetQWERTYExe := IsTargetExeActive(targetQWERTYExes)
 
-    ; If it's a target exe and MEGA VPN is running, show tooltip
     if ((isTargetExe || isTargetQWERTYExe) && IsMegaVPNRunning()) {
         ToolTip("Warning: Game launched with MEGA VPN running")
-        SetTimer(() => ToolTip(), -1000)  ; Hide tooltip after 3 seconds
+        SetTimer(() => ToolTip(), -1000)
     }
 }
 
@@ -108,8 +124,6 @@ Delete::Enter
 *Right::b
 #HotIf
 
-; Toggle hotkey (Shift+Alt+T)
-+!t:: ToggleKeySwaps()
 ToggleKeySwaps() {
     global disableGlobal
     disableGlobal := !disableGlobal
@@ -121,17 +135,6 @@ ToggleKeySwaps() {
     SetTimer(() => ToolTip(), -1000)
 }
 
-; Toggle forcing gaming (Shift+Alt+F)
-+!f:: ToggleGaming()
-ToggleGaming() {
-    global forceGaming
-    forceGaming := !forceGaming
-    ToolTip("Gaming mode: " . (forceGaming ? "ON" : "OFF"))
-    SetTimer(() => ToolTip(), -1000)
-}
-
-; Toggle forcing QWERTY (Shift+Alt+Q)
-+!q:: ToggleQWERTY()
 ToggleQWERTY() {
     global forceQWERTY
     forceQWERTY := !forceQWERTY
@@ -139,28 +142,20 @@ ToggleQWERTY() {
     SetTimer(() => ToolTip(), -1000)
 }
 
-; Add a hotkey to reload the script (Shift+Alt+R)
-+!r:: Reload()
-
-; Copy current exe name to clipboard and open the script to edit (Shift+Alt+C)
-+!c:: CopyExeNameToClipboard()
-CopyExeNameToClipboard() {
+CopyExeNameToClipboardAndOpenFile() {
     try {
         activeExe := WinGetProcessName("A")
         activeExe := RegExReplace(activeExe, "\.exe$", "")
-        A_Clipboard := "`n    , `"" . activeExe . "`""
+        A_Clipboard := "`n" . activeExe
         ToolTip("Copied exe name to clipboard: " . activeExe)
         SetTimer(() => ToolTip(), -1000)
-        Run("cmd.exe /c cursor `"C:\Users\markj\Desktop\primitive_utils\literally my entire gaming script.ahk`"", ,
-            "Hide")
+        Run("notepad.exe " . A_ScriptDir . "\" . listOfExeNamesFileName)
     } catch {
         ToolTip("Error copying exe name to clipboard")
         SetTimer(() => ToolTip(), -1000)
     }
 }
 
-; Add a hotkey to check VPN status (Shift+Alt+V)
-+!v:: CheckVpnStatus()
 CheckVpnStatus() {
     if (IsMegaVpnRunning()) {
         ToolTip("MEGA VPN Tunnel is running")
@@ -170,22 +165,69 @@ CheckVpnStatus() {
     SetTimer(() => ToolTip(), -1000)
 }
 
-; Add a hotkey for text macro (Shift+Alt+M)
-+!m:: ShowTextMacroInput()
 ShowTextMacroInput() {
-    textToType := InputBox("Enter text to type", "Text Macro", "w200 h100")
-    if (textToType.Result = 'Cancel') {
+    textToType := NormalizeText(A_Clipboard)
+    if (textToType = "") {
         return
     }
 
-    if (textToType.Value = "") {
-        return
-    }
+    SetTimer(TypeText.Bind(textToType), -1000)
+}
 
-    SetTimer(TypeText.Bind(textToType.Value), -2000)
+NormalizeText(text) {
+    text := RegExReplace(text, "\n", " ")
+    text := RegExReplace(text, "\r", " ")
+    text := RegExReplace(text, "\t", " ")
+    text := RegExReplace(text, "\s+", " ")
+    text := RegExReplace(text, "!", "")
+    return text
 }
 
 TypeText(text) {
     ToolTip()
     Send(text)
 }
+
+OpenVivaldi() {
+    ; Get all Vivaldi windows
+    winList := WinGetList("ahk_exe vivaldi.exe")
+    for hwnd in winList {
+        title := WinGetTitle("ahk_id " hwnd)
+        if (title != "Picture in picture") {
+            WinActivate("ahk_id " hwnd)
+            return
+        }
+    }
+    Run("C:\Users\markj\AppData\Local\Vivaldi\Application\vivaldi.exe")
+    WinWait("ahk_exe vivaldi.exe")
+}
+
+OpenDiscord() {
+    if WinExist("ahk_exe discord.exe") {
+        WinActivate("ahk_exe discord.exe")
+    } else {
+        Run("C:\Users\markj\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Discord Inc\Discord.lnk")
+        WinWait("ahk_exe discord.exe")
+    }
+}
+
+OpenAppleMusic() {
+    if WinExist("ahk_exe AppleMusic.exe") {
+        WinActivate("ahk_exe AppleMusic.exe")
+    } else {
+        Run('explorer.exe shell:AppsFolder\AppleInc.AppleMusicWin_nzyj5cx40ttqa!App')
+    }
+}
+
+^+!g:: ToggleKeySwaps()
+^+!q:: ToggleQWERTY()
+^+!r:: Reload()
+^+!y:: CopyExeNameToClipboardAndOpenFile()
+^+!v:: CheckVpnStatus()
+^+!i:: ShowTextMacroInput()
+
+^+!h:: OpenVivaldi()
+^+!t:: OpenDiscord()
+^+!n:: OpenAppleMusic()
+; #i:: Rizz() win+i
+
