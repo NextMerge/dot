@@ -2,13 +2,6 @@ git:
   paging:
     colorArg: always
     pager: delta --dark --paging=never
-customCommands:
-  - key: "G"
-    command: "glab mr view -w {{.SelectedLocalBranch.UpstreamBranch}}"
-    context: "localBranches"
-    description: "Go to MR in gitlab"
-    stream: true
-    loadingText: "Hitting the Griddy..."
 
 gui:
   nerdFontsVersion: "3"

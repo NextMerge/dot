@@ -49,4 +49,5 @@
     "files.autoSaveDelay": 200,
     "extensions.ignoreRecommendations": true,
     "workbench.sideBar.location": "right",
+    "cursor.composer.textSizeScale": 1.15,
 }
