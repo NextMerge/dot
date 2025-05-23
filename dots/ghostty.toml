@@ -11,6 +11,11 @@ copy-on-select = clipboard
 keybind = ctrl+shift+alt+f=next_tab
 keybind = ctrl+shift+alt+b=previous_tab
 keybind = ctrl+shift+alt+w=close_surface
+
 # map specific navigation keys manually because they have other mappings in ghostty
 keybind = super+plus=goto_tab:1
 keybind = super+left_bracket=goto_tab:2
+
+# Ghostty sends alt-f/b for alt-left/right
+keybind = alt+left=unbind
+keybind = alt+right=unbind

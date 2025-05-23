@@ -4,26 +4,20 @@ layout {
         plugin location="tab-bar"
     }
     pane split_direction="vertical" {
-        pane {
-            name "Portal dev"
+        pane command="fish" {
             cwd "$GITTER_DIR/borpa-business/civalgo/portal/"
-            command "fish"
-            args "--login" "--interactive" "-C" "__cmux-portal"
+            args "-C" "__cmux-portal"
         }
-        pane {
-            name "Sombra dev"
+        pane command="fish" {
             cwd "$GITTER_DIR/borpa-business/civalgo/sombra/"
-            command "fish"
-            args "--login" "--interactive" "-C" "__cmux-sombra"
+            args "-C" "__cmux-sombra"
         }
     }
-    pane size=3 borderless=true {
-        name "Kill watcher"
+    pane size=3 borderless=true command="fish" {
         cwd "$GITTER_DIR/borpa-business/civalgo/"
-        command "fish"
-        args "-c '__cmux-killer'"
+        args "-c" "__cmux-killer"
     }
-    pane size=1 borderless=true {
+    pane size=2 borderless=true {
         plugin location="status-bar"
     }
 }
