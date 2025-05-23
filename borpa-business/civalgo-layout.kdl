@@ -1,23 +1,52 @@
 session_name "civalgo"
 layout {
-    pane size=1 borderless=true {
-        plugin location="tab-bar"
-    }
-    pane split_direction="vertical" {
-        pane command="fish" {
-            cwd "$GITTER_DIR/civalgo/portal/"
-            args "-C" "__cmux-portal"
+    tab name="Portal" {
+        pane size=1 borderless=true {
+            plugin location="tab-bar"
         }
-        pane command="fish" {
-            cwd "$GITTER_DIR/civalgo/sombra/"
-            args "-C" "__cmux-sombra"
+        pane borderless=true cwd="$PORTAL_WORKTREE_PATH" command="nvim"
+    }
+    tab name="Sombra" {
+        pane size=1 borderless=true {
+            plugin location="tab-bar"
+        }
+        pane borderless=true cwd="$GITTER_DIR/civalgo/sombra/" command="nvim"
+    }
+    tab name="Lego" {
+        pane size=1 borderless=true {
+            plugin location="tab-bar"
+        }
+        pane borderless=true cwd="$GITTER_DIR/civalgo/lego/" command="nvim"
+    }
+    tab name="Motors" {
+        pane size=1 borderless=true {
+            plugin location="tab-bar"
+        }
+        pane split_direction="vertical" {
+            pane command="fish" {
+                cwd "$PORTAL_WORKTREE_PATH"
+                args "-C" "__cmux-portal"
+            }
+            pane command="fish" {
+                cwd "$GITTER_DIR/civalgo/sombra/"
+                args "-C" "__cmux-sombra"
+            }
+        }
+        pane size=2 borderless=true command="fish" {
+            cwd "$GITTER_DIR/civalgo/"
+            args "-c" "__cmux-killer"
+        }
+        pane size=2 borderless=true {
+            plugin location="status-bar"
         }
     }
-    pane size=3 borderless=true command="fish" {
-        cwd "$GITTER_DIR/civalgo/"
-        args "-c" "__cmux-killer"
-    }
-    pane size=2 borderless=true {
-        plugin location="status-bar"
+    new_tab_template {
+        pane size=1 borderless=true {
+            plugin location="tab-bar"
+        }
+        pane
+        pane size=2 borderless=true {
+            plugin location="status-bar"
+        }
     }
 }
