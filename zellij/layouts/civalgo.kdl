@@ -4,36 +4,30 @@ layout {
         pane size=1 borderless=true {
             plugin location="tab-bar"
         }
-        pane borderless=true cwd="$PORTAL_WORKTREE_PATH" command="nvim"
-    }
-    tab name="Sombra" {
-        pane size=1 borderless=true {
-            plugin location="tab-bar"
+        pane borderless=true {
+            cwd "$PORTAL_WORKTREE_PATH"
+            command "nvim"
         }
-        pane borderless=true cwd="$GITTER_DIR/civalgo/sombra/" command="nvim"
-    }
-    tab name="Lego" {
-        pane size=1 borderless=true {
-            plugin location="tab-bar"
-        }
-        pane borderless=true cwd="$GITTER_DIR/civalgo/lego/" command="nvim"
     }
     tab name="Motors" {
         pane size=1 borderless=true {
             plugin location="tab-bar"
         }
         pane split_direction="vertical" {
-            pane command="fish" {
+            pane {
                 cwd "$PORTAL_WORKTREE_PATH"
+                command "fish"
                 args "-C" "__cmux-portal"
             }
-            pane command="fish" {
+            pane {
                 cwd "$GITTER_DIR/civalgo/sombra/"
+                command "fish"
                 args "-C" "__cmux-sombra"
             }
         }
-        pane size=2 borderless=true command="fish" {
+        pane size=2 borderless=true {
             cwd "$GITTER_DIR/civalgo/"
+            command "fish"
             args "-c" "__cmux-killer"
         }
         pane size=2 borderless=true {
@@ -47,6 +41,22 @@ layout {
         pane
         pane size=2 borderless=true {
             plugin location="status-bar"
+        }
+    }
+}
+
+keybinds {
+    shared_among "normal" "locked" {
+        bind "Ctrl Alt h" { GoToTab 1; }
+        bind "Ctrl Alt t" { GoToTab 2; }
+        bind "Ctrl Alt n" { GoToTab 3; }
+        bind "Ctrl Alt s" { GoToTab 4; }
+        bind "Ctrl Alt l" {
+            NewTab {
+                cwd "$GITTER_DIR/civalgo/lego/"
+                name "Lego"
+                // layout "$DOTS_DIR/borpa-business/lego-tab.kdl"
+            }
         }
     }
 }

@@ -9,6 +9,8 @@ function cmux --description "Start Zellij session with civalgo configuration"
             return 1
         end
 
-        zellij --layout $DOTS_DIR/borpa-business/civalgo-layout.kdl
+        zellij --layout civalgo
     end
+
+    return 0
 end

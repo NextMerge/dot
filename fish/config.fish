@@ -53,4 +53,4 @@ set -gx hydro_color_pwd "cyan"
 set -gx hydro_color_git "purple"
 
 # Says zoxide completions need to be at the end of the file
-eval "$(zoxide init fish)"
+zoxide init fish | source
