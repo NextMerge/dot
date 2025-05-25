@@ -247,3 +247,9 @@ default_shell "fish"
 //   - false
 //
 session_serialization false
+
+// Whether to show tips on startup
+// Default: true
+// 
+show_startup_tips false
+
