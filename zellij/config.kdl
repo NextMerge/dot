@@ -147,6 +147,22 @@ keybinds clear-defaults=true {
         bind "Alt j" { MoveFocus "down"; }
         bind "Alt k" { MoveFocus "up"; }
         bind "Ctrl Alt q" { Detach; }
+        bind "Ctrl Alt h" { GoToTab 1; }
+        bind "Ctrl Alt t" { GoToTab 2; }
+        bind "Ctrl Alt n" { GoToTab 3; }
+        bind "Ctrl Alt s" { GoToTab 4; }
+        bind "Ctrl Alt l" {
+            NewTab {
+                name "Lego"
+                layout "lego"
+            }; MoveTab "left";
+        }
+        bind "Ctrl Alt b" {
+            NewTab {
+                name "Sombra"
+                layout "sombra"
+            }; MoveTab "left";
+        }
     }
     shared_except "locked" "renametab" "renamepane" {
         bind "Ctrl g" { SwitchToMode "locked"; }

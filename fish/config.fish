@@ -46,8 +46,7 @@ set -gx FZF_DEFAULT_OPTS " \
 fzf --fish | source
 
 bind ctrl-alt-shift-c cmux
-bind ctrl-alt-shift-z zess
-bind ctrl-d true
+bind ctrl-alt-shift-z zes
 
 ### hydro
 set -gx hydro_multiline true
