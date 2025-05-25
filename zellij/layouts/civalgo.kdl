@@ -53,10 +53,15 @@ keybinds {
         bind "Ctrl Alt s" { GoToTab 4; }
         bind "Ctrl Alt l" {
             NewTab {
-                cwd "$GITTER_DIR/civalgo/lego/"
                 name "Lego"
-                // layout "$DOTS_DIR/borpa-business/lego-tab.kdl"
-            }
+                layout "lego"
+            }; MoveTab "left";
+        }
+        bind "Ctrl Alt b" {
+            NewTab {
+                name "Sombra"
+                layout "sombra"
+            }; MoveTab "left";
         }
     }
 }

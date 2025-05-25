@@ -16,6 +16,9 @@ abbr -a dotdot --regex '^\.\.+$' --function multicd
 abbr -a n nvim
 abbr -a pn pnpm
 abbr -a l 'eza -aF --icons --width=80'
+abbr -a zka 'zellij kill-all-sessions'
+
+alias keyboardmaestro='/Applications/Keyboard\ Maestro.app/Contents/MacOS/keyboardmaestro'
 
 set -gx HOMEBREW_NO_ENV_HINTS 1
 set -gx HOMEBREW_NO_UPDATE_REPORT_NEW 1
@@ -43,6 +46,7 @@ set -gx FZF_DEFAULT_OPTS " \
 fzf --fish | source
 
 bind ctrl-alt-shift-c cmux
+bind ctrl-alt-shift-z zess
 bind ctrl-d true
 
 ### hydro
