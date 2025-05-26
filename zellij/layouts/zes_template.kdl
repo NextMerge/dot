@@ -1,0 +1,17 @@
+session_name "THE_SESSION_NAME"
+layout {
+    cwd "THE_CURRENT_WORKING_DIRECTORY"
+    pane size=1 borderless=true {
+        plugin location="tab-bar"
+    }
+    pane borderless=true command="nvim"
+    new_tab_template {
+        pane size=1 borderless=true {
+            plugin location="tab-bar"
+        }
+        pane
+        pane size=2 borderless=true {
+            plugin location="status-bar"
+        }
+    }
+}

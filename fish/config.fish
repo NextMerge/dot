@@ -54,6 +54,3 @@ set -gx hydro_symbol_start "\n"
 set -gx hydro_color_duration "yellow"
 set -gx hydro_color_pwd "cyan"
 set -gx hydro_color_git "purple"
-
-# Says zoxide completions need to be at the end of the file
-zoxide init fish | source
