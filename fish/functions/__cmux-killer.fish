@@ -23,6 +23,6 @@ echo "Watching for Docker containers..."
 set_color normal
 
 while true
-    sleep 20
+    sleep 10
     check_docker
 end

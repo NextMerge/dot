@@ -239,14 +239,6 @@ default_mode "locked"
 // Default: $SHELL
 // 
 default_shell "fish"
- 
-// Whether sessions should be serialized to the cache folder (including their tabs/panes, cwds and running commands) so that they can later be resurrected
-// (Requires restart)
-// Options:
-//   - true (default)
-//   - false
-//
-session_serialization false
 
 // Whether to show tips on startup
 // Default: true
