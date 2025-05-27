@@ -1,3 +1,4 @@
+alias keyboardmaestro='/Applications/Keyboard\ Maestro.app/Contents/MacOS/keyboardmaestro'
 if not status is-interactive
     return
 end
@@ -18,7 +19,6 @@ abbr -a pn pnpm
 abbr -a l 'eza -aF --icons --width=80'
 abbr -a zka 'zellij kill-all-sessions'
 
-alias keyboardmaestro='/Applications/Keyboard\ Maestro.app/Contents/MacOS/keyboardmaestro'
 
 set -gx HOMEBREW_NO_ENV_HINTS 1
 set -gx HOMEBREW_NO_UPDATE_REPORT_NEW 1

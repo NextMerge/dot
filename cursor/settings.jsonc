@@ -2,10 +2,10 @@
     // General
     "window.commandCenter": false,
     "window.newWindowDimensions": "inherit",
-    "window.title": "${rootPath}${separator}${activeEditorMedium}${separator}",
-    "window.density.editorTabHeight": "compact",
+    "window.title": "${rootPath}${separator}",
     "editor.fontSize": 18,
-    "editor.fontFamily": "JetBrains Mono",
+    "editor.fontFamily": "JetBrainsMono Nerd Font",
+    "editor.fontWeight": 300,
     "editor.lineNumbers": "relative",
     "editor.occurrencesHighlight": "off",
     "editor.gotoLocation.alternativeDeclarationCommand": "editor.action.explainSymbol",
@@ -15,42 +15,67 @@
     "editor.accessibilitySupport": "off",
     "editor.cursorSurroundingLines": 10,
     "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 200,
     "files.readonlyInclude": {
-        "**/node_modules/**": true
+        "**/node_modules/**": true,
     },
-    "workbench.colorTheme": "Catppuccin Macchiato",
+    "workbench.colorTheme": "Catppuccin Mocha",
     "workbench.layoutControl.enabled": false,
     "workbench.activityBar.orientation": "vertical",
     "workbench.activityBar.location": "hidden",
-    "workbench.editor.labelFormat": "medium",
     "terminal.external.osxExec": "Warp.app",
-    "terminal.integrated.fontSize": 14,
+    "terminal.integrated.fontSize": 18,
     "[jsonc]": {
-        "editor.defaultFormatter": "vscode.json-language-features"
+        "editor.defaultFormatter": "vscode.json-language-features",
     },
     "[typescript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
     },
     "[javascript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
     },
     "[typescriptreact]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
     },
     "extensions.experimental.affinity": {
-        "vscodevim.vim": 1
+        "asvetliakov.vscode-neovim": 1,
     },
-    // Vim
-    "vim.cursorStylePerMode.normal": "block-outline",
-    "vim.highlightedyank.enable": true,
-    "vim.sneak": true,
-    "vim.useSystemClipboard": true,
-    "vim.vimrc.enable": true,
-    "files.autoSaveDelay": 200,
     "extensions.ignoreRecommendations": true,
-    "workbench.sideBar.location": "right",
-    "cursor.composer.textSizeScale": 1.15,
-    "cursor.cpp.disabledLanguages": [
-        "markdown"
+
+    // Neovim
+    "vscode-neovim.ctrlKeysForNormalMode": [
+        "a",
+        "b",
+        "c",
+        "e",
+        "f",
+        "h",
+        "i",
+        "j",
+        "k",
+        "l",
+        "m",
+        "o",
+        "t",
+        "v",
+        "w",
+        "x",
+        "y",
+        "z",
+        "/",
+        "]",
+        "right",
+        "left",
+        "up",
+        "down",
+        "backspace",
+        "delete",
     ],
+
+    // Cursor
+    "cursor.composer.textSizeScale": 1.15,
+    "cursor.cpp.disabledLanguages": ["markdown"],
+
+    "find-it-faster.general.killTerminalAfterUse": true,
+    "find-it-faster.general.useTerminalInEditor": true,
 }
