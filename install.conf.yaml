@@ -6,12 +6,11 @@
 - clean: ["~"]
 
 - link:
-    ~/.gitconfig: dots/gitconfig
-    ~/.zshrc: dots/zshrc.zsh
+    ~/.gitconfig: dots/.gitconfig
+    ~/.zshrc: dots/.zshrc
     ~/.config/topgrade.toml: dots/topgrade.toml
-    ~/.vimrc: dots/vimrc.vim
+    ~/.vimrc: dots/.vimrc
     ~/Library/Application Support/lazygit/config.yml: dots/lazygit-config.yml
-    ~/.tmux.conf: dots/tmux.conf
     ~/.warp/themes: warp/themes
     ~/Library/Application Support/Cursor/User/settings.json: cursor/settings.jsonc
     ~/Library/Application Support/Cursor/User/keybindings.json: cursor/keybindings.jsonc
@@ -19,6 +18,7 @@
     ~/.config/bat: bat
     ~/.config/fish: fish
     ~/.config/zellij: zellij
+    ~/.config/tmux/tmux.conf.local: dots/tmux.conf
     # ~/Library/Containers/net.sonuscape.mouseless/Data/.mouseless/configs/config.yaml: mouseless/config.yaml
 - shell:
     - [git submodule update --init --recursive, Installing submodules]

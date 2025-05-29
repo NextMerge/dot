@@ -1,4 +1,6 @@
 let mapleader = " "
+
+" system clipboard
 set clipboard=unnamedplus
 
 inoremap <C-c> <Esc>
@@ -10,12 +12,6 @@ nnoremap <C-u> <C-u>zz
 " use U to redo
 nnoremap <C-r> U
 nnoremap U <C-r>
-
-" paste over highlighted text without yanking it
-vnoremap <leader>p "_dP
-
-" delete without yanking
-vnoremap <leader>d "_d
 
 " delete character without yanking
 nnoremap x "_x
