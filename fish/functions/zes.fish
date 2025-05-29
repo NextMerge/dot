@@ -1,21 +1,18 @@
 function zes
-    if test -n "$ZELLIJ"
-        keyboardmaestro DC8E22A4-BCE2-46F8-AB53-B9FD73729967
-        return 0
+    #if we're inside tmux detach first
+    if set -q TMUX
+        tmux detach-client
     end
 
     set -l dirs (fd -t d -d 1 . $GITTER_DIR --exclude "Arhive git")
     set -l selected_project (printf '%s\n' $dirs | sd "$GITTER_DIR/" "" | sd "/\$" "" | fzf)
-    echo (zellij list-sessions -n)
-    echo (zellij list-sessions -n | rg -q "^$selected_project\$")
-
-    if zellij list-sessions -n | rg -q "^$selected_project\s"
-        zellij attach $selected_project
-        return 0
+    
+    if test -z $selected_project
+        return 1
     end
 
-    if functions -q __zes_$selected_project
-        __zes_$selected_project
+    if tmux has-session -t $selected_project
+        tmux attach-session -t $selected_project
         return 0
     end
 
@@ -23,12 +20,18 @@ function zes
     if test -d worktrees
         set working_dir (git_worktree_select)
     end
+    
+    set -l session_name $selected_project
+    
+    tmux new-session -s $session_name -c $working_dir
+    
+    tmux rename-window -t $session_name:1 editor
+    tmux send-keys -t $session_name:editor "nvim" C-m
 
-    set -l temp_layout (mktemp -t zes_layout_XXXXXX.kdl)
-    cat ~/.config/zellij/layouts/zes_template.kdl \
-        | sd "THE_SESSION_NAME" "$selected_project" \
-        | sd "THE_CURRENT_WORKING_DIRECTORY" "$working_dir" \
-        > $temp_layout
-    zellij --layout $temp_layout
+    if test -f $DOTS_DIR/tmux/zes/$selected_project.fish
+        fish $DOTS_DIR/tmux/zes/$selected_project.fish $session_name
+    end
+    
+    tmux attach-session -t $session_name
 end
 

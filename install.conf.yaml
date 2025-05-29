@@ -18,7 +18,7 @@
     ~/.config/bat: bat
     ~/.config/fish: fish
     ~/.config/zellij: zellij
-    ~/.config/tmux/tmux.conf.local: dots/tmux.conf
+    ~/.config/tmux/tmux.conf.local: tmux/tmux.conf
     # ~/Library/Containers/net.sonuscape.mouseless/Data/.mouseless/configs/config.yaml: mouseless/config.yaml
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
