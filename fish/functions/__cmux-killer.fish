@@ -6,7 +6,7 @@ function check_docker
         osascript -e 'display notification "Docker containers are not running. Killing cmux session." with title "Docker Alert"'
         sleep 5
         if not docker ps --filter "name=sombra-db-1" --format "{{.Status}}" 2>/dev/null | grep -q "Up"
-            zellij kill-session civalgo
+            tmux kill-session -t civalgo
             exit 1
         end
     end
