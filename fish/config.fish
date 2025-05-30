@@ -17,7 +17,7 @@ abbr -a dotdot --regex '^\.\.+$' --function multicd
 abbr -a n nvim
 abbr -a pn pnpm
 abbr -a l 'eza -aF --icons --width=80'
-abbr -a zka 'zellij kill-all-sessions'
+abbr -a tka 'tmux kill-server'
 
 
 set -gx HOMEBREW_NO_ENV_HINTS 1

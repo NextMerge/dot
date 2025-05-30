@@ -8,7 +8,7 @@ function zes
     end
 
     function has_session
-        tmux list-sessions | grep -q "^$argv[1]:"
+        tmux list-sessions 2>/dev/null | grep -q "^$argv[1]:"
     end
 
     set -l selected_project

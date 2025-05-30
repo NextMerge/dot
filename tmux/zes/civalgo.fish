@@ -25,10 +25,11 @@ tmux send-keys -t $session_name:motors.2 "__cmux-sombra" C-m
 # set up Watcher pane (bottom)
 tmux send-keys -t $session_name:motors.3 "__cmux-killer" C-m
 
-# rename panes
-tmux select-pane -t $session_name:motors.1 -T Portal
-tmux select-pane -t $session_name:motors.2 -T Sombra
-tmux select-pane -t $session_name:motors.3 -T Watcher
+tmux new-window -t $session_name -n lego -c $GITTER_DIR/civalgo/lego
+tmux new-window -t $session_name -n sombra -c $GITTER_DIR/civalgo/sombra
 
 # put focus back to the editor
 tmux select-window -t $session_name:$editor_window_name
+
+# rename to 'portal'
+tmux rename-window -t $session_name:$editor_window_name portal
