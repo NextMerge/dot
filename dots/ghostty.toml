@@ -8,6 +8,8 @@ confirm-close-surface = false
 macos-option-as-alt = true
 copy-on-select = clipboard
 
+keybind = super+s=text:\x01S
+
 # map specific navigation keys manually because they have other mappings in ghostty
 # before others so the subsequent mappings show on the tab bar
 keybind = super+plus=goto_tab:1

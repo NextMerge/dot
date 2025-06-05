@@ -1,0 +1,17 @@
+# don't index floaX
+blacklist = ["scratch"]
+
+[[session]]
+name = "dotfiles"
+path = "~/dotfiles"
+startup_command = "nvim"
+
+[[session]]
+name = "neovim config "
+path = "~/.config/nvim"
+startup_command = "nvim"
+
+[[session]]
+name = "cmux"
+path = "~/gitter/civalgo/"
+startup_command = "__cmux"

@@ -2,25 +2,16 @@ function g --description "Interactive git repository navigation with worktree su
     set -l pre_selected_repos '~/dotfiles' '~/.config/nvim'
 
     # Find regular git repos
-    set -l regular_repos (rg --hidden --files --glob '**/.git/HEAD' --glob '!**/Arhive git/**' --max-depth 6 "$GITTER_DIR" | sed 's|.git/HEAD||' | string replace $GITTER_DIR/ '')
+    set -l regular_repos (rg --hidden --files --glob '**/.git/HEAD' --glob '!**/Arhive git/**' --max-depth 6 "$GITTER_DIR" | sed 's|.git/HEAD||' | string replace $GITTER_DIR/ '' | string trim -r -c/)
 
     # Find bare git repos
-    set -l bare_repos (rg --hidden --files --glob '**/config' --glob '!**/.git/**' --max-depth 6 "$GITTER_DIR")
-
-    # Read every entry in bare_repos and check if it contains "bare = true"
-    # If it does, replace the entry with the directory name
-    # If it doesn't, remove the entry
-    set -l bare_repos (for repo in $bare_repos
-        if rg -q "bare = true" "$repo" 2>/dev/null
-            echo (dirname "$repo" | string replace $GITTER_DIR/ '')
-        end
-    end)
+    set -l bare_repos (rg --hidden --files --glob '**/.bare/HEAD' --max-depth 6 "$GITTER_DIR" | sed 's|/.bare/HEAD||' | string replace $GITTER_DIR/ '')
 
     # Combine all repos
     set -l all_repos $regular_repos $bare_repos $pre_selected_repos
 
     set -l selected_repo (
-        string join \n $all_repos | fzf --no-clear --prompt="Select a directory: " --header="Press CTRL-D to go to gitter folder"
+        string join \n $all_repos | fzf --prompt="Select a directory: " --header="Press CTRL-D to go to gitter folder"
     )
 
     set -l selected_repo_path
@@ -31,12 +22,11 @@ function g --description "Interactive git repository navigation with worktree su
     end
 
     if test -z "$selected_repo"
-        tput rmcup
         cd $GITTER_DIR
         return
     end
 
-    if test -d "$selected_repo_path/worktrees"
+    if test -d "$selected_repo_path/.bare"
         set -l worktree_path (git_worktree_select "$selected_repo_path")
         if test $status -eq 0
             cd "$worktree_path"

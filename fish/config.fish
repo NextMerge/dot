@@ -7,7 +7,7 @@ set -g fish_greeting ""
 
 set -gx EDITOR nvim
 set -gx DOTS_DIR "$HOME/dotfiles"
-set -gx GITTER_DIR "$HOME/Documents/gitter"
+set -gx GITTER_DIR "$HOME/gitter"
 
 function multicd
     echo cd (string repeat -n (math (string length -- $argv[1]) - 1) ../)
@@ -18,7 +18,7 @@ abbr -a n nvim
 abbr -a pn pnpm
 abbr -a l 'eza -aF --icons --width=80'
 abbr -a tka 'tmux kill-server'
-
+abbr -a s 'sesh connect "$(sesh list -i | gum filter --limit 1 --no-strip-ansi --fuzzy-sort --placeholder "Pick a sesh" --height 50 --prompt="⚡")"'
 
 set -gx HOMEBREW_NO_ENV_HINTS 1
 set -gx HOMEBREW_NO_UPDATE_REPORT_NEW 1
@@ -54,3 +54,6 @@ set -gx hydro_symbol_start "\n"
 set -gx hydro_color_duration "yellow"
 set -gx hydro_color_pwd "cyan"
 set -gx hydro_color_git "purple"
+
+# zoxide
+zoxide init fish | source

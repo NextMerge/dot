@@ -12,7 +12,9 @@ function gwc --description "Git Worktree Clone - Clone a repository and set up w
 
     set -l REMOTE_REPO $argv[1]
 
-    git clone $REMOTE_REPO --bare .
+    git clone $REMOTE_REPO --bare .bare
+    echo "gitdir: ./.bare" > .git
+
     git branch | xargs git branch -D
     git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
     git fetch
