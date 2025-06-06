@@ -18,7 +18,7 @@ abbr -a n nvim
 abbr -a pn pnpm
 abbr -a l 'eza -aF --icons --width=80'
 abbr -a tka 'tmux kill-server'
-abbr -a s 'sesh connect "$(sesh list -i | gum filter --limit 1 --no-strip-ansi --fuzzy-sort --placeholder "Pick a sesh" --height 50 --prompt="⚡")"'
+abbr -a s 'sesh connect "$(sesh list -i | gum filter --limit 1 --no-strip-ansi --no-sort --placeholder "Pick a sesh" --height 50 --prompt="⚡")"'
 
 set -gx HOMEBREW_NO_ENV_HINTS 1
 set -gx HOMEBREW_NO_UPDATE_REPORT_NEW 1
@@ -56,4 +56,4 @@ set -gx hydro_color_pwd "cyan"
 set -gx hydro_color_git "purple"
 
 # zoxide
-zoxide init fish | source
+zoxide init fish --cmd cd | source

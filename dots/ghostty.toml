@@ -7,6 +7,8 @@ window-height = 1000
 confirm-close-surface = false
 macos-option-as-alt = true
 copy-on-select = clipboard
+background-opacity = 0.4
+alpha-blending = linear-corrected
 
 keybind = super+s=text:\x01S
 

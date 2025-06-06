@@ -34,7 +34,6 @@ function g --description "Interactive git repository navigation with worktree su
             cd "$selected_repo_path"
         end
     else
-        tput rmcup
         cd "$selected_repo_path"
     end
 end
