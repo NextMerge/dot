@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# Required parameters:
+# @raycast.schemaVersion 1
+# @raycast.title Turn On FlashSpace
+# @raycast.mode silent
+
+# Optional parameters:
+# @raycast.icon 🖥️
+
+# Documentation:
+# @raycast.author NextMerge
+# @raycast.authorURL https://raycast.com/NextMerge
+
+open "raycast://extensions/raycast/system/toggle-stage-manager"
+
+# Launch FlashSpace app
+open -jga "FlashSpace"
+
+echo "Stage Manager off and FlashSpace launched"

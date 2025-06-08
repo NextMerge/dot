@@ -19,16 +19,6 @@
     },
     {
         "key": "ctrl+s",
-        "command": "editor.action.formatDocument",
-        "when": "editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly && !inCompositeEditor"
-    },
-    {
-        "key": "shift+alt+f",
-        "command": "-editor.action.formatDocument",
-        "when": "editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly && !inCompositeEditor"
-    },
-    {
-        "key": "ctrl+s",
         "command": "-extension.vim_ctrl+s",
         "when": "editorTextFocus && vim.active && vim.use<C-s> && !inDebugRepl"
     },
