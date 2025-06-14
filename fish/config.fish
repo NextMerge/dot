@@ -45,8 +45,8 @@ set -gx FZF_DEFAULT_OPTS " \
 # Keybindings
 fzf --fish | source
 
-bind ctrl-alt-shift-c cmux
-bind ctrl-alt-shift-z zes
+bind ctrl-. forward-token
+bind ctrl-comma backward-token
 
 ### hydro
 set -gx hydro_multiline true

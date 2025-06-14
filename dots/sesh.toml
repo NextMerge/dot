@@ -1,10 +1,12 @@
 # don't index floaX
 blacklist = ["scratch"]
 
+[default_session]
+startup_command = "nvim -c ':lua Snacks.dashboard.pick(\\'oldfiles\\', { filter = { cwd = true } })'"
+
 [[session]]
 name = "dotfiles"
 path = "~/dotfiles"
-startup_command = "nvim"
 
 [[session]]
 name = "neovim config "
@@ -15,3 +17,12 @@ startup_command = "nvim"
 name = "cmux"
 path = "~/gitter/civalgo/"
 startup_command = "__cmux"
+
+[[session]]
+name = "lego"
+path = "~/gitter/civalgo/lego"
+windows = [ "pnpm-dev" ]
+
+[[window]]
+name = "pnpm-dev"
+startup_script = "pnpm dev"
