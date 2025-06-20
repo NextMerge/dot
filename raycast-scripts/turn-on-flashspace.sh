@@ -12,7 +12,7 @@
 # @raycast.author NextMerge
 # @raycast.authorURL https://raycast.com/NextMerge
 
-open "raycast://extensions/raycast/system/toggle-stage-manager"
+defaults write com.apple.WindowManager GloballyEnabled -bool false
 
 # Launch FlashSpace app
 open -jga "FlashSpace"

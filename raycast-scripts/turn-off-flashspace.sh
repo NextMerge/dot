@@ -15,7 +15,7 @@
 # Quit FlashSpace app
 osascript -e 'quit app "FlashSpace"'
 
-open "raycast://extensions/raycast/system/toggle-stage-manager"
+defaults write com.apple.WindowManager GloballyEnabled -bool true
 
 # Unhide all windows
 osascript -e 'tell application "System Events" to set visible of every process to true'
