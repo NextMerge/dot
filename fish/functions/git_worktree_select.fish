@@ -11,7 +11,7 @@ function git_worktree_select --description "Git Worktree Select - Interactive wo
 
     set -l worktree_list_output (git -C "$git_dir" worktree list | grep -v "(bare)" | string collect)
     set -l all_worktrees (echo "$worktree_list_output" | awk '{print $1, substr($0, index($0,$3))}')
-    set -l selected_worktree (string join \n $all_worktrees | sed 's|.*/\([^/]*\) |\1 |' | fzf --prompt="Select a worktree: " --header="Press CTRL-D to cancel" --margin=0,30%)
+    set -l selected_worktree (string join \n $all_worktrees | sed 's|.*/\([^/]*\) |\1 |' | fzf --prompt="Select a worktree: " --header="Press CTRL-D to cancel")
 
     if test -n "$selected_worktree"
         set -l just_selected_worktree (echo "$selected_worktree" | awk '{print $1}')

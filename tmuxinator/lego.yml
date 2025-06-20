@@ -1,0 +1,6 @@
+name: lego
+root: ~/gitter/civalgo/lego
+
+windows:
+  - editor: nvim -c ':lua Snacks.dashboard.pick('oldfiles', { filter = { cwd = true } })'
+  - storybook: pnpm run dev

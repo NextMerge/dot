@@ -1,0 +1,14 @@
+name: cmux
+root: ~/gitter/civalgo
+
+windows:
+  - main:
+      layout: main-vertical
+      panes:
+        - portal:
+          - __cmux-portal
+        - sombra:
+          - cd $GITTER_DIR/civalgo/sombra
+          - __cmux-sombra
+        - killer:
+          - __cmux-killer

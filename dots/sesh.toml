@@ -13,16 +13,3 @@ name = "neovim config "
 path = "~/.config/nvim"
 startup_command = "nvim"
 
-[[session]]
-name = "cmux"
-path = "~/gitter/civalgo/"
-startup_command = "__cmux"
-
-[[session]]
-name = "lego"
-path = "~/gitter/civalgo/lego"
-windows = [ "pnpm-dev" ]
-
-[[window]]
-name = "pnpm-dev"
-startup_script = "pnpm dev"
