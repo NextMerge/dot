@@ -2,9 +2,10 @@
 SendMode("Event") ; Without this keys sometimes get stuck in Roblox
 
 global listOfExeNamesFileName := "game exes.txt"
-global targetExes := ReadExeNamesFromTxt(listOfExeNamesFileName)
+global targetExes := []
+global targetQWERTYExes := []
 
-global targetQWERTYExes := ["RobloxPlayer", "RobloxPlayerBeta"]
+ReadExeNamesFromTxt(listOfExeNamesFileName)
 
 global exeAppendices := ["-Win64-Shipping", "-WinGDK-Shipping"]
 
@@ -13,13 +14,14 @@ global forceGaming := false
 global forceQWERTY := false
 
 ReadExeNamesFromTxt(fileName) {
-    exeNames := []
     scriptDir := A_ScriptDir
     filePath := scriptDir . "\" . fileName
     if !FileExist(filePath) {
         MsgBox("File not found: " . filePath)
-        return exeNames
+        return
     }
+
+    gettingQwertyExes := false
 
     for line in StrSplit(FileRead(filePath), "`n") {
         line := Trim(line)
@@ -27,14 +29,20 @@ ReadExeNamesFromTxt(fileName) {
             continue
         }
         if InStr(line, ";") {
+            if (line = ";QWERTY;") {
+                gettingQwertyExes := true
+                continue
+            }
             line := Trim(StrSplit(line, ";")[1])
         }
         if (line != "") {
-            exeNames.Push(line)
+            if (gettingQwertyExes) {
+                targetQWERTYExes.Push(line)
+            } else {
+                targetExes.Push(line)
+            }
         }
     }
-
-    return exeNames
 }
 
 ShouldSwapKeys() {
@@ -49,10 +57,8 @@ IsTargetExeActive(exesToCheck) {
     try {
         activeExe := WinGetProcessName("A")
         SplitPath(activeExe, , , , &activeExeNameNoExt)
-        wtf := StrLower(activeExeNameNoExt)
         for exe in exesToCheck {
-            ffs := StrCompare(wtf, exe)
-            if (wtf = StrLower(exe)) {
+            if (StrLower(activeExeNameNoExt) = StrLower(exe)) {
                 return true
             }
 
@@ -188,34 +194,12 @@ TypeText(text) {
     Send(text)
 }
 
-OpenVivaldi() {
-    ; Get all Vivaldi windows
-    winList := WinGetList("ahk_exe vivaldi.exe")
-    for hwnd in winList {
-        title := WinGetTitle("ahk_id " hwnd)
-        if (title != "Picture in picture") {
-            WinActivate("ahk_id " hwnd)
-            return
-        }
-    }
-    Run("C:\Users\markj\AppData\Local\Vivaldi\Application\vivaldi.exe")
-    WinWait("ahk_exe vivaldi.exe")
-}
-
 OpenDiscord() {
     if WinExist("ahk_exe discord.exe") {
         WinActivate("ahk_exe discord.exe")
     } else {
         Run("C:\Users\markj\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Discord Inc\Discord.lnk")
         WinWait("ahk_exe discord.exe")
-    }
-}
-
-OpenAppleMusic() {
-    if WinExist("ahk_exe AppleMusic.exe") {
-        WinActivate("ahk_exe AppleMusic.exe")
-    } else {
-        Run('explorer.exe shell:AppsFolder\AppleInc.AppleMusicWin_nzyj5cx40ttqa!App')
     }
 }
 
@@ -226,8 +210,8 @@ OpenAppleMusic() {
 ^+!v:: CheckVpnStatus()
 ^+!i:: ShowTextMacroInput()
 
-^+!h:: OpenVivaldi()
-^+!t:: OpenDiscord()
-^+!n:: OpenAppleMusic()
+; ^+!h:: OpenVivaldi()
+; ^+!t:: OpenDiscord()
+; ^+!n:: OpenAppleMusic()
 ; #i:: Rizz() win+i
 
