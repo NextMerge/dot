@@ -4,6 +4,7 @@ SendMode("Event") ; Without this keys sometimes get stuck in Roblox
 global listOfExeNamesFileName := "game exes.txt"
 global targetExes := []
 global targetQWERTYExes := []
+global noVpnWarningExes := []
 
 ReadExeNamesFromTxt(listOfExeNamesFileName)
 
@@ -12,6 +13,21 @@ global exeAppendices := ["-Win64-Shipping", "-WinGDK-Shipping"]
 global disableGlobal := true
 global forceGaming := false
 global forceQWERTY := false
+
+global TYPING_MODE_TIMEOUT_MS := 500
+global typingMode := false
+
+DisableTypingMode() {
+    global typingMode
+    typingMode := false
+}
+
+ResetTypingModeTimer() {
+    global typingMode
+    typingMode := true
+    SetTimer(DisableTypingMode, 0)
+    SetTimer(DisableTypingMode, TYPING_MODE_TIMEOUT_MS)
+}
 
 ReadExeNamesFromTxt(fileName) {
     scriptDir := A_ScriptDir
@@ -28,18 +44,32 @@ ReadExeNamesFromTxt(fileName) {
         if (line = "") {
             continue
         }
+
+        hasNoVpnWarning := false
+
         if InStr(line, ";") {
             if (line = ";QWERTY;") {
                 gettingQwertyExes := true
                 continue
             }
+
+            ; Check for ;nov flag
+            if InStr(line, ";nov") {
+                hasNoVpnWarning := true
+            }
+
             line := Trim(StrSplit(line, ";")[1])
         }
+
         if (line != "") {
             if (gettingQwertyExes) {
                 targetQWERTYExes.Push(line)
             } else {
                 targetExes.Push(line)
+            }
+
+            if (hasNoVpnWarning) {
+                noVpnWarningExes.Push(line)
             }
         }
     }
@@ -90,45 +120,17 @@ IsMegaVPNRunning() {
     return false
 }
 
-SetTimer(WarningOnVPNActive, 1000)
-
 WarningOnVPNActive() {
     isTargetExe := IsTargetExeActive(targetExes)
     isTargetQWERTYExe := IsTargetExeActive(targetQWERTYExes)
 
-    if ((isTargetExe || isTargetQWERTYExe) && IsMegaVPNRunning()) {
+    shouldSkipVpnWarning := IsTargetExeActive(noVpnWarningExes)
+
+    if ((isTargetExe || isTargetQWERTYExe) && IsMegaVPNRunning() && !shouldSkipVpnWarning) {
         ToolTip("Warning: Game launched with MEGA VPN running")
         SetTimer(() => ToolTip(), -1000)
     }
 }
-
-; Hotkey definitions
-#HotIf ShouldSwapKeys()
-Backspace::Space
-Delete::Enter
-#HotIf
-
-#HotIf ShouldSwapKeysForQWERTY()
-Backspace::Space
-Delete::Enter
-
-*SC027::t ; semicolon key
-*o::a
-*e::w
-*u::d
-*j::s
-*i::f
-*,::z
-*.::x
-*p::c
-*y::v
-*a::LShift
-*SC028::m ; apostrophe key
-*k::e
-*x::r
-*Left::g
-*Right::b
-#HotIf
 
 ToggleKeySwaps() {
     global disableGlobal
@@ -171,8 +173,8 @@ CheckVpnStatus() {
     SetTimer(() => ToolTip(), -1000)
 }
 
-ShowTextMacroInput() {
-    textToType := NormalizeText(A_Clipboard)
+TypeOutSanitizedTextInClipboard() {
+    textToType := SanitizeText(A_Clipboard)
     if (textToType = "") {
         return
     }
@@ -180,7 +182,7 @@ ShowTextMacroInput() {
     SetTimer(TypeText.Bind(textToType), -1000)
 }
 
-NormalizeText(text) {
+SanitizeText(text) {
     text := RegExReplace(text, "\n", " ")
     text := RegExReplace(text, "\r", " ")
     text := RegExReplace(text, "\t", " ")
@@ -203,15 +205,102 @@ OpenDiscord() {
     }
 }
 
+SetTimer(WarningOnVPNActive, 1000)
+
+#HotIf ShouldSwapKeys() && !typingMode
+Backspace::Space
+Delete::Enter
+#HotIf
+
+#HotIf ShouldSwapKeys()
+~Space:: {
+    ResetTypingModeTimer()
+}
+#HotIf
+
+#HotIf ShouldSwapKeysForQWERTY()
+Backspace::Space
+Delete::Enter
+
+*SC027::t ; semicolon key
+*o::a
+*e::w
+*u::d
+*j::s
+*i::f
+*,::z
+*.::x
+*p::c
+*y::v
+*a::LShift
+*SC028::m ; apostrophe key
+*k::e
+*x::r
+*Left::g
+*Right::b
+#HotIf
+
+#HotIf typingMode
+~*a:: ResetTypingModeTimer()
+~*b:: ResetTypingModeTimer()
+~*c:: ResetTypingModeTimer()
+~*d:: ResetTypingModeTimer()
+~*e:: ResetTypingModeTimer()
+~*f:: ResetTypingModeTimer()
+~*g:: ResetTypingModeTimer()
+~*h:: ResetTypingModeTimer()
+~*i:: ResetTypingModeTimer()
+~*j:: ResetTypingModeTimer()
+~*k:: ResetTypingModeTimer()
+~*l:: ResetTypingModeTimer()
+~*m:: ResetTypingModeTimer()
+~*n:: ResetTypingModeTimer()
+~*o:: ResetTypingModeTimer()
+~*p:: ResetTypingModeTimer()
+~*q:: ResetTypingModeTimer()
+~*r:: ResetTypingModeTimer()
+~*s:: ResetTypingModeTimer()
+~*t:: ResetTypingModeTimer()
+~*u:: ResetTypingModeTimer()
+~*v:: ResetTypingModeTimer()
+~*w:: ResetTypingModeTimer()
+~*x:: ResetTypingModeTimer()
+~*y:: ResetTypingModeTimer()
+~*z:: ResetTypingModeTimer()
+~*0:: ResetTypingModeTimer()
+~*1:: ResetTypingModeTimer()
+~*2:: ResetTypingModeTimer()
+~*3:: ResetTypingModeTimer()
+~*4:: ResetTypingModeTimer()
+~*5:: ResetTypingModeTimer()
+~*6:: ResetTypingModeTimer()
+~*7:: ResetTypingModeTimer()
+~*8:: ResetTypingModeTimer()
+~*9:: ResetTypingModeTimer()
+~*,:: ResetTypingModeTimer()
+~*.:: ResetTypingModeTimer()
+~*;:: ResetTypingModeTimer()
+~*':: ResetTypingModeTimer()
+~*Left:: ResetTypingModeTimer()
+~*Right:: ResetTypingModeTimer()
+~*Up:: ResetTypingModeTimer()
+~*Down:: ResetTypingModeTimer()
+~*Backspace:: ResetTypingModeTimer()
+~*Delete:: ResetTypingModeTimer()
+~*Enter:: ResetTypingModeTimer()
+~*Tab:: ResetTypingModeTimer()
+~*LShift:: ResetTypingModeTimer()
+~*RShift:: ResetTypingModeTimer()
+~*LCtrl:: ResetTypingModeTimer()
+~*RCtrl:: ResetTypingModeTimer()
+~*LAlt:: ResetTypingModeTimer()
+~*RAlt:: ResetTypingModeTimer()
+~*Space:: ResetTypingModeTimer()
+#HotIf
+
 ^+!g:: ToggleKeySwaps()
 ^+!q:: ToggleQWERTY()
 ^+!r:: Reload()
 ^+!y:: CopyExeNameToClipboardAndOpenFile()
 ^+!v:: CheckVpnStatus()
-^+!i:: ShowTextMacroInput()
-
-; ^+!h:: OpenVivaldi()
-; ^+!t:: OpenDiscord()
-; ^+!n:: OpenAppleMusic()
-; #i:: Rizz() win+i
-
+^+!i:: TypeOutSanitizedTextInClipboard()
