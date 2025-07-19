@@ -2,7 +2,7 @@
 blacklist = ["scratch"]
 
 [default_session]
-startup_command = "nvim -c ':lua Snacks.dashboard.pick(\\'oldfiles\\', { filter = { cwd = true } })'"
+startup_command = "nvim -c ':lua Snacks.picker.smart()'"
 
 [[session]]
 name = "dotfiles"

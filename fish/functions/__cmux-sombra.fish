@@ -1,15 +1,15 @@
 function __cmux-sombra
     if git branch --show-current | grep -q master
         git pull
-        npm i
+        pnpm i
     else
         set_color cyan
         echo "Not on master branch. Skipping pull and install."
         sleep 4
     end
 
-    npm run generate:translations
-    npm run generate:gql
+    pnpm run generate:translations
+    pnpm run generate:gql
 
     set -l SUCCESS_MESSAGE "Connection to 127.0.0.1 port 5432 [tcp/postgresql] succeeded!"
 
@@ -33,7 +33,7 @@ function __cmux-sombra
         set -l MIGRATION_ERROR_MESSAGE "migration failed with error:"
 
         # Capture the migration output while still displaying it
-        set MIGRATION_OUTPUT (npm run db:migrate &| tee /dev/tty)
+        set MIGRATION_OUTPUT (pnpm run db:migrate &| tee /dev/tty)
 
         # Check for successful migration
         if string match -rq "$MIGRATION_ERROR_MESSAGE" "$MIGRATION_OUTPUT"
@@ -46,9 +46,9 @@ function __cmux-sombra
             cd hasura
             npx hasura metadata apply --endpoint http://localhost:3011 --admin-secret secret
             cd ..
-            npm run generate:gql
+            pnpm run generate:gql
         end
     end
 
-    npm run dev
+    pnpm run dev
 end
