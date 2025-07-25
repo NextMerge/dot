@@ -8,18 +8,19 @@
 - link:
     ~/.gitconfig: dots/.gitconfig
     ~/.zshrc: dots/.zshrc
-    ~/.config/topgrade.toml: dots/topgrade.toml
     ~/.vimrc: dots/.vimrc
     ~/Library/Application Support/lazygit/config.yml: dots/lazygit-config.yml
     ~/.warp/themes: warp/themes
     ~/Library/Application Support/Cursor/User/settings.json: cursor/settings.jsonc
     ~/Library/Application Support/Cursor/User/keybindings.json: cursor/keybindings.jsonc
-    ~/.config/ghostty/config: dots/ghostty.toml
-    ~/.config/bat: bat
-    ~/.config/fish: fish
-    ~/.config/tmux/tmux.conf.local: tmux/tmux.conf
-    ~/.config/sesh/sesh.toml: dots/sesh.toml
-    ~/.config/tmuxinator: tmuxinator
+    ~/.config/topgrade.toml: .config/topgrade.toml
+    ~/.config/tmux/tmux.conf.local: .config/tmux/tmux.conf
+    ~/.config/bat: .config/bat
+    ~/.config/fish: .config/fish
+    ~/.config/ghostty: .config/ghostty
+    ~/.config/sesh: .config/sesh
+    ~/.config/skhd: .config/skhd
+    ~/.config/tmuxinator: .config/tmuxinator
     # ~/Library/Containers/net.sonuscape.mouseless/Data/.mouseless/configs/config.yaml: mouseless/config.yaml
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
