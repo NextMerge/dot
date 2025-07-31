@@ -19,7 +19,6 @@
     ~/.config/fish: .config/fish
     ~/.config/ghostty: .config/ghostty
     ~/.config/sesh: .config/sesh
-    ~/.config/skhd: .config/skhd
     ~/.config/tmuxinator: .config/tmuxinator
     # ~/Library/Containers/net.sonuscape.mouseless/Data/.mouseless/configs/config.yaml: mouseless/config.yaml
 - shell:
