@@ -1,0 +1,7 @@
+name: quirks
+root: ~/gitter/quirks/main
+
+windows:
+  - editor: nvim -c ':lua Snacks.picker.smart()'
+  - dev: pnpm run dev
+  - convex: pnpm exec convex dev
