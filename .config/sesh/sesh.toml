@@ -1,9 +1,3 @@
-# don't index floaX
-blacklist = ["scratch"]
-
-[default_session]
-startup_command = "nvim -c ':lua Snacks.picker.smart()'"
-
 [[session]]
 name = "dotfiles"
 path = "~/dotfiles"

@@ -1,4 +1,6 @@
 alias keyboardmaestro='/Applications/Keyboard\ Maestro.app/Contents/MacOS/keyboardmaestro'
+fish_add_path $HOME/.local/bin
+
 if not status is-interactive
     return
 end

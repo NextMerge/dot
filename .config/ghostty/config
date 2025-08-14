@@ -10,7 +10,7 @@ font-feature = -calt
 window-width = 120
 window-height = 1000
 window-padding-balance = true
-background-opacity = 0.7
+# for window transparency making text still look good
 alpha-blending = linear-corrected
 
 keybind = super+s=text:\x01S

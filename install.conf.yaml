@@ -20,6 +20,9 @@
     ~/.config/ghostty: .config/ghostty
     ~/.config/sesh: .config/sesh
     ~/.config/tmuxinator: .config/tmuxinator
+    ~/.config/zed/settings.json: .config/zed/settings.json
+    ~/.config/zed/tasks.json: .config/zed/tasks.json
+    ~/.config/zed/keymap.json: .config/zed/keymap.json
     # ~/Library/Containers/net.sonuscape.mouseless/Data/.mouseless/configs/config.yaml: mouseless/config.yaml
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
