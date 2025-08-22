@@ -63,9 +63,10 @@
     }
   },
   {
-    "context": "Editor && showing_completions",
-    "use_key_equivalents": true,
+    "context": "Editor && edit_prediction_conflict",
     "bindings": {
+      // Here we bind tab to accept even when there's a language server completion
+      // or the cursor isn't at the correct indentation level
       "tab": "editor::AcceptEditPrediction"
     }
   },
@@ -94,12 +95,7 @@
       "ctrl-shift-d": "vim::ScrollDown",
       "ctrl-u": ["workspace::SendKeystrokes", "ctrl-shift-u z z"],
       "ctrl-d": ["workspace::SendKeystrokes", "ctrl-shift-d z z"],
-      "q": null,
       "ctrl-j": "workspace::ActivatePaneDown",
-      "m": null,
-      "m p": "pane::SwapItemLeft",
-      "m n": "pane::SwapItemRight",
-      "`": null,
       "shift-h": "pane::ActivatePreviousItem",
       "shift-t": "pane::ActivateNextItem",
       "space g g ": ["task::Spawn", { "task_name": "Open Lazygit" }],
@@ -112,12 +108,16 @@
       "space t": ["task::Spawn", { "task_name": "Open Terminal" }],
       "space ,": "tab_switcher::ToggleAll",
       "space e": "project_panel::ToggleFocus",
+      "space f": "editor::Format",
       "f": ["vim::PushFindForward", { "before": false, "multiline": true }],
       "t": ["vim::PushFindForward", { "before": true, "multiline": true }],
       "shift-f": [
         "vim::PushFindBackward",
         { "after": false, "multiline": true }
-      ]
+      ],
+      "[ t": "pane::SwapItemLeft",
+      "] t": "pane::SwapItemRight",
+      "q": null
     }
   },
   {
@@ -139,14 +139,15 @@
       "ctrl-shift-alt-x": "vim::DeleteLeft",
       "x": ["workspace::SendKeystrokes", "\" _ ctrl-shift-x"],
       "shift-x": ["workspace::SendKeystrokes", "\" _ ctrl-shift-alt-x"],
-      "'": "editor::Format"
+      "q": "editor::Format"
     }
   },
   {
     "context": "vim_mode == visual",
     "bindings": {
       "shift-j": ["workspace::SendKeystrokes", "] e = g v"],
-      "shift-k": ["workspace::SendKeystrokes", "[ e = g v"]
+      "shift-k": ["workspace::SendKeystrokes", "[ e = g v"],
+      "q": "editor::FormatSelections"
     }
   },
   {
@@ -165,9 +166,8 @@
   {
     "context": "vim_operator == d",
     "bindings": {
-      "shift-p": "git::RestoreFile",
-      "i": ["vim::PushObject", { "around": false }],
-      "i n q": ["workspace::SendKeystrokes", "i q"]
+      "shift-p": "git::RestoreFile"
+      // "n i q": ["workspace::SendKeystrokes", "ctrl-c v a q ctrl-c v *"]
     }
   },
   {
@@ -175,7 +175,6 @@
     "bindings": {
       "q": "vim::MiniQuotes",
       "b": "vim::MiniBrackets"
-      // "n q": ["workspace::SendKeystrokes", "i q"]
     }
   },
   {

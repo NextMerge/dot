@@ -9,7 +9,7 @@ function cmux --description "Connect to existing cmux session or create new one 
         tmux attach-session -t "$session_name"
         return 0
     end
-
+    
     # No existing cmux session found, prompt for worktree selection
     echo "No existing cmux session found. Please select a worktree:"
     
