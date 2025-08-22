@@ -61,9 +61,12 @@
   },
   {
     "label": "cmux",
-    "command": "tmuxinator start cmux",
+    "command": "cmux",
     "reveal_target": "center",
-    "hide": "on_success"
+    "hide": "on_success",
+    "shell": {
+      "program": "fish"
+    }
   },
   {
     "label": "Open Terminal",

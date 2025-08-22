@@ -10,7 +10,6 @@
     ~/.zshrc: dots/.zshrc
     ~/.vimrc: dots/.vimrc
     ~/Library/Application Support/lazygit/config.yml: dots/lazygit-config.yml
-    ~/.warp/themes: warp/themes
     ~/Library/Application Support/Cursor/User/settings.json: cursor/settings.jsonc
     ~/Library/Application Support/Cursor/User/keybindings.json: cursor/keybindings.jsonc
     ~/.config/topgrade.toml: .config/topgrade.toml
@@ -19,7 +18,6 @@
     ~/.config/fish: .config/fish
     ~/.config/ghostty: .config/ghostty
     ~/.config/sesh: .config/sesh
-    ~/.config/tmuxinator: .config/tmuxinator
     ~/.config/zed/settings.json: .config/zed/settings.json
     ~/.config/zed/tasks.json: .config/zed/tasks.json
     ~/.config/zed/keymap.json: .config/zed/keymap.json

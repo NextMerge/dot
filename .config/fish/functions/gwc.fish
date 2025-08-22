@@ -11,6 +11,7 @@ function gwc --description "Git Worktree Clone - Clone a repository and set up w
     end
 
     set -l REMOTE_REPO $argv[1]
+    set -l WORKTREE_MAIN_NAME (basename (pwd))"-main"
 
     git clone $REMOTE_REPO --bare .bare
     echo "gitdir: ./.bare" > .git
@@ -18,6 +19,6 @@ function gwc --description "Git Worktree Clone - Clone a repository and set up w
     git branch | xargs git branch -D
     git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
     git fetch
-    git worktree add main -b main --track origin/$DEFAULT_BRANCH
+    git worktree add $WORKTREE_MAIN_NAME -b main --track origin/$DEFAULT_BRANCH
 end
 

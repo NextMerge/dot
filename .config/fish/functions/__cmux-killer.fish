@@ -18,6 +18,8 @@ end
 
 echo "Starting OrbStack.app..."
 
+git pull
+
 open -jga OrbStack
 sleep 5
 docker start sombra-hasura-1 sombra-db-1 sombra-pubsub-1 elasticsearch sombra-pdftron-server-1 >/dev/null 2>&1

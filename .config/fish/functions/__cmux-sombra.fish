@@ -1,15 +1,7 @@
 function __cmux-sombra
-    if git branch --show-current | grep -q master
-        git pull
-        pnpm i
-    else
-        set_color cyan
-        echo "Not on master branch. Skipping pull and install."
-        sleep 4
-    end
-
-    pnpm run generate:translations
-    pnpm run generate:gql
+    pnpm --filter sombra i
+    pnpm --filter sombra run generate:translations
+    pnpm --filter sombra run generate:gql
 
     set -l SUCCESS_MESSAGE "Connection to 127.0.0.1 port 5432 [tcp/postgresql] succeeded!"
 
@@ -28,12 +20,12 @@ function __cmux-sombra
         sleep 3
     end
 
-    if git branch --show-current | grep -q master
+    if git branch --show-current | grep -q main
         set -l MIGRATION_DETECTED_MESSAGE "Batch [0-9]+ run: [0-9]+ migrations"
         set -l MIGRATION_ERROR_MESSAGE "migration failed with error:"
 
         # Capture the migration output while still displaying it
-        set MIGRATION_OUTPUT (pnpm run db:migrate &| tee /dev/tty)
+        set MIGRATION_OUTPUT (pnpm --filter sombra run db:migrate &| tee /dev/tty)
 
         # Check for successful migration
         if string match -rq "$MIGRATION_ERROR_MESSAGE" "$MIGRATION_OUTPUT"
@@ -43,12 +35,10 @@ function __cmux-sombra
             # Migration ran successfully with changes
             osascript -e 'display notification "Database migrations were detected and completed successfully!" with title "Sombra Alert"'
 
-            cd hasura
-            npx hasura metadata apply --endpoint http://localhost:3011 --admin-secret secret
-            cd ..
-            pnpm run generate:gql
+            pnpm --filter sombra exec hasura metadata apply --endpoint http://localhost:3011 --admin-secret secret --project hasura
+            pnpm --filter sombra run generate:gql
         end
     end
 
-    pnpm run dev
+    pnpm --filter sombra run dev
 end

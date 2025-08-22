@@ -72,7 +72,6 @@
   {
     "context": "Terminal",
     "bindings": {
-      "escape escape": "terminal::ToggleViMode",
       "cmd-l": "tab_switcher::ToggleAll"
     }
   },
@@ -85,7 +84,6 @@
   {
     "context": "Terminal",
     "bindings": {
-      "escape escape": "terminal::ToggleViMode",
       "alt-f": ["workspace::SendKeystrokes", "shift-escape cmd-j"]
     }
   },
@@ -112,7 +110,20 @@
       "space m": "pane::TogglePinTab",
       "space shift-m": "pane::UnpinAllTabs",
       "space t": ["task::Spawn", { "task_name": "Open Terminal" }],
-      "space ,": "tab_switcher::ToggleAll"
+      "space ,": "tab_switcher::ToggleAll",
+      "space e": "project_panel::ToggleFocus",
+      "f": ["vim::PushFindForward", { "before": false, "multiline": true }],
+      "t": ["vim::PushFindForward", { "before": true, "multiline": true }],
+      "shift-f": [
+        "vim::PushFindBackward",
+        { "after": false, "multiline": true }
+      ]
+    }
+  },
+  {
+    "context": "ProjectPanel && not_editing",
+    "bindings": {
+      "space e": "workspace::ToggleLeftDock"
     }
   },
   {
@@ -146,9 +157,17 @@
     }
   },
   {
+    "context": "vim_operator == c",
+    "bindings": {
+      "r": "vim::PushReplaceWithRegister"
+    }
+  },
+  {
     "context": "vim_operator == d",
     "bindings": {
-      "shift-p": "git::RestoreFile"
+      "shift-p": "git::RestoreFile",
+      "i": ["vim::PushObject", { "around": false }],
+      "i n q": ["workspace::SendKeystrokes", "i q"]
     }
   },
   {
@@ -156,6 +175,7 @@
     "bindings": {
       "q": "vim::MiniQuotes",
       "b": "vim::MiniBrackets"
+      // "n q": ["workspace::SendKeystrokes", "i q"]
     }
   },
   {

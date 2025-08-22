@@ -1,6 +1,0 @@
-name: lego
-root: ~/gitter/civalgo/lego
-
-windows:
-  - editor: nvim -c ':lua Snacks.picker.smart()'
-  - storybook: pnpm run dev
