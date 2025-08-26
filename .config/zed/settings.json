@@ -35,7 +35,11 @@
   },
   "scrollbar": {
     "axes": {
-      "horizontal": false
+      "horizontal": false,
+      "vertical": false
     }
+  },
+  "tab_bar": {
+    "show": false
   }
 }

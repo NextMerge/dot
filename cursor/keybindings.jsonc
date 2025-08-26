@@ -1,10 +1,5 @@
 [
     {
-        "key": "cmd+r f",
-        "command": "-workbench.action.closeFolder",
-        "when": "emptyWorkspaceSupport && workbenchState != 'empty'"
-    },
-    {
         "key": "cmd+e",
         "command": "-actions.findWithSelection"
     },
@@ -12,64 +7,4 @@
         "key": "cmd+e",
         "command": "workbench.action.showCommands"
     },
-    {
-        "key": "ctrl+g",
-        "command": "editor.action.acceptCursorTabSuggestion",
-        "when": "cpp.shouldAcceptTab"
-    },
-    {
-        "key": "ctrl+s",
-        "command": "-extension.vim_ctrl+s",
-        "when": "editorTextFocus && vim.active && vim.use<C-s> && !inDebugRepl"
-    },
-    {
-        "key": "cmd+i",
-        "command": "composerMode.agent"
-    },
-    {
-        "key": "ctrl+u",
-        "command": "runCommands",
-        "args": {
-            "commands": [
-                {
-                    "command": "editorScroll",
-                    "args": {
-                        "to": "up",
-                        "by": "halfPage"
-                    }
-                },
-                {
-                    "command": "cursorMove",
-                    "args": {
-                        "to": "viewPortCenter"
-                    }
-                }
-            ]
-        }
-    },
-    {
-        "key": "ctrl+d",
-        "command": "runCommands",
-        "args": {
-            "commands": [
-                {
-                    "command": "editorScroll",
-                    "args": {
-                        "to": "down",
-                        "by": "halfPage"
-                    }
-                },
-                {
-                    "command": "cursorMove",
-                    "args": {
-                        "to": "viewPortCenter"
-                    }
-                }
-            ]
-        }
-    },
-    {
-        "key": "cmd+e",
-        "command": "composerMode.background"
-    }
 ]

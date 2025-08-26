@@ -102,6 +102,7 @@
       "space o x": ["task::Spawn", { "task_name": "Open in Cursor" }],
       "space q q": "zed::Quit",
       "space b o": "pane::CloseOtherItems",
+      "space b b": "editor::ToggleTabBar",
       "space w q": "pane::CloseActiveItem",
       "space m": "pane::TogglePinTab",
       "space shift-m": "pane::UnpinAllTabs",
@@ -109,15 +110,14 @@
       "space ,": "tab_switcher::ToggleAll",
       "space e": "project_panel::ToggleFocus",
       "space f": "editor::Format",
-      "f": ["vim::PushFindForward", { "before": false, "multiline": true }],
-      "t": ["vim::PushFindForward", { "before": true, "multiline": true }],
-      "shift-f": [
-        "vim::PushFindBackward",
-        { "after": false, "multiline": true }
-      ],
+      "space i ,": ["workspace::SendKeystrokes", "$ a , ctrl-c"],
       "[ t": "pane::SwapItemLeft",
       "] t": "pane::SwapItemRight",
-      "q": null
+      "q": null,
+      "~": "vim::FirstNonWhitespace",
+      "-": "vim::PushMark",
+      "'": null,
+      "enter": null
     }
   },
   {
@@ -139,7 +139,9 @@
       "ctrl-shift-alt-x": "vim::DeleteLeft",
       "x": ["workspace::SendKeystrokes", "\" _ ctrl-shift-x"],
       "shift-x": ["workspace::SendKeystrokes", "\" _ ctrl-shift-alt-x"],
-      "q": "editor::Format"
+      "'": "editor::Format",
+      "s": "vim::PushSneak",
+      "shift-s": "vim::PushSneakBackward"
     }
   },
   {
@@ -147,15 +149,19 @@
     "bindings": {
       "shift-j": ["workspace::SendKeystrokes", "] e = g v"],
       "shift-k": ["workspace::SendKeystrokes", "[ e = g v"],
-      "q": "editor::FormatSelections"
+      "'": "editor::FormatSelections",
+      "space s t": ["workspace::SendKeystrokes", "d i <>\n</> escape k p h i"],
+      "space d t": [
+        "workspace::SendKeystrokes",
+        "d v a t \" _ d p ' [ v ] ' ="
+      ],
+      "enter": "editor::SelectLargerSyntaxNode",
+      "backspace": "editor::SelectSmallerSyntaxNode"
     }
   },
   {
     "context": "vim_mode == normal || vim_mode == visual",
-    "bindings": {
-      "s": "vim::PushSneak",
-      "shift-s": "vim::PushSneakBackward"
-    }
+    "bindings": {}
   },
   {
     "context": "vim_operator == c",
@@ -166,8 +172,12 @@
   {
     "context": "vim_operator == d",
     "bindings": {
-      "shift-p": "git::RestoreFile"
-      // "n i q": ["workspace::SendKeystrokes", "ctrl-c v a q ctrl-c v *"]
+      "shift-p": "git::RestoreFile",
+      "n i q": [
+        "workspace::SendKeystrokes",
+        "ctrl-c v a q ctrl-c : /[\"'`] enter v a q"
+      ],
+      "n a q": ["workspace::SendKeystrokes", "ctrl-c v a q ctrl-c v *"]
     }
   },
   {

@@ -3,13 +3,12 @@
     "window.commandCenter": false,
     "window.newWindowDimensions": "inherit",
     "window.title": "${rootPath}${separator}",
+    "workbench.sideBar.location": "right",
     "editor.fontSize": 18,
     "editor.fontFamily": "JetBrainsMono Nerd Font",
     "editor.fontWeight": 300,
     "editor.lineNumbers": "relative",
     "editor.occurrencesHighlight": "off",
-    "editor.gotoLocation.alternativeDeclarationCommand": "editor.action.explainSymbol",
-    "editor.gotoLocation.alternativeDefinitionCommand": "editor.action.explainSymbol",
     "editor.renderLineHighlight": "none",
     "editor.matchBrackets": "never",
     "editor.accessibilitySupport": "off",
@@ -21,56 +20,9 @@
     },
     "workbench.colorTheme": "Catppuccin Mocha",
     "workbench.layoutControl.enabled": false,
-    "workbench.activityBar.orientation": "vertical",
-    "workbench.activityBar.location": "hidden",
     "terminal.external.osxExec": "Warp.app",
     "terminal.integrated.fontSize": 18,
-    "[jsonc]": {
-        "editor.defaultFormatter": "vscode.json-language-features",
-    },
-    "[typescript]": {
-        "editor.defaultFormatter": "biomejs.biome",
-    },
-    "[javascript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode",
-    },
-    "[typescriptreact]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode",
-    },
-    "extensions.experimental.affinity": {
-        "asvetliakov.vscode-neovim": 1,
-    },
     "extensions.ignoreRecommendations": true,
-
-    // Neovim
-    "vscode-neovim.ctrlKeysForNormalMode": [
-        "a",
-        "b",
-        "c",
-        "e",
-        "f",
-        "h",
-        "i",
-        "j",
-        "k",
-        "l",
-        "m",
-        "o",
-        "t",
-        "v",
-        "w",
-        "x",
-        "y",
-        "z",
-        "/",
-        "]",
-        "right",
-        "left",
-        "up",
-        "down",
-        "backspace",
-        "delete",
-    ],
 
     // Cursor
     "cursor.composer.textSizeScale": 1.15,
@@ -78,9 +30,4 @@
 
     "find-it-faster.general.killTerminalAfterUse": true,
     "find-it-faster.general.useTerminalInEditor": true,
-    "[json]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "workbench.sideBar.location": "right",
-    "editor.defaultFormatter": "biomejs.biome",
 }
