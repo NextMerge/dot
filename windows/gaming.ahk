@@ -14,7 +14,7 @@ global disableGlobal := true
 global forceGaming := false
 global forceQWERTY := false
 
-global TYPING_MODE_TIMEOUT_MS := 500
+global TYPING_MODE_TIMEOUT_MS := 700
 global typingMode := false
 
 DisableTypingMode() {
@@ -212,13 +212,28 @@ Backspace::Space
 Delete::Enter
 #HotIf
 
-#HotIf ShouldSwapKeys()
+#HotIf ShouldSwapKeys() || ShouldSwapKeysForQWERTY()
 ~Space:: {
     ResetTypingModeTimer()
 }
+~*f:: ResetTypingModeTimer()
+~*g:: ResetTypingModeTimer()
+~*c:: ResetTypingModeTimer()
+~*r:: ResetTypingModeTimer()
+~*l:: ResetTypingModeTimer()
+~*d:: ResetTypingModeTimer()
+~*h:: ResetTypingModeTimer()
+~*t:: ResetTypingModeTimer()
+~*n:: ResetTypingModeTimer()
+~*s:: ResetTypingModeTimer()
+~*b:: ResetTypingModeTimer()
+~*m:: ResetTypingModeTimer()
+~*w:: ResetTypingModeTimer()
+~*v:: ResetTypingModeTimer()
+~*z:: ResetTypingModeTimer()
 #HotIf
 
-#HotIf ShouldSwapKeysForQWERTY()
+#HotIf ShouldSwapKeysForQWERTY() && !typingMode
 Backspace::Space
 Delete::Enter
 
