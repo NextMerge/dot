@@ -115,7 +115,7 @@
       "] t": "pane::SwapItemRight",
       "q": null,
       "~": "vim::FirstNonWhitespace",
-      "-": "vim::PushMark",
+      "-": ["vim::PushJump", { "line": false }],
       "'": null,
       "enter": null
     }
@@ -150,13 +150,14 @@
       "shift-j": ["workspace::SendKeystrokes", "] e = g v"],
       "shift-k": ["workspace::SendKeystrokes", "[ e = g v"],
       "'": "editor::FormatSelections",
-      "space s t": ["workspace::SendKeystrokes", "d i <>\n</> escape k p h i"],
+      "space s t": ["workspace::SendKeystrokes", "d i <>\n\n</> escape k p"],
       "space d t": [
         "workspace::SendKeystrokes",
         "d v a t \" _ d p ' [ v ] ' ="
       ],
       "enter": "editor::SelectLargerSyntaxNode",
-      "backspace": "editor::SelectSmallerSyntaxNode"
+      "backspace": "editor::SelectSmallerSyntaxNode",
+      "shift-s": "vim::PushAddSurrounds"
     }
   },
   {
