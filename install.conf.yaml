@@ -21,6 +21,7 @@
     ~/.config/zed/settings.json: .config/zed/settings.json
     ~/.config/zed/tasks.json: .config/zed/tasks.json
     ~/.config/zed/keymap.json: .config/zed/keymap.json
+    ~/biome.json: dots/global.biome.json
     # ~/Library/Containers/net.sonuscape.mouseless/Data/.mouseless/configs/config.yaml: mouseless/config.yaml
 - shell:
     - [git submodule update --init --recursive, Installing submodules]

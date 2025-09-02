@@ -11,10 +11,6 @@
     diffFilter = delta --color-only
 [delta]
     navigate = true    # use n and N to move between diff sections
-
-    # delta detects terminal colors automatically; set one of these to disable auto-detection
-    # dark = true
-    # light = true
 [merge]
     conflictstyle = diff3
 [diff]
@@ -22,10 +18,6 @@
 [commit]
     template = /Users/markjarjour/.stCommitMsg
     gpgsign = true
-[alias]
-    bruh = add -p
-    cum = commit -m
-    huh = add -i
 [push]
     autoSetupRemote = true
 [pull]
