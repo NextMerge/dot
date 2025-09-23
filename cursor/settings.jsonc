@@ -7,7 +7,6 @@
     "editor.fontSize": 18,
     "editor.fontFamily": "JetBrainsMono Nerd Font",
     "editor.fontWeight": 300,
-    "editor.lineNumbers": "relative",
     "editor.occurrencesHighlight": "off",
     "editor.renderLineHighlight": "none",
     "editor.matchBrackets": "never",

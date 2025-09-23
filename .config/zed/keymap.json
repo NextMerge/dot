@@ -117,7 +117,6 @@
       "q": null,
       "~": "vim::FirstNonWhitespace",
       "-": ["vim::PushJump", { "line": false }],
-      "'": null,
       "enter": null
     }
   },
@@ -148,10 +147,12 @@
   {
     "context": "vim_mode == visual",
     "bindings": {
+      "ctrl-shift-w": "editor::WrapSelectionsInTag", // Bind here doesn't really matter can be anything.
+      "space s t": ["workspace::SendKeystrokes", "ctrl-shift-w v i"],
       "shift-j": ["workspace::SendKeystrokes", "] e = g v"],
       "shift-k": ["workspace::SendKeystrokes", "[ e = g v"],
       "'": "editor::FormatSelections",
-      "space s t": ["workspace::SendKeystrokes", "d i <>\n\n</> escape k p"],
+      // "space s t": ["workspace::SendKeystrokes", "d i <>\n\n</> escape k p"],
       "space d t": [
         "workspace::SendKeystrokes",
         "d v a t \" _ d p ' [ v ] ' ="
