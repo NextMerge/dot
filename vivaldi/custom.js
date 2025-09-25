@@ -8,12 +8,11 @@
       timer = setTimeout(
         async () => {
           try {
-            const thatTab = await chrome.tabs.get(tabId);
             const tabCapture = await chrome.tabs.captureVisibleTab(
-              thatTab.windowId,
+              tab.windowId,
             );
 
-            const vivExtData = JSON.parse(thatTab.vivExtData);
+            const vivExtData = JSON.parse(tab.vivExtData);
             vivExtData.thumbnail = tabCapture;
 
             await chrome.tabs.update(tabId, {
@@ -35,6 +34,14 @@
 
   // Switch tabs -> clear the timer
   chrome.tabs.onActivated.addListener(() => {
+    if (timer !== null) {
+      clearTimeout(timer);
+      timer = null;
+    }
+  });
+
+  // Tab closed -> clear the timer
+  chrome.tabs.onRemoved.addListener(() => {
     if (timer !== null) {
       clearTimeout(timer);
       timer = null;
