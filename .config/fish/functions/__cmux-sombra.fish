@@ -20,6 +20,8 @@ function __cmux-sombra
         sleep 3
     end
 
+    pnpm --filter sombra exec hasura metadata apply --endpoint http://localhost:3011 --admin-secret secret --project hasura
+    
     if git branch --show-current | grep -q main
         set -l MIGRATION_DETECTED_MESSAGE "Batch [0-9]+ run: [0-9]+ migrations"
         set -l MIGRATION_ERROR_MESSAGE "migration failed with error:"
@@ -35,7 +37,6 @@ function __cmux-sombra
             # Migration ran successfully with changes
             osascript -e 'display notification "Database migrations were detected and completed successfully!" with title "Sombra Alert"'
 
-            pnpm --filter sombra exec hasura metadata apply --endpoint http://localhost:3011 --admin-secret secret --project hasura
             pnpm --filter sombra run generate:gql
         end
     end
