@@ -1,5 +1,6 @@
 function __cmux-sombra
-    pnpm --filter sombra i
+    tmux wait-for repo-hydrated
+
     pnpm --filter sombra run generate:translations
     pnpm --filter sombra run generate:gql
 
@@ -21,7 +22,7 @@ function __cmux-sombra
     end
 
     pnpm --filter sombra exec hasura metadata apply --endpoint http://localhost:3011 --admin-secret secret --project hasura
-    
+
     if git branch --show-current | grep -q main
         set -l MIGRATION_DETECTED_MESSAGE "Batch [0-9]+ run: [0-9]+ migrations"
         set -l MIGRATION_ERROR_MESSAGE "migration failed with error:"

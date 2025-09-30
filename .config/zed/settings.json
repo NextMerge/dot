@@ -49,6 +49,13 @@
     "JSON": { "formatter": { "language_server": { "name": "biome" } } },
     "JSONC": { "formatter": { "language_server": { "name": "biome" } } },
     "CSS": { "formatter": { "language_server": { "name": "biome" } } },
-    "GraphQL": { "formatter": { "language_server": { "name": "biome" } } }
+    "GraphQL": { "formatter": { "language_server": { "name": "biome" } } },
+    "Fish": {
+      "formatter": {
+        "external": {
+          "command": "fish_indent"
+        }
+      }
+    }
   }
 }

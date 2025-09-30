@@ -7,11 +7,10 @@ root = true
 # Indentation and spacing
 indent_size = 2
 indent_style = space
-tab_width = 7
 max_line_length = 150
 
 # New line preferences
 end_of_line = lf
 
-[*.yaml]
-indent_size = 2
+[*.fish]
+indent_size = 4

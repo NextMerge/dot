@@ -1,4 +1,5 @@
 function __cmux-lego
-    sleep 5
-    pnpm --filter lego exec vite build --watch
+  tmux wait-for repo-hydrated
+
+  pnpm --filter lego exec vite build --watch
 end

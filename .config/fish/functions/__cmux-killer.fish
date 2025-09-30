@@ -20,6 +20,9 @@ function __cmux-killer
     echo "Starting OrbStack.app..."
 
     git pull
+    pnpm install
+
+    tmux wait-for -S repo-hydrated
 
     open -jga OrbStack
     sleep 5
