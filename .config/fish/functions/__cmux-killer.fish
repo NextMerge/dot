@@ -17,16 +17,14 @@ function __cmux-killer
         end
     end
 
-    echo "Starting OrbStack.app..."
-
+    open -jga OrbStack
+    sleep 5
+    docker start sombra-hasura-1 sombra-db-1 sombra-pubsub-1 elasticsearch sombra-pdftron-server-1 >/dev/null 2>&1
     git pull
     pnpm install
 
     tmux wait-for -S repo-hydrated
 
-    open -jga OrbStack
-    sleep 5
-    docker start sombra-hasura-1 sombra-db-1 sombra-pubsub-1 elasticsearch sombra-pdftron-server-1 >/dev/null 2>&1
 
     set_color cyan
     echo "Watching for Docker containers..."

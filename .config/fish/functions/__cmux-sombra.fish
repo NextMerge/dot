@@ -2,7 +2,6 @@ function __cmux-sombra
     tmux wait-for repo-hydrated
 
     pnpm --filter sombra run generate:translations
-    pnpm --filter sombra run generate:gql
 
     set -l SUCCESS_MESSAGE "Connection to 127.0.0.1 port 5432 [tcp/postgresql] succeeded!"
 
@@ -20,8 +19,24 @@ function __cmux-sombra
         end
         sleep 3
     end
+    
+    set_color cyan
+    echo "Waiting for Hasura to be available..."
+    set_color normal
+
+    while true
+        nc -zv 127.0.0.1 3011
+        if test $status -eq 0
+            set_color green
+            echo "Hasura is available!"
+            set_color normal
+            break
+        end
+        sleep 3
+    end
 
     pnpm --filter sombra exec hasura metadata apply --endpoint http://localhost:3011 --admin-secret secret --project hasura
+    pnpm --filter sombra run generate:gql
 
     if git branch --show-current | grep -q main
         set -l MIGRATION_DETECTED_MESSAGE "Batch [0-9]+ run: [0-9]+ migrations"
