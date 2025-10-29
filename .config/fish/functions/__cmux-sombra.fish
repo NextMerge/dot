@@ -1,5 +1,16 @@
 function __cmux-sombra
-    tmux wait-for repo-hydrated
+    # Check for --now argument to skip tmux wait-for
+    set -l skip_wait false
+    for arg in $argv
+        if test "$arg" = "--now"
+            set skip_wait true
+            break
+        end
+    end
+
+    if test "$skip_wait" = false
+        tmux wait-for repo-hydrated
+    end
 
     pnpm --filter sombra run generate:translations
 
@@ -25,7 +36,7 @@ function __cmux-sombra
     set_color normal
 
     while true
-        nc -zv 127.0.0.1 3011
+        curl -s --fail http://localhost:3011/v1/version >/dev/null 2>&1
         if test $status -eq 0
             set_color green
             echo "Hasura is available!"
