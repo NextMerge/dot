@@ -9,12 +9,36 @@ function cmux --description "Connect to existing cmux session or create new one 
         tmux attach-session -t "$session_name"
         return 0
     end
+
+    set -l EXO_PATH "$GITTER_DIR/civalgo/exo"
+    set -l MAIN_WORKTREE_NAME "exo-main"
     
     echo "Select a worktree:"
     
-    set -l exo_worktree_path (git_worktree_select "$GITTER_DIR/civalgo/exo/")
+    set -l exo_worktree_path (git_worktree_select "$EXO_PATH")
     if test $status -eq 1
         echo "No worktree selected. Exiting."
+        return 1
+    end
+    
+    echo "exo_worktree_path: $exo_worktree_path"
+    if not string match -q '*exo-main' -- "$exo_worktree_path"
+        echo "Copying .env files from exo-main to $exo_worktree_path"
+        if test ! -f "$exo_worktree_path/apps/portal/.env"
+            cp "$EXO_PATH/$MAIN_WORKTREE_NAME/apps/portal/.env" "$exo_worktree_path/apps/portal/.env"
+            echo "Copied Portal's .env from exo-main to $exo_worktree_path/apps/portal/.env"
+            sleep 5
+        end
+        if test ! -f "$exo_worktree_path/services/sombra/.env"
+            cp "$EXO_PATH/$MAIN_WORKTREE_NAME/services/sombra/.env" "$exo_worktree_path/services/sombra/.env"
+            echo "Copied Sombra's .env from exo-main to $exo_worktree_path/services/sombra/.env"
+            sleep 5
+        end
+    end
+
+    gum confirm "Have you rebased your worktree?"
+    if test $status -ne 0
+        echo "Exiting."
         return 1
     end
 
@@ -23,6 +47,9 @@ function cmux --description "Connect to existing cmux session or create new one 
 
     echo "Creating new tmux session: $session_name"
 
+    tmux new-window -t "$session_name" -n "watcher" -c "$exo_worktree_path"
+    tmux send-keys -t "$session_name:watcher" "__cmux-watcher" Enter
+    
     tmux new-session -d -s "$session_name" -n "portal" -c "$exo_worktree_path"
     tmux send-keys -t "$session_name:portal" "__cmux-portal" Enter
 
@@ -31,9 +58,6 @@ function cmux --description "Connect to existing cmux session or create new one 
     
     tmux new-window -t "$session_name" -n "lego" -c "$exo_worktree_path"
     tmux send-keys -t "$session_name:lego" "__cmux-lego" Enter
-    
-    tmux new-window -t "$session_name" -n "killer" -c "$exo_worktree_path"
-    tmux send-keys -t "$session_name:killer" "__cmux-killer" Enter
 
     tmux select-window -t "$session_name:portal"
     tmux attach-session -t "$session_name"

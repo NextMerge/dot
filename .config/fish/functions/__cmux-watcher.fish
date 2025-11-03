@@ -1,4 +1,4 @@
-function __cmux-killer
+function __cmux-watcher
     function check_docker
         if not docker ps --filter "name=sombra-db-1" --format "{{.Status}}" 2>/dev/null | grep -q "Up"
             set_color red
