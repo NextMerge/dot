@@ -1,0 +1,114 @@
+{
+  "actions" : [
+    {
+      "actions" : [
+        {
+          "key" : "p",
+          "type" : "application",
+          "value" : "/Applications/Play.app"
+        },
+        {
+          "key" : "v",
+          "type" : "application",
+          "value" : "/Applications/Vivaldi.app"
+        },
+        {
+          "key" : "z",
+          "type" : "application",
+          "value" : "/Applications/Zed.app"
+        },
+        {
+          "key" : "m",
+          "type" : "application",
+          "value" : "/System/Applications/Music.app"
+        },
+        {
+          "key" : "f",
+          "type" : "application",
+          "value" : "/Applications/Fastmail.app"
+        },
+        {
+          "key" : "l",
+          "type" : "application",
+          "value" : "/Applications/Linear.app"
+        },
+        {
+          "key" : "s",
+          "type" : "application",
+          "value" : "/Applications/Slack.app"
+        },
+        {
+          "key" : "b",
+          "type" : "application",
+          "value" : "/Applications/Bear.app"
+        },
+        {
+          "key" : "c",
+          "type" : "application",
+          "value" : "/Applications/Cursor.app"
+        },
+        {
+          "key" : "t",
+          "type" : "application",
+          "value" : "/Applications/Things3.app"
+        },
+        {
+          "key" : "w",
+          "type" : "application",
+          "value" : "/Applications/Warp.app"
+        }
+      ],
+      "key" : "a",
+      "type" : "group"
+    },
+    {
+      "actions" : [
+        {
+          "key" : "n",
+          "type" : "command",
+          "value" : "open -jga Play"
+        }
+      ],
+      "key" : "u",
+      "type" : "group"
+    },
+    {
+      "actions" : [
+        {
+          "key" : "n",
+          "type" : "url",
+          "value" : "raycast://extensions/raycast/raycast-notes/raycast-notes"
+        },
+        {
+          "key" : "f",
+          "type" : "url",
+          "value" : "raycast://script-commands/toggle-flashspace"
+        }
+      ],
+      "key" : "t",
+      "type" : "group"
+    },
+    {
+      "actions" : [
+        {
+          "key" : "g",
+          "type" : "url",
+          "value" : "raycast://ai-commands/fix-spelling-and-grammar"
+        }
+      ],
+      "key" : "i",
+      "type" : "group"
+    },
+    {
+      "key" : ";",
+      "type" : "url",
+      "value" : "raycast://extensions/raycast/navigation/search-menu-items"
+    },
+    {
+      "key" : ",",
+      "type" : "url",
+      "value" : "raycast://extensions/raycast/navigation/switch-windows"
+    }
+  ],
+  "type" : "group"
+}
