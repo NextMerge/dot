@@ -22,10 +22,11 @@
     }
   ],
   "focusDown" : "cmd+ctrl+opt+'",
-  "focusUp" : "cmd+ctrl+opt+q",
   "focusFrontmostWindow" : false,
   "focusLeft" : "cmd+ctrl+opt+j",
+  "focusNextWorkspaceApp" : "cmd+ctrl+opt+tab",
   "focusRight" : "cmd+ctrl+opt+k",
+  "focusUp" : "cmd+ctrl+opt+q",
   "keepUnassignedAppsOnSwitch" : false,
   "loopWorkspaces" : true,
   "loopWorkspacesOnAllDisplays" : false,
@@ -60,7 +61,7 @@
   "swipeUp4FingerAction" : "none",
   "switchWorkspaceOnCursorScreen" : false,
   "switchWorkspaceWhenPipCloses" : true,
-  "toggleFocusedAppAssignment" : "cmd+ctrl+opt+w",
+  "toggleFocusedAppAssignment" : "cmd+ctrl+opt+g",
   "toggleTheFocusedAppFloating" : "cmd+ctrl+opt+f",
   "workspaceTransitionDimming" : 0.2,
   "workspaceTransitionDuration" : 0.3
