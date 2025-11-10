@@ -21,11 +21,11 @@
       "name" : "Finder"
     }
   ],
-  "focusDown" : "cmd+ctrl+opt+shift+'",
-  "focusUp" : "cmd+ctrl+opt+shift+q",
+  "focusDown" : "cmd+ctrl+opt+'",
+  "focusUp" : "cmd+ctrl+opt+q",
   "focusFrontmostWindow" : false,
-  "focusLeft" : "cmd+ctrl+opt+shift+j",
-  "focusRight" : "cmd+ctrl+opt+shift+k",
+  "focusLeft" : "cmd+ctrl+opt+j",
+  "focusRight" : "cmd+ctrl+opt+k",
   "keepUnassignedAppsOnSwitch" : false,
   "loopWorkspaces" : true,
   "loopWorkspacesOnAllDisplays" : false,
@@ -60,8 +60,8 @@
   "swipeUp4FingerAction" : "none",
   "switchWorkspaceOnCursorScreen" : false,
   "switchWorkspaceWhenPipCloses" : true,
-  "toggleFocusedAppAssignment" : "cmd+ctrl+opt+shift+w",
-  "toggleTheFocusedAppFloating" : "cmd+ctrl+opt+shift+f",
+  "toggleFocusedAppAssignment" : "cmd+ctrl+opt+w",
+  "toggleTheFocusedAppFloating" : "cmd+ctrl+opt+f",
   "workspaceTransitionDimming" : 0.2,
   "workspaceTransitionDuration" : 0.3
 }
