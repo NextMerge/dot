@@ -47,10 +47,10 @@ function cmux --description "Connect to existing cmux session or create new one 
 
     echo "Creating new tmux session: $session_name"
 
-    tmux new-window -t "$session_name" -n "watcher" -c "$exo_worktree_path"
+    tmux new-session -d -s "$session_name" -n "watcher" -c "$exo_worktree_path"
     tmux send-keys -t "$session_name:watcher" "__cmux-watcher" Enter
-    
-    tmux new-session -d -s "$session_name" -n "portal" -c "$exo_worktree_path"
+
+    tmux new-window -t "$session_name" -n "portal" -c "$exo_worktree_path"
     tmux send-keys -t "$session_name:portal" "__cmux-portal" Enter
 
     tmux new-window -t "$session_name" -n "sombra" -c "$exo_worktree_path"
@@ -59,6 +59,6 @@ function cmux --description "Connect to existing cmux session or create new one 
     tmux new-window -t "$session_name" -n "lego" -c "$exo_worktree_path"
     tmux send-keys -t "$session_name:lego" "__cmux-lego" Enter
 
-    tmux select-window -t "$session_name:portal"
+    tmux select-window -t "$session_name:watcher"
     tmux attach-session -t "$session_name"
 end
