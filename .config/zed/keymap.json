@@ -41,6 +41,7 @@
       "ctrl-k": "menu::SelectPrevious",
       "ctrl-j": "menu::SelectNext",
       "ctrl-d": "tab_switcher::CloseSelectedItem",
+      "ctrl-space": null,
       "cmd-|": null // conflicts with switch window shortcut in macOS
     }
   },

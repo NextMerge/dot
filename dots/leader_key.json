@@ -4,24 +4,14 @@
       "label": "Applications",
       "actions": [
         {
-          "key": "p",
+          "key": "b",
           "type": "application",
-          "value": "/Applications/Play.app"
+          "value": "/Applications/Bear.app"
         },
         {
-          "key": "v",
+          "key": "c",
           "type": "application",
-          "value": "/Applications/Vivaldi.app"
-        },
-        {
-          "key": "z",
-          "type": "application",
-          "value": "/Applications/Zed.app"
-        },
-        {
-          "key": "m",
-          "type": "application",
-          "value": "/System/Applications/Music.app"
+          "value": "/Applications/Cursor.app"
         },
         {
           "key": "f",
@@ -34,19 +24,19 @@
           "value": "/Applications/Linear.app"
         },
         {
+          "key": "m",
+          "type": "application",
+          "value": "/System/Applications/Music.app"
+        },
+        {
+          "key": "p",
+          "type": "application",
+          "value": "/Applications/Play.app"
+        },
+        {
           "key": "s",
           "type": "application",
           "value": "/Applications/Slack.app"
-        },
-        {
-          "key": "b",
-          "type": "application",
-          "value": "/Applications/Bear.app"
-        },
-        {
-          "key": "c",
-          "type": "application",
-          "value": "/Applications/Cursor.app"
         },
         {
           "key": "t",
@@ -54,61 +44,22 @@
           "value": "/Applications/Things3.app"
         },
         {
+          "key": "v",
+          "type": "application",
+          "value": "/Applications/Vivaldi.app"
+        },
+        {
           "key": "w",
           "type": "application",
           "value": "/Applications/Warp.app"
+        },
+        {
+          "key": "z",
+          "type": "application",
+          "value": "/Applications/Zed.app"
         }
       ],
       "key": "a",
-      "type": "group"
-    },
-    {
-      "actions": [
-        {
-          "key": "n",
-          "type": "command",
-          "value": "open -jga Play"
-        }
-      ],
-      "key": "u",
-      "type": "group"
-    },
-    {
-      "actions": [
-        {
-          "key": "n",
-          "label": "Toggle Raycast Notes",
-          "type": "url",
-          "value": "raycast://extensions/raycast/raycast-notes/raycast-notes"
-        },
-        {
-          "key": "f",
-          "label": "Toggle FlashSpace",
-          "type": "url",
-          "value": "raycast://script-commands/toggle-flashspace"
-        },
-        {
-          "key": "m",
-          "label": "Toggle Apple Music Play/Pause",
-          "type": "url",
-          "value": "raycast://extensions/fedevitaledev/music/toggle-play-pause"
-        }
-      ],
-      "key": "t",
-      "label": "Toggle",
-      "type": "group"
-    },
-    {
-      "actions": [
-        {
-          "key": "g",
-          "type": "url",
-          "label": "Spelling Check Selected Text",
-          "value": "raycast://ai-commands/fix-spelling-and-grammar"
-        }
-      ],
-      "key": "i",
-      "label": "AI",
       "type": "group"
     },
     {
@@ -128,6 +79,61 @@
       ],
       "key": "b",
       "label": "Layout",
+      "type": "group"
+    },
+    {
+      "actions": [
+        {
+          "key": "g",
+          "type": "url",
+          "label": "Spelling Check Selected Text",
+          "value": "raycast://ai-commands/fix-spelling-and-grammar"
+        }
+      ],
+      "key": "i",
+      "label": "AI",
+      "type": "group"
+    },
+    {
+      "actions": [
+        {
+          "key": "b",
+          "label": "Toggle Background Sounds",
+          "type": "url",
+          "value": "raycast://extensions/sebdanielsson/background-sounds/toggle"
+        },
+        {
+          "key": "f",
+          "label": "Toggle FlashSpace",
+          "type": "url",
+          "value": "raycast://script-commands/toggle-flashspace"
+        },
+        {
+          "key": "m",
+          "label": "Toggle Apple Music Play/Pause",
+          "type": "url",
+          "value": "raycast://extensions/fedevitaledev/music/toggle-play-pause"
+        },
+        {
+          "key": "n",
+          "label": "Toggle Raycast Notes",
+          "type": "url",
+          "value": "raycast://extensions/raycast/raycast-notes/raycast-notes"
+        }
+      ],
+      "key": "t",
+      "label": "Toggle",
+      "type": "group"
+    },
+    {
+      "actions": [
+        {
+          "key": "n",
+          "type": "command",
+          "value": "open -jga Play"
+        }
+      ],
+      "key": "u",
       "type": "group"
     },
     {
