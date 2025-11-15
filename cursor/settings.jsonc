@@ -9,7 +9,6 @@
     "editor.fontWeight": 300,
     "editor.occurrencesHighlight": "off",
     "editor.renderLineHighlight": "none",
-    "editor.matchBrackets": "never",
     "editor.accessibilitySupport": "off",
     "editor.cursorSurroundingLines": 10,
     "files.autoSave": "afterDelay",
@@ -26,8 +25,5 @@
     // Cursor
     "cursor.composer.textSizeScale": 1.15,
     "cursor.cpp.disabledLanguages": ["markdown"],
-
-    "find-it-faster.general.killTerminalAfterUse": true,
-    "find-it-faster.general.useTerminalInEditor": true,
     "cursor.composer.shouldChimeAfterChatFinishes": true,
 }

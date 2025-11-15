@@ -1,6 +1,7 @@
 {
   "actions": [
     {
+      "label": "Applications",
       "actions": [
         {
           "key": "p",
@@ -76,16 +77,25 @@
       "actions": [
         {
           "key": "n",
+          "label": "Toggle Raycast Notes",
           "type": "url",
           "value": "raycast://extensions/raycast/raycast-notes/raycast-notes"
         },
         {
           "key": "f",
+          "label": "Toggle FlashSpace",
           "type": "url",
           "value": "raycast://script-commands/toggle-flashspace"
+        },
+        {
+          "key": "m",
+          "label": "Toggle Apple Music Play/Pause",
+          "type": "url",
+          "value": "raycast://extensions/fedevitaledev/music/toggle-play-pause"
         }
       ],
       "key": "t",
+      "label": "Toggle",
       "type": "group"
     },
     {
@@ -93,30 +103,36 @@
         {
           "key": "g",
           "type": "url",
+          "label": "Spelling Check Selected Text",
           "value": "raycast://ai-commands/fix-spelling-and-grammar"
         }
       ],
       "key": "i",
+      "label": "AI",
       "type": "group"
     },
     {
       "actions": [
         {
           "key": "p",
+          "label": "Set up Personal Layout",
           "type": "url",
           "value": "raycast://script-commands/become-personal"
         },
         {
           "key": "w",
+          "label": "Set up Work Layout",
           "type": "url",
           "value": "raycast://script-commands/become-work"
         }
       ],
       "key": "b",
+      "label": "Layout",
       "type": "group"
     },
     {
       "key": ";",
+      "label": "Search Menu Items",
       "type": "url",
       "value": "raycast://extensions/raycast/navigation/search-menu-items"
     }
