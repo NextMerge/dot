@@ -71,6 +71,12 @@
           "value": "raycast://script-commands/become-personal"
         },
         {
+          "key": "t",
+          "label": "Bear Today",
+          "type": "url",
+          "value": "raycast://script-commands/bear-opentoday"
+        },
+        {
           "key": "w",
           "label": "Set up Work Layout",
           "type": "url",
@@ -134,6 +140,18 @@
         }
       ],
       "key": "u",
+      "type": "group"
+    },
+    {
+      "actions": [
+        {
+          "key": "q",
+          "label": "Sleep",
+          "type": "url",
+          "value": "raycast://extensions/raycast/system/sleep"
+        }
+      ],
+      "key": "q",
       "type": "group"
     },
     {
