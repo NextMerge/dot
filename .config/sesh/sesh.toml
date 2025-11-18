@@ -1,9 +1,0 @@
-[[session]]
-name = "dotfiles"
-path = "~/dotfiles"
-
-[[session]]
-name = "neovim config "
-path = "~/.config/nvim"
-startup_command = "nvim"
-

@@ -19,7 +19,6 @@
     ~/.config/fish: .config/fish
     ~/.config/flashspace/settings.json: .config/flashspace/settings.json
     ~/.config/ghostty: .config/ghostty
-    ~/.config/sesh: .config/sesh
     ~/.config/zed/settings.json: .config/zed/settings.json
     ~/.config/zed/tasks.json: .config/zed/tasks.json
     ~/.config/zed/keymap.json: .config/zed/keymap.json
