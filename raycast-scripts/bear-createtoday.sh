@@ -2,7 +2,7 @@
 
 # Required parameters:
 # @raycast.schemaVersion 1
-# @raycast.title Bear Open Today
+# @raycast.title Bear Create Today
 # @raycast.mode silent
 
 # Optional parameters:
@@ -13,6 +13,4 @@
 # @raycast.authorURL https://raycast.com/NextMerge
 
 today=$(date +%Y-%m-%d)
-
-open "bear://x-callback-url/open-note?title=2025-11-19&edit=yes&x-error=raycast://script-commands/bear-createtoday"
-
+open "bear://x-callback-url/create?title=$today&edit=yes"
