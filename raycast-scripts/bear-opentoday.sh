@@ -14,5 +14,5 @@
 
 today=$(date +%Y-%m-%d)
 
-open "bear://x-callback-url/open-note?title=2025-11-19&edit=yes&x-error=raycast://script-commands/bear-createtoday"
+open "bear://x-callback-url/open-note?title=$today&edit=yes&x-error=raycast://script-commands/bear-createtoday"
 

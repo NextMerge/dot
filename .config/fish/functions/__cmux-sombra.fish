@@ -64,6 +64,7 @@ function __cmux-sombra
             # Migration ran successfully with changes
             osascript -e 'display notification "Database migrations were detected and completed successfully!" with title "Sombra Alert"'
 
+            pnpm --filter sombra exec hasura metadata apply --endpoint http://localhost:3011 --admin-secret secret --project hasura
             pnpm --filter sombra run generate:gql
         end
     end
