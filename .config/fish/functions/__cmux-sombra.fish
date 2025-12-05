@@ -49,24 +49,22 @@ function __cmux-sombra
     pnpm --filter sombra exec hasura metadata apply --endpoint http://localhost:3011 --admin-secret secret --project hasura
     pnpm --filter sombra run generate:gql
 
-    if git branch --show-current | grep -q main
-        set -l MIGRATION_DETECTED_MESSAGE "Batch [0-9]+ run: [0-9]+ migrations"
-        set -l MIGRATION_ERROR_MESSAGE "migration failed with error:"
+    set -l MIGRATION_DETECTED_MESSAGE "Batch [0-9]+ run: [0-9]+ migrations"
+    set -l MIGRATION_ERROR_MESSAGE "migration failed with error:"
 
-        # Capture the migration output while still displaying it
-        set MIGRATION_OUTPUT (pnpm --filter sombra run db:migrate &| tee /dev/tty)
+    # Capture the migration output while still displaying it
+    set MIGRATION_OUTPUT (pnpm --filter sombra run db:migrate &| tee /dev/tty)
 
-        # Check for successful migration
-        if string match -rq "$MIGRATION_ERROR_MESSAGE" "$MIGRATION_OUTPUT"
-            osascript -e 'display notification "Knex migration had an error!" with title "Sombra Alert"'
-            return
-        else if string match -rq "$MIGRATION_DETECTED_MESSAGE" "$MIGRATION_OUTPUT"
-            # Migration ran successfully with changes
-            osascript -e 'display notification "Database migrations were detected and completed successfully!" with title "Sombra Alert"'
+    # Check for successful migration
+    if string match -rq "$MIGRATION_ERROR_MESSAGE" "$MIGRATION_OUTPUT"
+        osascript -e 'display notification "Knex migration had an error!" with title "Sombra Alert"'
+        return
+    else if string match -rq "$MIGRATION_DETECTED_MESSAGE" "$MIGRATION_OUTPUT"
+        # Migration ran successfully with changes
+        osascript -e 'display notification "Database migrations were detected and completed successfully!" with title "Sombra Alert"'
 
-            pnpm --filter sombra exec hasura metadata apply --endpoint http://localhost:3011 --admin-secret secret --project hasura
-            pnpm --filter sombra run generate:gql
-        end
+        pnpm --filter sombra exec hasura metadata apply --endpoint http://localhost:3011 --admin-secret secret --project hasura
+        pnpm --filter sombra run generate:gql
     end
 
     pnpm --filter sombra run dev

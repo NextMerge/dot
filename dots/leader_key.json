@@ -19,6 +19,11 @@
           "value": "/Applications/Fastmail.app"
         },
         {
+          "key": "i",
+          "type": "application",
+          "value": "/System/Applications/FindMy.app"
+        },
+        {
           "key": "l",
           "type": "application",
           "value": "/Applications/Linear.app"
@@ -27,6 +32,11 @@
           "key": "m",
           "type": "application",
           "value": "/System/Applications/Music.app"
+        },
+        {
+          "key": "n",
+          "type": "application",
+          "value": "/Applications/FoodNoms.app"
         },
         {
           "key": "p",

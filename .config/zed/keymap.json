@@ -154,7 +154,7 @@
     "context": "vim_mode == visual",
     "bindings": {
       "ctrl-shift-w": "editor::WrapSelectionsInTag", // Bind here doesn't really matter can be anything.
-      "space s t": ["workspace::SendKeystrokes", "ctrl-shift-w v i"],
+      "space s t": ["workspace::SendKeystrokes", "ctrl-shift-w v I"],
       "shift-j": ["workspace::SendKeystrokes", "] e = g v"],
       "shift-k": ["workspace::SendKeystrokes", "[ e = g v"],
       "'": "editor::FormatSelections",
