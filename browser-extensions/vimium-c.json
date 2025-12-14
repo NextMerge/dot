@@ -1,21 +1,37 @@
 {
 	"name": "Vimium C",
-	"@time": "6/20/2025, 5:08:49 PM",
-	"time": 1750453729789,
+	"@time": "12/14/2025, 5:05:47 PM",
+	"time": 1765749947186,
 	"environment": {
 		"extension": "2.12.2",
 		"platform": "mac",
-		"chromium": 136
+		"chromium": 142
 	},
 	"autoDarkMode": 1,
 	"exclusionRules": [
 		{
-			"passKeys": "/ ",
+			"passKeys": "/ i m n q s v w ",
 			"pattern": ":https://kagi.com/"
 		},
 		{
 			"passKeys": "/ ",
 			"pattern": ":https://app.fastmail.com/"
+		},
+		{
+			"passKeys": "",
+			"pattern": ":https://www.figma.com/"
+		},
+		{
+			"passKeys": "",
+			"pattern": ":https://excalidraw.com/"
+		},
+		{
+			"passKeys": ", . c ",
+			"pattern": ":https://www.youtube.com/watch"
+		},
+		{
+			"passKeys": "",
+			"pattern": ":https://typ.ing/"
 		}
 	],
 	"keyLayout": 26,
@@ -30,8 +46,8 @@
 		"map gg scrollToTop",
 		"map G scrollToBottom",
 		"map r reloadTab",
-		"map x removeTab",
-		"map X restoreTab",
+		"map d removeTab",
+		"map D restoreTab",
 		"map m toggleMuteTab",
 		"map i enterInsertMode",
 		"map / enterFindMode",
@@ -44,6 +60,9 @@
 		"map p togglePinTab",
 		"map v enterVisualMode",
 		"map V enterVisualLineMode",
+		"map o createTab",
+		"",
+		"mapKey <t:v> l",
 		"",
 		"map t nextTab",
 		"map h previousTab",
@@ -57,7 +76,7 @@
 		"map ]] moveTabRight",
 		"map [[ moveTabLeft",
 		"map cg searchInAnother keyword=\"g\"",
-		"map ck searchInAnother keyword=\"k\"",
+		"map ck searchInAnother keyword=\"kag\"",
 		"map cy searchInAnother keyword=\"y\"",
 		"map >> goNext",
 		"map << goPrevious",
@@ -96,11 +115,6 @@
 		"map <v-bStartPage> Vomnibar.activateBookmarks",
 		"mapKey <B:n> <v-bStartPage>",
 		"",
-		"map u runKey expect={\"startPage\":\"<v-uStartPage>\"} keys=\"<v-u>\"",
-		"map <v-u> Vomnibar.activateHistoryInNewTab",
-		"map <v-uStartPage> Vomnibar.activateHistory",
-		"mapKey <U:n> <v-uStartPage>",
-		"",
 		"map s runKey expect={\"startPage\":\"<v-sStartPage>\"} keys=\"<v-s>\"",
 		"map <v-s> Vomnibar.activateHistoryInNewTab url=\"kagi.com/search\\u0020\"",
 		"map <v-sStartPage> Vomnibar.activateHistory url=\"kagi.com/search\\u0020\"",
@@ -110,7 +124,7 @@
 	"linkHintCharacters": "aoeuhtnsqjkmwvz",
 	"newTabUrl": "https://dot-blank-pink.vercel.app/",
 	"searchEngines": [
-		"k: https://kagi.com/search?q=$s Kagi",
+		"kag: https://kagi.com/search?q=%s Kagi",
 		"",
 		"bi: https://www.bing.com/search?q=%s \\",
 		"  blank=https://www.bing.com/ Bing",
@@ -138,6 +152,8 @@
 		"js\\:|Js: javascript:\\ $S; JavaScript",
 		"",
 		"jw: https://www.justwatch.com/ca/search?q=%s",
+		"tv: https://tvtropes.org/pmwiki/search_result.php#gsc.tab=0&gsc.q=${s:%20}&gsc.sort= \\",
+		"  blank=https://tvtropes.org/ TV Tropes",
 		""
 	],
 	"searchUrl": "https://kagi.com/search?q=$s Kagi",
