@@ -20,7 +20,6 @@ function __cmux-watcher
     open -jga OrbStack
     sleep 5
     docker start sombra-hasura-1 sombra-db-1 sombra-pubsub-1 elasticsearch sombra-pdftron-server-1 >/dev/null 2>&1
-    git pull
     pnpm install
 
     tmux wait-for -S repo-hydrated

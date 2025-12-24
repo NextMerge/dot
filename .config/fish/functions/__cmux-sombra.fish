@@ -66,6 +66,8 @@ function __cmux-sombra
         pnpm --filter sombra exec hasura metadata apply --endpoint http://localhost:3011 --admin-secret secret --project hasura
         pnpm --filter sombra run generate:gql
     end
+    
+    open "raycast://confetti"
 
     pnpm --filter sombra run dev
 end
